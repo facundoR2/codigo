@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <script src="dinamic.js"></script>
     
     <div id="cabecera"><!--seccion head con flogin y logo-->
         <div id="buscador">
@@ -33,16 +33,19 @@
                 <li><a href="../pag armar tu pc/index.html">arma tu pc</button></li>
             </ul>
         </div>
-        <div class="Formasconexion"><!--seccion donde se muestran las tarjetas con productos-->
-            <ul class="ingresobton">
-                <li><button class="ingresobton" id="btoningresarGoogle">ingresar con cuenta google</button></li>
-                <li><button class="ingresobton" id="btonRegistrarcuenta">Registrarse</button></li>
-                <li><button class="ingresobton" id="btonNeutrologin">ingresar con Cuenta Neutro </button></li>
-                <li><button class="ingresobton" id="Brecuperarcuenta">Recuperar mi Cuenta </button></li>
-            </ul>
-        </div>
+        <section id="contenedorLogin">
+            <form name="login" action="index.submit" method="get" accept-charset="UTF-8">
+                <label for="Iptmail">Mail</label>
+                <input type="email" name="IngMail"  placeholder="ejemplo@hotmail.com"required>
+                <label for="Iptcontraseña">Contraseña</label>
+                <input type="password" name="IngContraseña" placeholder="Contraseña" required>
+                <input type="submit" value="Iniciar sesion">
+            </form>
+            
+        </section>
     </div>
-    <script src="Dlogin.js"></script>
+    
+    
 </body>
 <footer id="piedepagina"><!--pie de pagina con info de la empresa y derechos de uso-->
     <div>
