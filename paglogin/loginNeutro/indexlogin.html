@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="dinamic.js"></script>
+    
     
     <div id="cabecera"><!--seccion head con flogin y logo-->
         <div id="buscador">
@@ -26,24 +26,24 @@
     <div id="centro">
         <div id="Lmenu"><!--seccion de menu principal lateral-->
             <ul class="nav-links">
-                <li><a href="../pag principal/index.html">Inicio</button></li>
-                <li><a href="../pag accesorios/index.html">accesorios</button></li>
-                <li><a href="../pag catergorias(buscador)/index.html">categorias</button></li>
-                <li><a href="../pag carrito/index.html">carrito</button></li>
-                <li><a href="../pag armar tu pc/index.html">arma tu pc</button></li>
+                <li><button id="btoninicio">Inicio</button></li>
+                <li><button id="btonaccesorios">accesorios</button></li>
+                <li><button id="btoncategorias">categorias</button></li>
+                <li><button id="btonATP">Arma tu PC</button></li>
             </ul>
         </div>
-        <section id="contenedorLogin">
+        <div id="contenedorLogin">
             <form name="login" action="indexlogin.submit" method="get" accept-charset="UTF-8">
                 <label for="Iptmail">Mail</label>
                 <input type="email" name="IngMail"  placeholder="ejemplo@hotmail.com"required>
                 <label for="Iptcontraseña">Contraseña</label>
                 <input type="password" name="IngContraseña" placeholder="Contraseña" required>
-                <input type="submit" value="Iniciar sesion">
+                <input type="submit" value="Iniciar sesion" onclick="login(event)">
             </form>
             
-        </section>
+        </div>
     </div>
+    <script src="dinamic.js"></script>
     
     
 </body>
