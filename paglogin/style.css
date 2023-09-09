@@ -23,6 +23,11 @@
 #centro{
     display: flex;
 }
+#centro #lmenu{
+    justify-content: left;
+}
+#centro #lmenu.l
+
 .nav-links{
     width: 180px;
     height: 380px;
