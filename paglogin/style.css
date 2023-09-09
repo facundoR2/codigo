@@ -3,12 +3,45 @@
     padding: 0px;
     box-sizing: border-box;
 }
-#cabecera{
+#cabecera #buscador{
+    justify-content: center;
+    justify-items: center;
+    /* padding-left: 400px; */
+}
+#cabecera #buscador #Barrabusqueda{
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+}
+#cabecera #BotonBuscar{
+    align-items: center;
+    padding-right:10px ;
+}
+#cabecera #Login{
+    justify-content: right;
+    justify-items: center;
+    padding-right:5%;
+}
+#buscador{
     display: flex;
-    width: auto;
+    align-items: center;
+}
+#Clogo{
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 120px;
+    
+}
+#cabecera{
+    display:flex;
+    line-height: 0;
+    width: 100%;
+    justify-content: space-between;
+    
     padding: 0px;
     margin: 0;
-    height: 50px;
+    height: 60px;
     background-color:rgb(230, 145, 16);
 }
 #vistamenu{
@@ -26,7 +59,38 @@
 #centro #lmenu{
     justify-content: left;
 }
-#centro #lmenu.l
+#centro #Lmenu li{
+    justify-content: space-between;
+    line-height: 3.5em;
+
+
+}
+#centro .Formasconexion{
+    margin: 0;
+    width: 100%;
+    padding-top: 3%;
+    background-image: url(../imagenes/pexels-athena-2582932.jpg);
+    background-repeat: no-repeat;
+    background-position: 30% 30%;
+    background-attachment: local;
+    background-size: cover;
+    justify-content: center;
+    align-content: center;
+    
+}
+#centro .Formasconexion li{
+    marker: none;
+    padding-left: 40%;
+    line-height: 3.5em;
+    justify-content: center;
+    
+    
+}
+#centro .Formasconexion button{
+    marker: none;
+    height: 100px;
+    width: 200px;
+}
 
 .nav-links{
     width: 180px;
