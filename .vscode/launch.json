@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open index.html",
-            "file": "c:\\xampp\\htdocs\\Neutro\\codigo\\pag login\\index.html"
+            "file": "C:/xampp/htdocs/Neutro/codigo/paglogin"
         }
     ]
 }
