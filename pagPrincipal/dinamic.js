@@ -5,29 +5,23 @@
 // }
 
 //se agregan los listeners para los buttons del menu lateral.
-let nuevologin = document.getElementById("#Bingresar");
-let Go_toaccesory = document.getElementById("#Baccesorios");
+let nuevologin = document.getElementById('Bingresar');
+let Go_toaccesory = document.getElementById("#bton-accesorios");
 let Go_tocategory = document.getElementById("#Bcategorias");
 let GO_tofavorites = document.getElementById("#Bfav");
 let Go_tocart = document.getElementById("#Bcarrito");
-let Go_mypc = document.getElementById("#Batp");
+let Go_mypc = document.getElementById("bton-ATP");
 
-//listener para el boton que ingresa ¿
+//listeners de botones para navegar en las paginas.
 nuevologin.addEventListener("click",function(){
-    Event.preventDefault();
-    try {
-        irapagLogin();
+    window.location.href="http://localhost/neutro/codigo/paglogin/index.html";
+});
+Go_toaccesory.addEventListener("click",function(){
+    window.location.href="http://localhost/neutro/codigo/pagCategorias(buscador)/index.html";
+});
+Go_mypc.addEventListener("click",function(){
 
-        
-    } catch (error) {
-        console.log(error);
-        
-    }
-    
-    
-
-})
-function irapagLogin(){
-    window.location.href="localhost/neutro/codigo/pag login";
-
-}
+});
+GO_tofavorites.addEventListener();
+Go_tocategory.addEventListener();
+Go_mypc.addEventListener();
