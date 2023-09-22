@@ -1,8 +1,6 @@
 <?php
-
-//conectar a la base de datos
-$conexion = mysqli_conectar("localhost","root","","datos.local");
-//se obtienen datos del usuario
+include("conexion.php");
+//conseguimos el mail y contraseña por el post.
 $email = $_POST["mailusuario"];
 $password =$_POST["contraseña"];
 //se validan los datos
