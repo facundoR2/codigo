@@ -1,20 +1,26 @@
 // funcion para iniciar session.
-var formulario = document.querySelector("formulariologin");
+var formulario = document.getElementById("formulariologin");
+
 
 formulario.addEventListener("submit", function(Event){
     Event.preventDefault();
     // crea variables para recolectar los valores del formulario login
-    var email = document.getElementById("IngMail");
-    var contraseña = document.getElementById("IngContraseña");
-    var nombre = email.innerText;
-    var pass = contraseña.textContent;
+    // primero se crea la variable para obtener el valor
+    var mail = document.getElementById("Mail").value;
+    //luego se escribe el valor sobre la variable
+    document.getElementById("Mail").innerHTML = mail;
+    var contraseña = document.getElementById("Contraseña").value;
+    document.getElementById("Contraseña").innerHTML = contraseña;
+    var nombre = mail;
+    var pass = contraseña;
+    //confirmacion de que se capturo los datos correctamente.
     console.log(nombre);
     console.log(pass);
     var formdata = new FormData();
-    formdata.append("Mail",email);
+    formdata.append("Mail",mail);
     formdata.append("Contraseña",contraseña);
 
-    fetch("LoginsUsuario.php", {
+    fetch("http://localhost/Neutro/codigo/php/registro.php", {
         method: "POST",
         body: formdata
     })
