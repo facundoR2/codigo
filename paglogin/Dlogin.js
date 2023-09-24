@@ -10,14 +10,18 @@ var Go_inicio = document.getElementById("btoninicio");
 var Go_accesorios =document.getElementById("btonaccesorios");
 var Go_categorias = document.getElementById("btoncategorias");
 var Go_ATP = document.getElementById("btonATP");
+var Go_register = document.getElementById("btonRegistrarcuenta");
 
 
 //listener para el boton que ingresa ¿
+Go_register.addEventListener("click",function(){
+    window.location.href="http://localhost/Neutro/codigo/paglogin/pagregistro/indexregistro.html";
+});
 Go_login.addEventListener("click",function(){
-    window.location.href="http://localhost/neutro/codigo/paglogin/loginNeutro/indexlogin.html";
+    window.location.href="http://localhost/Neutro/codigo/paglogin/loginNeutro/indexlogin.html";
 });
 Go_inicio.addEventListener("click",function(){
-    window.location.href="http://localhost/neutro/codigo/pagPrincipal/index.html";
+    window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
 })
 Go_accesorios.addEventListener("click",function(){
     window.location.href="http://localhost/neutro/codigo/pagAccesorios/index.html";

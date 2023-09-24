@@ -5,11 +5,10 @@ $contraseña="";
 $db="datos-local";
 
 try{
-
-    $conect = new PDO("mysql:host=$host;dbname=$db",$usuario,$contraseña);
+    $conn = new PDO("mysql:host=$host;dbname=$db",$usuario,$contraseña);
     //establecer el modo error.
-    $conect->setattribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    if(!$conect){
+    $conn->setattribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    if(!$conn){
         echo json_encode("ERROR AL CONECTARSE");
     }else{
         echo json_encode("CONEXION EXITOSA");

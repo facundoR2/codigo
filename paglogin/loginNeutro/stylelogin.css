@@ -6,7 +6,7 @@
 #cabecera{
     display: flex;
     width: auto;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 0px;
     margin: 0;
     height: 50px;
@@ -14,7 +14,6 @@
 }
 #cabecera #buscador{
     justify-content: center;
-    padding-left: 400px;
 }
 #cabecera #BotonBuscar{
     align-items: center;
@@ -27,14 +26,8 @@
 #buscador{
     display: flex;
     align-items: center;
-    
 }
-#Login{
-    display: flex;
-    align-items:center;
-    justify-content: right;
 
-}
 #vistamenu{
     display: flex;
     width: auto;
@@ -45,13 +38,23 @@
     padding-right: 30px;
     box-shadow: 0px 5px 3px rgb(95, 95, 95);
 }
-.nav-links{
-    width: 180px;
-    height: 380px;
+#centro{
+    background-image: url(../../extras/tiendadifuminada.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    display:flex;
     align-items: center;
     justify-content: center;
-    justify-items: center;
-    background-color: rgb(45, 44, 44);
+    height: 300px;
+    width:auto;
+}
+#contenedorLogin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+    width: fit-content;
+    height: 200px;
 }
 #piedepagina{
     display: flexbox;

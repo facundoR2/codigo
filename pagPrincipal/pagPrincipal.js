@@ -26,7 +26,7 @@ function buscarProducto(B_item){
 };
 
 // fin seccion busqueda.
-//seccion funcionalidad session.
+//seccion verificaciones
 function verificarSession(){
     let usuarionombre = document.getElementById("labelusuario");
     var usuario = usuarionombre.textContent;
@@ -44,6 +44,15 @@ function verificarSession(){
 };
 //fin seccion session.
 //listeners de botones para navegar en las paginas.
+nuevologin.addEventListener("click",function(){
+    verificarSession()
+    if(verificarSession==true){
+        alert("ya estas en una session");
+    }else{
+        window.location.href="http://localhost/Neutro/codigo/paglogin/index.html";
+    }
+    
+});
 BtonCategorias.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagCategorias/index.html";
 });
@@ -61,6 +70,3 @@ Go_tocart.addEventListener("click",function(){
         alert("por favor ingresa a una sesion para acceder a un carrito");
     }
 });
-
-
-//verificadores
