@@ -94,7 +94,17 @@ Go_tocart.addEventListener("click",function(){
 //seccion sobre Producto.
 //cargar productos.
 let contenedorproductos = document.getElementById("contenedor-productos");
-function iraproducto(id,Nombre){
+//funcion para redigir a una pagina cuando se de click en comprar a un producto.
+function iraproducto(Id,Nombre){
+    console.log(Id);
+    console.log(Nombre);
+    var formdata = new FormData();
+    formdata.append("Id",Id);
+    formdata.append("Nombre",Nombre);
+    fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe-pp.php",{
+        method: 'POST',
+        body: formdata
+    })
 
 
 };
@@ -106,28 +116,42 @@ function mostrarproductos(productos){
         producto.className ="producto";
         var nombre = document.createElement("h3");
         nombre.textContent = productos[i].Nombre;
+        //creo y le asigno una imagen
+        var img = document.createElement("img");
+        //todavia no esta la imagen, asi que solo declaramos el texto alternativo.
+        img.alt ="imagen del producto";
+        //creamos el parrafo para las caracteristicas
         var caract = document.createElement("p");
         caract.textContent = productos[i].Caracteristicas;
         var precio  = document.createElement("p");
+        //creamos otro para el precio
         precio.textContent = "$"+productos[i].Costo;
+        //creamos y configuramos el boton de compra del producto
         var buttoncomprar = document.createElement("button");
         buttoncomprar.textContent="comprar";
         buttoncomprar.className="bton-compra";
-        buttoncomprar.onclick= iraproducto(productos[i].id,productos[i].Nombre);
+        buttoncomprar.value = true;
+        buttoncomprar.onclick= "iraproducto(productos[i].Id,productos[i].Nombre)";
+        //agregamos los items al contenedor "producto".
+        producto.appendChild(img);
         producto.appendChild(nombre);
         producto.appendChild(caract);
         producto.appendChild(precio);
         producto.appendChild(buttoncomprar);
+        //agregamos el producto al contenedor de productos.
         contenedorproductos.appendChild(producto);
     }
 };
 
-
+//creamos un listener para cuando el DOM se termine de cargar, realice la funcion.
 window.addEventListener("DOMContentLoaded",function(){
+    //hacemos una peticion de productos a la base de datos
     fetch("http://localhost/Neutro/codigo/php/Getproducto-fe-pp.php")
+    //convertimos la respuesta en un  objeto json.
     .then(Response => Response.json())
     .then(data=>{
         productos = data;
+        //usamos la funcion de mostrar pasandole de parametro los productos buscados.
         mostrarproductos(productos);
     })
 
