@@ -8,35 +8,37 @@
 </head>
 <body>
     <body>
-        
-        <div id="cabecera"><!--seccion head con flogin ,logo y barra buscadora-->
-            <div id="buscador">
-                <input id="Barrabusqueda"type="text">
-                <button id="BotonBuscar">buscar</button>
+        <section>
+            <div id="cabecera"><!--seccion head con flogin ,logo y barra buscadora-->
+                <h1>LOGO</h1>
+                <div id="buscador">
+                    <input id="Barrabusqueda"type="text" placeholder="ejemplo:'procesador tal'">
+                    <button id="BotonBuscar" target="_blank">buscar</button>
+                </div>
+                <div id="Login">
+                    <label id="labelusuario">cliente</label>
+                    <button id="Bingresar" type="button">Ingresar</button>
+                </div>
             </div>
-            <div id="Login">
-                <label id="TUsuarioActual">cliente</label>
-                <button id="ingresar">Ingresar</button>
+            <div id="vistamenu"><!--seccion menu con opciones para vista(modo oscuro,casillas o filas y carrito)-->
+                <ul class="menulista">
+                    <button class="menulista" id="Bmododark">modo oscuro</button>
+                    <button class="menulista" id="Bcasillas">vista casillas</button>
+                    <button class="menulista" id="Blista">vista listas</button>
+                </ul>
             </div>
-        </div>
-        <div id="vistamenu"><!--seccion menu con opciones para vista(modo oscuro,casillas o filas y carrito)-->
-            <ul class="menulista">
-                <button class="menulista" id="Bmododark">modo oscuro</button>
-                <button class="menulista" id="Bcasillas">vista casillas</button>
-                <button class="menulista" id="Blista">vista listas</button>
-                <button class="menulista" id="Bcarrito">carrito</button>
-            </ul>
-    
-        </div>
-        <div id="Lmenu"><!--seccion de menu principal lateral-->
+        </section>
+        <section id="Lmenu">
             <ul class="nav-links">
-                <li><a href="../pag login/index.html">login</button></li>
-                <li><a href="../pag accesorios/index.html">accesorios</button></li>
-                <li><a href="../pag catergorias(buscador)/index.html">categorias</button></li>
-                <li><a href="../pag carrito/index.html">carrito</button></li>
-                <li><a href="../pag armar tu pc/index.html">arma tu pc</button></li>
+                <li><button class="LBTON">Favoritos(prox)</button></li>
+                <li><button class="LBTON" id="bton-accesorios">accesorios</button></li>
+                <li><button class="LBTON" id="bton-categorias">categorias</button></li>
+                <li><button class="LBTON" id="bton-carrito">carrito(prox)</button></li>
+                <li><button class="LBTON" id="bton-ATP">arma tu pc(prox)</button></li>
+                <li><button class="LBTON">historial(prox)</button></li>
+                <li><button class="LBTON" id="bton-productos">Productos</button></li>
             </ul>
-        </div>
+            <script src="bqdO.js"></script>
     <footer><!--pie de pagina con info de la empresa y derechos de uso-->
         <div>
             <h6>derechos reservados para el creador de esta y todas las paginas asociadas a este software<br>
