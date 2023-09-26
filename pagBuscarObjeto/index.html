@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="stilobuscador.css">
 </head>
 <body>
     <div id="cabecera"><!--seccion head con flogin ,logo y barra buscadora-->
+        <div id="Logo">
+            <h1>LOGO</h1>
+        </div>
         <div id="buscador">
             <input id="Barrabusqueda"type="text">
             <button id="BotonBuscar">buscar</button>
@@ -16,15 +20,27 @@
             <button id="ingresar">Ingresar</button>
         </div>
     </div>
-    <div id="Lmenu"><!--seccion de menu principal lateral-->
-        <ul class="menu-buton">
-            <li><a href="../pag login/index.html">login</button></li>
-                <li><a href="../pag accesorios/index.html">accesorios</button></li>
-                <li><a href="../pag catergorias(buscador)/index.html">categorias</button></li>
-                <li><a href="../pag carrito/index.html">carrito</button></li>
-                <li><a href="../pag armar tu pc/index.html">arma tu pc</button></li>
+    <section id="Lmenu">
+        <ul class="nav-links">
+            <li><button class="LBTON">Favoritos(prox)</button></li>
+            <li><button class="LBTON" id="bton-accesorios">accesorios</button></li>
+            <li><button class="LBTON" id="bton-categorias">categorias</button></li>
+            <li><button class="LBTON" id="bton-carrito">carrito</button></li>
+            <li><button class="LBTON" id="bton-ATP">arma tu pc</button></li>
+            <li><button class="LBTON">historial</button></li>
+            <li><button class="LBTON" id="bton-productos">Productos</button></li>
         </ul>
-    </div>
+        <div id="buscador-confiltros">
+            <form id="formulario-busqueda">
+                <ul>
+                    <li><label>tipo</label></li>
+                    <li><input type="search"></li>
+                    <option>tipo1</option>
+                    <option>tipo2</option>
+                </ul>
+            </form>
+        </div>
+    </section>
     <footer><!--pie de pagina con info de la empresa y derechos de uso-->
         <div>
             <h6>derechos reservados para el creador de esta y todas las paginas asociadas a este software<br>
