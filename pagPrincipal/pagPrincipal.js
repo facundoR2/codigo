@@ -78,7 +78,7 @@ BtonCategorias.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagCategorias/index.html";
 });
 BtonAccesorios.addEventListener("click",function(){
-    window.location.href="http://localhost/Neutro/codigo/pagAccesorios/index.html";
+    window.location.href="http://localhost/Neutro/codigo/pagAccesorios/Acc-index.html";
 });
 Go_mypc.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagArmarTuPc/index.html";
