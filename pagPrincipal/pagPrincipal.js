@@ -93,12 +93,46 @@ Go_tocart.addEventListener("click",function(){
 });
 //seccion sobre Producto.
 //cargar productos.
+let contenedorproductos = document.getElementById("contenedor-productos");
+function iraproducto(id,Nombre){
 
-// function CargaProductos(){
-//     var valores =
-//     let Productos = document.getElementById("productos");
-//     fetch("http://localhost/Neutro/codigo/php/Getproducto.php");
-// }
+
+};
+function mostrarproductos(productos){
+    for(var i=0;i<productos.length;i++){
+        //creamos div para el producto
+        var producto = document.createElement("div");
+        //le asigno nombre
+        producto.className ="producto";
+        var nombre = document.createElement("h3");
+        nombre.textContent = productos[i].Nombre;
+        var caract = document.createElement("p");
+        caract.textContent = productos[i].Caracteristicas;
+        var precio  = document.createElement("p");
+        precio.textContent = "$"+productos[i].Costo;
+        var buttoncomprar = document.createElement("button");
+        buttoncomprar.textContent="comprar";
+        buttoncomprar.className="bton-compra";
+        buttoncomprar.onclick= iraproducto(productos[i].id,productos[i].Nombre);
+        producto.appendChild(nombre);
+        producto.appendChild(caract);
+        producto.appendChild(precio);
+        producto.appendChild(buttoncomprar);
+        contenedorproductos.appendChild(producto);
+    }
+};
+
+
+window.addEventListener("DOMContentLoaded",function(){
+    fetch("http://localhost/Neutro/codigo/php/Getproducto-fe-pp.php")
+    .then(Response => Response.json())
+    .then(data=>{
+        productos = data;
+        mostrarproductos(productos);
+    })
+
+});
+
 
 
 // fin cargar productos
