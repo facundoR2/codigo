@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tienda online</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleprincipal.css">
 </head>
 <body>
     <section>
@@ -15,7 +15,7 @@
             <button id="BotonBuscar" target="_blank">buscar</button>
         </div>
         <div id="Login">
-            <label id="labelusuario">cliente</label>
+            <label id="labelusuario" for="Bingresar">cliente</label>
             <button id="Bingresar" type="button">Ingresar</button>
         </div>
     </div>
@@ -37,19 +37,15 @@
         <li><button class="LBTON">historial(prox)</button></li>
         <li><button class="LBTON" id="bton-productos">Productos</button></li>
     </ul>
-    <div id="Producto">
-        <ul>
-            <li><img class="imagenProducto" alt="imagen del producto"></li>
-            <li><h1>imagen</h1></li>
-            <li><h1>PRECIO $9999</h1></li>
-            <li><p>descripcion breve</p></li>
-            <li><button id="mirar">Comprar</button></li>
-        </ul>
-    </div>
+    <ul>
+        <li><div id="contenedor-productos"></div></li>
+    </ul>
+    
+    
 </section>
 <section class="muestra-productos">
     <!-- aqui irian productos variados y ofertas  -->
-    <div id="productos"></div>
+    
 </section>
 <section class="muestra-productos">
     <!-- aca iran los productos en oferta -->
