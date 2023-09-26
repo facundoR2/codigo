@@ -14,17 +14,38 @@ let Go_products = document.getElementById("bton-productos");
 
 // seccion para la funcionalidad de busqueda.
 let buscador = document.getElementById("buscador");
-let B_item = document.getElementById('Barrabusqueda');
 let botonBusqueda = document.getElementById("BotonBuscar");
 
 buscador.addEventListener("click",function(){
+    let B_item = document.getElementById('Barrabusqueda').value;
+    document.getElementById("Barrabusqueda").innerHTML = B_item;
     item = B_item;
     console.log(item);
+    buscarProducto(B_item);
 });
 function buscarProducto(B_item){
+     var busqueda = B_item
+     let searchjson = JSON.stringify(busqueda);
+    fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe.php",{
+        method: 'GET',
+        body: searchjson
+    })
+    .then(function(respuesta){
+        if(respuesta.ok){
+            console.log("busqueda exitosa");
+            return respuesta.json();
+        }else{
+            console.log("busqueda incompleta");
+            window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/index.html";
+        }
+    })
+    .then(function(data){
+        console.log(data);
+
+    });
+
 
 };
-
 // fin seccion busqueda.
 //seccion verificaciones
 function verificarSession(){
@@ -42,7 +63,7 @@ function verificarSession(){
         return respuesta;
     }
 };
-//fin seccion session.
+//ficn seccion session.
 //listeners de botones para navegar en las paginas.
 nuevologin.addEventListener("click",function(){
     verificarSession()
@@ -70,3 +91,18 @@ Go_tocart.addEventListener("click",function(){
         alert("por favor ingresa a una sesion para acceder a un carrito");
     }
 });
+//seccion sobre Producto.
+//cargar productos.
+
+// function CargaProductos(){
+//     var valores =
+//     let Productos = document.getElementById("productos");
+//     fetch("http://localhost/Neutro/codigo/php/Getproducto.php");
+// }
+
+
+// fin cargar productos
+//cargar stat
+
+//fin cargar stat
+// fin seccion productos
