@@ -48,6 +48,22 @@
     border-color:rgb(102, 99, 94);
     border-style:outset;
 }
+#contenedor-productos{
+    margin-left: 40px;
+}
+.producto{
+    display: flex;
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    border: 10px;
+    border-radius: 15px;
+    padding: 50px;
+    background-color:rgb(230, 145, 16);
+    border-color:rgb(102, 99, 94);
+    border-style:outset;
+}
 #buscador{
     display: flex;
     align-items: center;
