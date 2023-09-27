@@ -6,6 +6,54 @@ let Go_tocart = document.getElementById("bton-carrito");
 let Go_mypc = document.getElementById("bton-ATP");
 let Go_products = document.getElementById("bton-productos");
 
+// seccion recibir datos de barrabusqueda.
+window.onload = function(){
+    //obtener la cadena de consulta con los parametros de datos.
+    var query = window.location.search;
+    //si no esta vacía.
+    if (query){
+        //eliminar el signo ? del inicio y dividir la cadena por el signo = 
+        var partes = query.substring(1).split("=");
+        //obtener nombre y valor.
+        var nombre = partes[0];
+        var valor = partes[1];
+        //si el nombre es data.
+        if(nombre == "data"){
+            //convertir en json
+            var datos = JSON.parse(valor);
+            //se busca el contenedor de resultados.
+            var resultado = document.getElementById("Contenedor-busqueda");
+            document.addEventListener("DOMContentLoaded",function(datos){
+                //iniciamos un bucle para recorrer el objeto.
+                for (var i=0;i<datos.length;i++){
+                    //creamos un elemento div para cada producto de la busqueda
+                    var producto = document.createElement("div");
+                    producto.className = "BBproducto";
+                    //creamos un h3 para el nombre del producto.
+                    var nombre = document.createElement("h3");
+                    nombre.textContent = datos[i].Nombre;
+                    //creamos una imagen para cada producto.
+                    var img = document.createElement("img");
+                    img.alt = "imagen del producto no disponible";
+                    //creamos un parrafo para el precio.
+                    var precio = document.createElement("p");
+                    precio.textContent = "$" + datos[i].Costo;
+                    //creamos boton de compra.
+                    var buttoncomprar =document.createElement("button");
+                    buttoncomprar.onclick= "iraproducto(datos[i].Id,datos[i].Nombre)";
+                    //añadimos las variables al div del producto.
+                    producto.appendChild(img);
+                    producto.appendChild(nombre);
+                    producto.appendChild(precio)
+                    producto.appendChild(buttoncomprar);
+                    //agregamos el producto al contenedor de busqueda.
+                    resultado.appendChild(producto);
+                }
+            });
+        }
+    }
+};
+//fin seccion barrabusqueda.
 // seccion para la funcionalidad de busqueda.
 let buscador = document.getElementById("buscador");
 let botonBusqueda = document.getElementById("BotonBuscar");
@@ -20,7 +68,7 @@ buscador.addEventListener("click",function(){
 function buscarProducto(B_item){
      var busqueda = B_item
      let searchjson = JSON.stringify(busqueda);
-    fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe.php",{
+    fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe-pbo.php",{
         method: 'GET',
         body: searchjson
     })
