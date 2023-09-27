@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto</title>
+    <link rel="stylesheet" href="PVICstyle.css">
+</head>
+<body>
+    <section id="cabecera"><!--seccion head con flogin ,logo y barra buscadora-->
+        <div id="logo">
+            <h1>LOGO</h1>
+        </div>
+        <div id="buscador">
+            <input id="Barrabusqueda"type="text">
+            <button id="BotonBuscar">buscar</button>
+        </div>
+        <div id="Login">
+            <label id="TUsuarioActual">cliente</label>
+            <button id="Bingresar">Ingresar</button>
+        </div>
+    </div>
+    </section>
+    <section id="Vista1"><!--seccion menu con opciones para vista(modo oscuro,casillas o filas y carrito)-->
+        <ul class="menulista">
+            <button class="menulista" id="Bmododark">modo oscuro</button>
+            <button class="menulista" id="Bcasillas">vista casillas</button>
+            <button class="menulista" id="Blista">vista listas</button>
+            <button class="menulista" id="Bcarrito">carrito</button>
+        </ul>
+    </section>
+    
+    <section id="Lmenu"><!--seccion de menu principal lateral-->
+        <ul class="nav-links">
+            <li><button class="LBTON">Favoritos(prox)</button></li>
+            <li><button class="LBTON" id="bton-accesorios">accesorios</button></li>
+            <li><button class="LBTON" id="bton-categorias">categorias</button></li>
+            <li><button class="LBTON" id="bton-carrito">carrito(prox)</button></li>
+            <li><button class="LBTON" id="bton-ATP">arma tu pc(prox)</button></li>
+            <li><button class="LBTON">historial(prox)</button></li>
+            <li><button class="LBTON" id="bton-productos">Productos</button></li>
+        </ul>
+        <section id="Vistaproducto">
+            <div id="Producto">
+                <ul id="lista-imagen-producto">
+                    <li class="img-prct"><p>imagen0</p></li>
+                    <li class="img-prct"><p>imagen1</p></li>
+                    <li class="img-prct"><p>imagen2</p></li>
+                    <li class="img-prct"><p>imagen3</p></li>
+                </ul>
+                <div id="img-principal-producto"></div>
+                <div id="info-producto-compra">
+                    <ul id="inf-prct-list">
+                        <li><p>info producto</p></li>
+                        <li><button id="Bton-Comprar">Comprar</button></li>
+                    </ul>
+                    
+                    
+                </div>
+            </div>
+        </section>
+    </section>
+    <section id="ofertaproductos">
+        <div id="contenedor-productos"></div>
+    </section>
+    <script src="PVIC.js"></script>
+    <footer><!--pie de pagina con info de la empresa y derechos de uso-->
+        <div id="piedepagina">
+            <h6>derechos reservados para el creador de esta y todas las paginas asociadas a este software<br>
+            cualquier copia o reproduccion se penará con spam infinito.</h6>
+        </div>
+    </footer>
+    
+</body>
+</html>
