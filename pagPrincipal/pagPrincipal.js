@@ -16,19 +16,22 @@ let Go_products = document.getElementById("bton-productos");
 let buscador = document.getElementById("buscador");
 let botonBusqueda = document.getElementById("BotonBuscar");
 
-buscador.addEventListener("click",function(){
-    let B_item = document.getElementById('Barrabusqueda').value;
-    document.getElementById("Barrabusqueda").innerHTML = B_item;
-    item = B_item;
-    console.log(item);
-    buscarProducto(B_item);
+botonBusqueda.addEventListener("click",function(){
+    //si precina tecla enter.
+        let B_item = document.getElementById('Barrabusqueda').value;
+        document.getElementById("Barrabusqueda").innerHTML = B_item;
+        item = B_item;
+        console.log(item);
+        buscarProducto(B_item);
 });
 function buscarProducto(B_item){
      var busqueda = B_item
-     let searchjson = JSON.stringify(busqueda);
-    fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe.php",{
-        method: 'GET',
-        body: searchjson
+     let search_Fdata = new FormData();
+     search_Fdata.append("Busqueda",busqueda);
+
+    fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe-pp1.php",{
+        method: 'POST',
+        body: search_Fdata
     })
     .then(function(respuesta){
         if(respuesta.ok){
@@ -41,7 +44,8 @@ function buscarProducto(B_item){
     })
     .then(function(data){
         console.log(data);
-
+        localStorage.setItem("busqueda",JSON.stringify(data));
+        window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/PBOindex.html?datos=" +JSON.stringify(data);
     });
 
 
@@ -101,7 +105,7 @@ function iraproducto(Id,Nombre){
     var formdata = new FormData();
     formdata.append("Id",Id);
     formdata.append("Nombre",Nombre);
-    fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe-pp.php",{
+    fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe-pp2.php",{
         method: 'POST',
         body: formdata
     })
