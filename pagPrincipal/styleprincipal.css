@@ -9,7 +9,6 @@
     image-rendering: auto;
     background-image: url(../imagenes/SINFFONDO.jpg);
     background-attachment: local;
-
 }
 #cabecera{
     display: flex;
