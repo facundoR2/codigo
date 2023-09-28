@@ -1,3 +1,6 @@
+//se agregan listeners para la seccion cabecera.
+let Icon_logo = document.getElementById("Logo-tienda");
+
 //se agregan los listeners para los buttons del menu lateral.
 var Go_inicio = document.getElementById("btoninicio");
 var Go_accesorios =document.getElementById("btonaccesorios");
@@ -8,6 +11,10 @@ let Go_registro = document.getElementById("btonRegistrar");
 let Go_login = document.getElementById("btonlogin");
 let Go_recovery = document.getElementById("Btonrecuperarcuenta");
 
+//listener para botones cabecera.
+Icon_logo.addEventListener("click",function(){
+    window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
+});
 //listener para el boton que ingresa ¿
 Go_registro.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/paglogin/pagregistro/indexregistro.html";
