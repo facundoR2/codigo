@@ -42,7 +42,7 @@
     padding: 0px;
     margin: 0;
     height: 60px;
-    background-color:rgb(230, 145, 16);
+    background-color:rgb(253, 101, 13)
 }
 #vistamenu{
     display: flex;
@@ -109,7 +109,7 @@
 }
 #piedepagina{
     display: flexbox;
-    background-color:rgb(230, 145, 16);
+    background-color:rgb(253, 101, 13)
 
 
 }

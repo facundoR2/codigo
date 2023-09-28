@@ -10,7 +10,7 @@
     padding: 10px;
     margin: 0;
     height: 50px;
-    background-color:rgb(230, 145, 16);
+    background-color:rgb(253, 101, 13);
 }
 #cabecera #buscador{
     justify-content: center;
@@ -110,7 +110,7 @@
 .LBTON{
     width: 130px;
     height: 30px;
-    background-color: chocolate;
+    background-color: rgb(253, 101, 13);
     border-color: whitesmoke;
     border-radius: 15px;
     align-content: space-around;
@@ -129,7 +129,7 @@
     border: 10px;
     border-radius: 15px;
     padding: 5px;
-    background-color:rgb(230, 145, 16);
+    background-color:rgb(253, 101, 13);
     border-color:rgb(102, 99, 94);
     border-style:outset;
 }
@@ -174,5 +174,5 @@
 #piedepagina{
     margin-top: 50px;
     vertical-align: bottom;
-    background-color: rgb(230, 145, 16) ;
+    background-color: rgb(253, 101, 13);
 }
