@@ -11,7 +11,7 @@ window.onload = function(){
     //obtener la cadena de consulta con los parametros de datos.
     var query = window.location.search;
     //si no esta vacía.
-    if (query){
+    if (!query){
         //eliminar el signo ? del inicio y dividir la cadena por el signo = 
         var partes = query.substring(1).split("=");
         //obtener nombre y valor.
