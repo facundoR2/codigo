@@ -4,7 +4,8 @@
     box-sizing: border-box;
 }
 #Logo-tienda{
-    width: 120px;
+    width: 200px;
+    height: 80px;
     image-rendering: auto;
     background-image: url(../imagenes/SINFFONDO.jpg);
     background-attachment: local;

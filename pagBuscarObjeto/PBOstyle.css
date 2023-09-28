@@ -3,22 +3,29 @@
     padding: 0px;
     box-sizing: border-box;
 }
+#Logo-tienda{
+    width: 120px;
+    image-rendering: auto;
+    background-image: url(../imagenes/SINFFONDO.jpg);
+    background-attachment: local;
+
+}
 #cabecera{
     display: flex;
     width: auto;
     justify-content: space-between;
     padding: 10px;
     margin: 0;
-    height: 50px;
-    background-color:rgb(230, 145, 16);
+    height: 90px;
+    background-color:rgb(253, 101, 13);
 }
 #cabecera #buscador{
     justify-content: center;
-    width: 450px;
+    width: 600px;
 }
 #cabecera #Barrabusqueda{
-    width: 45em;
-    height: 2em;
+    width: 40em;
+    height: 3em;
     border-radius: 15px;
 
 }

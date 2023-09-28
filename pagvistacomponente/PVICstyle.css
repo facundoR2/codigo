@@ -3,13 +3,20 @@
     padding: 0px;
     box-sizing: border-box;
 }
+#Logo-tienda{
+    width: 120px;
+    image-rendering: auto;
+    background-image: url(../imagenes/SINFFONDO.jpg);
+    background-attachment: local;
+
+}
 #cabecera{
     display: flex;
     width: auto;
     justify-content: space-between;
     padding: 10px;
     margin: 0;
-    height: 50px;
+    height: 90px;
     background-color:rgb(253, 101, 13);
 }
 #cabecera #buscador{
