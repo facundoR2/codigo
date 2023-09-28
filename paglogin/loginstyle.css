@@ -101,11 +101,27 @@ body{
     font-family: 'Oswald', sans-serif;
     font-weight: 600;
     background-color:rgb(253, 101, 13);
-
+    transition:  transform 0.3s ease;
+}
+.FCBTON::after, .FCBTON::before{
+    content:"";
+    position: absolute;
+    opacity: 0.3;
+    background: rgb(252, 123, 49);
+    border-radius: inherit;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition:  transform 0.3s ease;
 }
 .FCBTON:hover{
-    background-color: aqua;
-
+    transform: translate(-12px, -12px);
+}
+.FCBTON:hover::after{
+    transform: translate(-6px, -6px);
+}
+.FCBTON:hover::before{
+    transform: translate(12px, 12px);
 }
 #centro .Formasconexion ul{
     list-style: none;
