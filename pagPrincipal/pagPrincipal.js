@@ -118,7 +118,7 @@ function mostrarproductos(productos){
         var producto = document.createElement("div");
         //le asigno nombre
         producto.className ="producto";
-        var nombre = document.createElement("h3");
+        var nombre = document.createElement("h4");
         nombre.textContent = productos[i].Nombre;
         //creo y le asigno una imagen
         var img = document.createElement("img");
