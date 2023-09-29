@@ -1,24 +1,20 @@
-<?php
+<?php 
 include("conexion.php");
 //capturamos el Id y Nombre del formData.
-$id =$_POST["Id"];
 $Nombre =$_POST["Nombre"];
 
 // realizamos la busqueda en la base de datos ?
-$sql = "SELECT * FROM stock WHERE Id = ? AND  Nombre = ?";
-$stmt = $conn->prepare($sql);
-//vinculamos los parametros.
-$stmt->bind_param("is",$id,$Nombre);
-// ejecutar el statement.
-$stmt->execute();
-// obtener resultado.
-$resultado = $stmt->get_result();
+$sql = "SELECT * FROM stock WHERE Nombre LIKE '%$Nombre%'";
+$consulta = mysqli_query($conn, $sql);
+$resultado =$conn->fetch_all($consulta);
 
 //verificar si algun registro coincida con el id y nombre
 if ($resultado->num_rows>0){
+    $json = json_encode($resultado);
     //si hay registro, va a redigir a otra pagina.
-    header("window.location.href='http://localhost/Neutro/codigo/pagvistacomponente/index.html");
+    echo json_encode($resultado);
 }else{
-    echo  json_decode("no se encontro ningun registro con ese id y nombre");
+    echo  json_decode("no se encontro ningun registro con ese nombre");
 }
+
 ?>

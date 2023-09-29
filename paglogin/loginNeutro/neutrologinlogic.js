@@ -1,6 +1,5 @@
 // funcion para iniciar session.
 var formulario = document.querySelector("formulariologin");
-
 formulario.addEventListener("submit", function(Event){
     Event.preventDefault();
     // crea variables para recolectar los valores del formulario login

@@ -12,7 +12,7 @@ let Go_tocart = document.getElementById("bton-carrito");
 let Go_mypc = document.getElementById("bton-ATP");
 let Go_products = document.getElementById("bton-productos");
 
-//////////// seccion para la funcionalidad de busqueda ////////////////////.
+// seccion para la funcionalidad de busqueda.
 let buscador = document.getElementById("buscador");
 let botonBusqueda = document.getElementById("BotonBuscar");
 
@@ -50,8 +50,8 @@ function buscarProducto(B_item){
 
 
 };
-//////// fin seccion busqueda.////////////////
-//////////seccion verificaciones//////////////
+// fin seccion busqueda.
+//seccion verificaciones
 function verificarSession(){
     let usuarionombre = document.getElementById("labelusuario");
     var usuario = usuarionombre.textContent;
@@ -76,7 +76,8 @@ nuevologin.addEventListener("click",function(){
     }else{
         window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
     }
-}); 
+    
+});
 BtonCategorias.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagCategorias/index.html";
 });
@@ -123,7 +124,6 @@ window.addEventListener("DOMContentLoaded",function(){
     })
 
 });
-//funcion para una pequeña cantidad de productos aleatorios.
 function mostrarproductos(productos){
     for(var i=0;i<productos.length;i++){
         //creamos div para el producto
@@ -146,7 +146,7 @@ function mostrarproductos(productos){
         var buttoncomprar = document.createElement("button");
         buttoncomprar.textContent="comprar";
         buttoncomprar.className="bton-compra";
-        buttoncomprar.onclick = "iraproducto(productos[i].Nombre)";
+        buttoncomprar.onclick=iraproducto("productos[i].Nombre");
         //agregamos los items al contenedor "producto".
         producto.appendChild(img);
         producto.appendChild(nombre);
@@ -159,7 +159,6 @@ function mostrarproductos(productos){
 };
 // fin cargar productos
 //cargar stat
-
 
 //fin cargar stat
 // fin seccion productos

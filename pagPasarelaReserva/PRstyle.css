@@ -190,11 +190,11 @@ body{
     border-color: whitesmoke;
     border-radius: 15px;
     align-content: space-around;
-    position: absolute;
+    position: relative;
 }
 .LBTON:hover{
     background-color: white;
-    transform: translate(0px,-3px);
+    transform: translate(0px,-5px);
 }
 .LBTON:hover::before
 #piedepagina{
