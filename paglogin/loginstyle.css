@@ -160,7 +160,15 @@ body{
     color:white;
 }
 .LBTON:hover{
-    background-color: aqua;
+    background-color:white;
+    color: black;
+    transform: translate(0px,-7px);
+}
+.LBTON:hover::after{
+    transform: translate(0px, 4px);
+}
+.LBTON:hover::before{
+    transform: translate(0px, 7px);
 }
 
 #piedepagina{
