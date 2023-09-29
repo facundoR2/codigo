@@ -26,7 +26,7 @@ Go_inicio.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
 })
 Go_accesorios.addEventListener("click",function(){
-    window.location.href="http://localhost/neutro/codigo/pagAccesorios/index.html";
+    window.location.href="http://localhost/neutro/codigo/pagAccesorios/Acc-index.html";
 })
 Go_categorias.addEventListener("click",function(){
     window.location.href="http://localhost/neutro/codigo/pagCategorias(buscador)/index.html";
