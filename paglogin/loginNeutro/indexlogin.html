@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tienda online</title>
+    <link rel="stylesheet" href="Loginstyle.css">
+</head>
+<body>
+    <div id="cabecera"><!--seccion head con flogin y logo-->
+        <img   id="Logo-tienda" src="../imagenes/LOGO.jpg"alt="LOGO">
+        <div id="buscador">
+            <input id="Barrabusqueda"type="text">
+            <button id="BotonBuscar">buscar</button>
+        </div>
+    </div>
+    <div id="vistamenu"></div>
+    </div>
+    <div id="centro">
+        <div id="contenedorLogin">
+            <form id="formulariologin"  method="post" accept-charset="UTF-8">
+                <ul id="Lista-form">
+                    <li id="L-mail"><label for="Iptmail">Mail</label></li>
+                    <li id="In-mail"><input type="email" name="IngMail" id="IngMail" placeholder="ejemplo@hotmail.com"required></li>
+                    <li id="L-con"><label for="Iptcontraseña">Contraseña</label></li>
+                    <li id="In-con"><input type="password" name="IngContraseña" id="IngContraseña" placeholder="Contraseña" required></li>
+                    <li id=""><button type="submit">Iniciar sesion</button></li>
+                </ul>
+            </form>
+            
+        </div>
+    </div>
+    <script src="neutrologinlogic.js"></script>
+</body>
+<footer id="piedepagina"><!--pie de pagina con info de la empresa y derechos de uso-->
+    <div>
+        <h6>derechos reservados para el creador de esta y todas las paginas asociadas a este software<br>
+        cualquier copia o reproduccion se penará con spam infinito.</h6>
+    </div>
+
+</footer>
+</html>

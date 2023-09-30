@@ -1,0 +1,204 @@
+@font-face{
+    font-family: 'Oswald', sans-serif;
+    src: url(../Fonts/Oswald-Bold.ttf)format(TrueType);
+    font-weight: 600;
+}
+/* config para que todo el cuerpo use la fuente dispuesta abajo */
+body{
+    font-family:'Oswald', sans-serif;
+    font-weight: 600;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+#Logo-tienda{
+    width: 200px;
+    height: 80px;
+    image-rendering: auto;
+    background-image: url(../imagenes/LOGO.jpg);
+    background-attachment: local;
+}
+#cabecera{
+    display: flex;
+    width: auto;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 0;
+    height: 90px;
+    background-color:rgb(253, 101, 13);
+}
+#cabecera #buscador{
+    justify-content: center;
+    width: 600px;
+}
+#Barrabusqueda{
+    width: 40em;
+    height: 3em;
+    border-radius: 15px;
+    z-index: 1;
+
+}
+#BotonBuscar{
+    align-items: center;
+    z-index:2;
+    padding: 5px 8px;
+    position: relative;
+    right: 69px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
+#buscador{
+    display: flex;
+    align-items: center;
+    
+}
+#Login{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 20%;
+    padding-left: 3px;
+    align-items:center;
+    align-content: center;
+}
+#labelusuario{
+    padding-right: 5px;
+}
+#Bingresar{
+    margin-left: 3px;
+    border: 0;
+    padding: 10px 20px;
+    font-size: medium;
+    color: white;
+    background: rgb(155, 63, 9);
+    position: relative;
+    box-shadow: 3px 3px rgb(97, 39, 6);
+}
+
+.boton3D{
+    transition: transform 0.3s ease;
+}
+.boton3D::after, .boton3D::before{
+    content: "";
+    position: absolute;
+    opacity: 0.3;
+    background: rgb(151, 99, 69);
+    border-radius: inherit;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: transform 0.3s ease;
+}
+.boton3D:hover{
+    transform: translate(-3px, -3px);
+}
+.boton3D:hover::after{
+    transform: translate(-2px,-2px);
+}
+.boton3D:hover::before{
+    transform: translate(3px,3px);
+}
+/* ---------------inicio seccion Lmenu --------------------*/
+#Lmenu{
+    display: flex;
+    width: 100%;
+    align-content: space-between;
+}
+#Producto{
+    display: flex;
+    flex-grow: 1;
+    max-width: 370px;
+    flex-basis: 200;
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    border: 2px;
+    border-radius: 15px;
+    padding: 50px;
+    background-color:rgb(253, 101, 13);
+    border-color:rgb(102, 99, 94);
+    border-style:outset;
+}
+#contenedor-productos{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5px;
+}
+.producto{
+    display: inline-table;
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border: 10px;
+    border-radius: 15px;
+    padding: 5px;
+    background-color:rgb(253, 101, 13);
+    border-color:rgb(102, 99, 94);
+    border-style:outset;
+}
+#vistamenu{
+    display: flex;
+    width: auto;
+    height: 40px;
+    background-color: grey;
+    align-items: center;
+    justify-content: right;
+    padding-right: 30px;
+    box-shadow: 0px 5px 3px rgb(95, 95, 95);
+}
+
+.menulista #Bcarrito{
+    background-image:url(../extras/carrito-icono.png);
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 40px;
+    background-size: 30px 30px;
+    background-position: center;
+}
+.menulista #Bmododark{
+    background-image: url(../extras/brillo-y-contraste.png);
+    background-repeat: no-repeat;
+    color: gray;
+    height: 30px;
+    width: 40px;
+    background-size: 40px 40px;
+    border: 0;
+    background-position: center;
+}
+.nav-links{
+    width: 180px;
+    height: 400px;
+    padding-top:10px;
+    padding-left:30px;
+    padding-right:15px;
+    line-height: 3em;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgb(45, 44, 44);
+}
+.LBTON{
+    width: 130px;
+    height: 30px;
+    background-color:rgb(253, 101, 13);
+    border-color: whitesmoke;
+    border-radius: 15px;
+    align-content: space-around;
+    position: relative;
+}
+.LBTON:hover{
+    background-color: white;
+    transform: translate(0px,-5px);
+}
+.LBTON:hover::before
+#piedepagina{
+    margin-top: 50px;
+    vertical-align: bottom;
+    background-color:rgb(253, 101, 13);
+}

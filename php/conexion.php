@@ -1,12 +1,14 @@
 <?php
-$servername = "";
-$dbname ="";
-include"config.php";
-include"utils.php";
 
-function conectar($db){
-    try{
-        $conect = new PDO("mysql;host={$db['']}");
-        
-    }
-}
+$conn = new mysqli("localhost","root","","datos-local");
+    // if(!$conn){
+    //     echo json_encode("ERROR AL CONECTARSE");
+    // }else{
+    //     echo json_encode("CONEXION EXITOSA");
+    // }
+?>
+
+
+
+   
+

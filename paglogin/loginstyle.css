@@ -1,0 +1,182 @@
+@font-face{
+    font-family: 'Oswald', sans-serif;
+    src: url(../Fonts/Oswald-Bold.ttf)format(TrueType);
+    font-weight: 600;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+}
+#Logo-tienda{
+    width: 200px;
+    height: 80px;
+    image-rendering: auto;
+    background-image: url(../imagenes/LOGO.jpg);
+    background-attachment: local;
+}
+#cabecera{
+    display: flex;
+    height:100px;
+    width: auto;
+    justify-content: space-between;
+    padding: 10px;
+    background-color:rgb(253, 101, 13);
+}
+#cabecera #buscador{
+    justify-content: center;
+    width: 600px;
+}
+#cabecera #Barrabusqueda{
+    width: 40em;
+    height: 3em;
+    border-radius: 15px;
+}
+#cabecera #BotonBuscar{
+    align-items: center;
+    padding-right:10px ;
+}
+#contenedor-Login{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    padding-right:2%;
+}
+#contenedor-Login #Bingresar{
+    padding-top: 10px;
+
+}
+#buscador{
+    display: flex;
+    align-items: center;
+}
+#Clogo{
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 120px;
+    
+}
+#vistamenu{
+    display: flex;
+    width: auto;
+    height: 30px;
+    background-color: grey;
+    align-items: center;
+    justify-content: right;
+    box-shadow: 0px 5px 3px rgb(95, 95, 95);
+}
+#Lmenu{
+    display: flex;
+    border-left: 10px;
+}
+#centro{
+    display: flex;
+}
+#centro #lmenu{
+    justify-content: left;
+}
+#centro #Lmenu li{
+    justify-content: space-between;
+    line-height: 3.5em;
+
+
+}
+#centro .Formasconexion{
+    margin: 0;
+    width: 100%;
+    padding-top: 3%;
+    background-image: url(../imagenes/pexels-athena-2582932.jpg);
+    background-repeat: no-repeat;
+    background-position: 30% 30%;
+    background-attachment: local;
+    background-size: cover;
+    justify-content: center;
+    align-content: center;  
+}
+.FCBTON{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    background-color:rgb(253, 101, 13);
+    transition:  transform 0.3s ease;
+}
+.FCBTON::after, .FCBTON::before{
+    content:"";
+    position: absolute;
+    opacity: 0.3;
+    background: rgb(252, 123, 49);
+    border-radius: inherit;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition:  transform 0.3s ease;
+}
+.FCBTON:hover{
+    transform: translate(-12px, -12px);
+}
+.FCBTON:hover::after{
+    transform: translate(-6px, -6px);
+}
+.FCBTON:hover::before{
+    transform: translate(12px, 12px);
+}
+#centro .Formasconexion ul{
+    list-style: none;
+}
+#centro .Formasconexion li{
+    marker: none;
+    padding-left: 40%;
+    line-height: 3.5em;
+    justify-content: center;
+    
+    
+}
+#centro .Formasconexion button{
+    marker: none;
+    height: 100px;
+    width: 200px;
+}
+
+.nav-links{
+    list-style: none;
+    width: 180px;
+    height: 380px;
+    padding-left: 20px;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    background-color: rgb(45, 44, 44);
+}
+.LBTON{
+    width: 130px;
+    height: 30px;
+    background-color:rgb(253, 101, 13);
+    border-color: whitesmoke;
+    border-radius: 15px;
+    align-content: space-around;
+    color:white;
+}
+.LBTON:hover{
+    background-color:white;
+    color: black;
+    transform: translate(0px,-7px);
+}
+.LBTON:hover::after{
+    transform: translate(0px, 4px);
+}
+.LBTON:hover::before{
+    transform: translate(0px, 7px);
+}
+
+#piedepagina{
+    display: flexbox;
+    background-color:rgb(253, 101, 13)
+
+
+}

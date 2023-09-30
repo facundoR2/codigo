@@ -1,0 +1,74 @@
+
+/* falta de agregar lao font-face par ala pagina */
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+/* 
+body{
+
+} */
+
+#cabecera{
+    display: flex;
+    width: auto;
+    justify-content: space-around;
+    padding: 0px;
+    margin: 0;
+    height: 50px;
+    background-color:rgb(253, 101, 13);
+}
+
+#cabecera #buscador{
+    justify-content: center;
+}
+#cabecera #BotonBuscar{
+    align-items: center;
+    padding-right:10px ;
+}
+#cabecera #Login{
+    justify-content: right;
+    padding-right:50px;
+}
+#buscador{
+    display: flex;
+    align-items: center;
+}
+
+#vistamenu{
+    display: flex;
+    width: auto;
+    height: 30px;
+    background-color: grey;
+    align-items: center;
+    justify-content: right;
+    padding-right: 30px;
+    box-shadow: 0px 5px 3px rgb(95, 95, 95);
+}
+#centro{
+    background-image: url(../../extras/tiendadifuminada.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width:auto;
+}
+#contenedorLogin{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(253, 101, 13);
+    width: fit-content;
+    height: 200px;
+}
+#piedepagina{
+    display: flexbox;
+    background-color:rgb(253, 101, 13);
+
+
+}

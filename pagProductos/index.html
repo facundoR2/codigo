@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tienda online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+    <div id="cabecera"><!--seccion head con flogin ,logo y barra buscadora-->
+        <img   id="Logo-tienda" src="../imagenes/LOGO.jpg"alt="LOGO">
+        <div id="buscador">
+            <input id="Barrabusqueda"type="text" placeholder="ejemplo:'procesador tal'">
+            <button id="BotonBuscar" target="_blank">buscar</button>
+        </div>
+        <div id="Login">
+            <label id="TUsuarioActual">cliente</label>
+            <button id="Bingresar" type="submit">Ingresar</button>
+        </div>
+    </div>
+    <div id="vistamenu"><!--seccion menu con opciones para vista(modo oscuro,casillas o filas y carrito)-->
+        <ul class="menulista">
+            <button class="menulista" id="Bmododark">modo oscuro</button>
+            <button class="menulista" id="Bcasillas">vista casillas</button>
+            <button class="menulista" id="Blista">vista listas</button>
+            <button class="menulista" id="Bcarrito">carrito</button>
+        </ul>
+    </div>
+</section>
+    <div id="Lmenu"><!--seccion de menu principal lateral-->
+        <ul class="nav-links">
+            <li><button class="LBTON" id="bton-accesorios">accesorios</button></li>
+            <li><button class="LBTON" id="bton-categorias">categorias</button></li>
+            <li><button class="LBTON" id="bton-carrito">carrito</button></li>
+            <li><button class="LBTON" id="bton-ATP">arma tu pc</button></li>
+            <li><button class="LBTON" id="bton-productos">Productos</button></li>
+            
+        </ul>
+    </div>
+    <section class="seccionmuestras"> <h1>productos</h1>
+    <div class="productos"><!--seccion donde se muestran las tarjetas con productos-->
+    </div>
+</section>
+<section id="mercaderia">
+    <div id="productos"></div>
+</section>
+<script src="dinamic.js"></script>
+</body>
+<footer><!--pie de pagina con info de la empresa y derechos de uso-->
+    <div>
+        <h6>derechos reservados para el creador de esta y todas las paginas asociadas a este software<br>
+        cualquier copia o reproduccion se penará con spam infinito.</h6>
+    </div>
+
+</footer>
+</html>

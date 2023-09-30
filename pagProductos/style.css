@@ -1,0 +1,121 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+#Logo-tienda{
+    width: 120px;
+    image-rendering: auto;
+    background-image: url(../imagenes/SINFFONDO.jpg);
+    background-attachment: local;
+
+}
+#cabecera{
+    display: flex;
+    width: auto;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 0;
+    height: 90px;
+    background-color:rgb(253, 101, 13);
+}
+#cabecera #buscador{
+    justify-content: center;
+    width: 450px;
+}
+#cabecera #Barrabusqueda{
+    width: 45em;
+    height: 2em;
+    border-radius: 15px;
+
+}
+#cabecera #BotonBuscar{
+    align-items: center;
+    padding-right:10px ;
+}
+#cabecera #Login{
+    justify-content: right;
+    padding-right:50px;
+}
+#Lmenu{
+    display: flex;
+    width: 100%;
+    align-content: space-between;
+}
+#Producto{
+    display: flex;
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    border: 10px;
+    border-radius: 15px;
+    padding: 50px;
+    background-color:rgb(253, 101, 13);
+    border-color:rgb(102, 99, 94);
+    border-style:outset;
+}
+#buscador{
+    display: flex;
+    align-items: center;
+    
+}
+#Login{
+    display: flex;
+    align-items:center;
+    justify-content: right;
+
+}
+#vistamenu{
+    display: flex;
+    width: auto;
+    height: 40px;
+    background-color: grey;
+    align-items: center;
+    justify-content: right;
+    padding-right: 30px;
+    box-shadow: 0px 5px 3px rgb(95, 95, 95);
+}
+
+.menulista #Bcarrito{
+    background-image:url(../extras/carrito-icono.png);
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 40px;
+    background-size: 30px 30px;
+    background-position: center;
+}
+.menulista #Bmododark{
+    background-image: url(../extras/brillo-y-contraste.png);
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 40px;
+    background-size: 30px 30px;
+    background-position: center;
+}
+.nav-links{
+    width: 180px;
+    height: 400px;
+    padding-top:10px;
+    padding-left:30px;
+    padding-right:15px;
+    line-height: 3em;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    background-color: rgb(45, 44, 44);
+}
+.LBTON{
+    width: 130px;
+    height: 30px;
+    background-color: rgb(253, 101, 13);
+    border-color: whitesmoke;
+    border-radius: 15px;
+    align-content: space-around;
+}
+#piedepagina{
+    margin-top: 50px;
+    vertical-align: bottom;
+    background-color: rgb(253, 101, 13);
+}

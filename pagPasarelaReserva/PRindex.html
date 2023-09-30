@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tienda online</title>
+    <link rel="stylesheet" href="PRstyle.css">
+</head>
+<body>
+    <section id="cabecera"><!--seccion head con flogin ,logo y barra buscadora-->
+        <img   id="Logo-tienda" src="../imagenes/LOGO.jpg"alt="LOGO">
+        <div id="buscador">
+            <input id="Barrabusqueda"type="text" placeholder=" ej: procesador ryzen 3">
+            <button id="BotonBuscar" target="_blank">buscar</button>
+        </div>
+        <div id="Login">
+            <label id="labelusuario" for="Bingresar">cliente</label>
+            <button class="boton3D" id="Bingresar" type="button">Ingresar</button>
+        </div>
+    </section>
+    <section id="vistamenu"><!--seccion menu con opciones para vista(modo oscuro,casillas o filas y carrito)-->
+        <ul class="menulista">
+            <button class="menulista" id="Bmododark"></button>
+            <button class="menulista" id="Bcasillas">vista casillas</button>
+            <button class="menulista" id="Blista">vista listas</button>
+        </ul>
+
+    </section>
+<section id="Lmenu">
+    <ul class="nav-links">
+        <li><button class="LBTON">Favoritos(prox)</button></li>
+        <li><button class="LBTON" id="bton-accesorios">accesorios</button></li>
+        <li><button class="LBTON" id="bton-categorias">categorias</button></li>
+        <li><button class="LBTON" id="bton-carrito">carrito(prox)</button></li>
+        <li><button class="LBTON" id="bton-ATP">arma tu pc(prox)</button></li>
+        <li><button class="LBTON">historial(prox)</button></li>
+        <li><button class="LBTON" id="bton-productos">Productos</button></li>
+    </ul>
+    <div id="Confir-items">
+          <!-- aca irian  los productos guardados en el carrito del usuario.-->
+    </div>
+    <!--  -->
+    <div class="layout-productos">
+        <div id="contenedor-productos"></div>
+    </div>
+</section>
+<section class="muestra-productos-oferta">
+    <h2>nuestras mejores ofertas</h2>
+    <!-- aqui irian productos variados y ofertas  -->
+    
+</section>
+<section class="muestra-productos">
+    <!-- aca iran los productos en oferta -->
+
+    <div id="productos-ofertas"></div>
+
+</section>
+<script src="PRfunction.js"></script>
+</body>
+<footer><!--pie de pagina con info de la empresa y derechos de uso-->
+    <div>
+        <h6>derechos reservados para el creador de esta y todas las paginas asociadas a este software<br>
+        cualquier copia o reproduccion se penará con spam infinito.</h6>
+    </div>
+
+</footer>
+</html>
