@@ -6,7 +6,7 @@ $Nombre =$_POST["Nombre"];
 // realizamos la busqueda en la base de datos ?
 $sql = "SELECT * FROM stock WHERE Nombre LIKE '%$Nombre%'";
 $consulta = mysqli_query($conn, $sql);
-$resultado =$conn->fetch_all($consulta);
+$resultado =mysqli_fetch_array($sql);
 
 //verificar si algun registro coincida con el id y nombre
 if ($resultado->num_rows>0){
