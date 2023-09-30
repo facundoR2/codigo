@@ -1,5 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,700;1,400&family=Oswald:wght@600&display=swap');
-
+@font-face{
+    font-family: 'Oswald', sans-serif;
+    src: url(../Fonts/Oswald-Bold.ttf)format(TrueType);
+    font-weight: 600;
+}
 *{
     margin: 0px;
     padding: 0px;
@@ -13,7 +16,7 @@ body{
     width: 200px;
     height: 80px;
     image-rendering: auto;
-    background-image: url(../imagenes/SINFFONDO.jpg);
+    background-image: url(../imagenes/LOGO.jpg);
     background-attachment: local;
 }
 #cabecera{
