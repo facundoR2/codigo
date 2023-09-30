@@ -10,7 +10,6 @@ let BtonAccesorios = document.getElementById("bton-accesorios");
 let BtonCategorias = document.getElementById("bton-categorias");
 let Go_tocart = document.getElementById("bton-carrito");
 let Go_mypc = document.getElementById("bton-ATP");
-let Go_products = document.getElementById("bton-productos");
 
 //////////// seccion para la funcionalidad de busqueda ////////////////////.
 let buscador = document.getElementById("buscador");
@@ -50,8 +49,8 @@ function buscarProducto(B_item){
 
 
 };
-//////// fin seccion busqueda.////////////////
-//////////seccion verificaciones//////////////
+/////////////////////////////////////// fin seccion busqueda.////////////////
+/////////////////////////seccion verificaciones//////////////
 function verificarSession(){
     let usuarionombre = document.getElementById("labelusuario");
     var usuario = usuarionombre.textContent;
@@ -108,19 +107,6 @@ function iraproducto(Nombre){
     });
 };
 // fin funcion //
-//creamos un listener para cuando el DOM se termine de cargar, realice la funcion.
-window.addEventListener("DOMContentLoaded",function(){
-    //hacemos una peticion de productos a la base de datos
-    fetch("http://localhost/Neutro/codigo/php/Getproducto-fe-pp.php")
-    //convertimos la respuesta en un  objeto json.
-    .then(Response => Response.json())
-    .then(data=>{
-        information = data;
-        //usamos la funcion de mostrar pasandole de parametro los productos buscados.
-        // crearProductos(information);
-        mostrarproductos(information);
-    })
-});
 
 
 //funcion para una pequeña cantidad de productos aleatorios.
@@ -133,6 +119,7 @@ function mostrarproductos(information){
         producto.className ="Producto";
         var nombre = document.createElement("h3");
         nombre.textContent = information[i].Nombre;
+        nombre.nodeName= information[i].Nombre;
         //creo y le asigno una imagen
         var img = document.createElement("img");
         img.alt="no hay imagen disponible.";
@@ -157,9 +144,34 @@ function mostrarproductos(information){
         producto.appendChild(buttoncomprar);
         //agregamos el producto al contenedor de productos.
         contenedorproductos.appendChild(producto);
+        
     };
+
+    let accioncomprar = document.querySelectorAll("bton-compra");
+    accioncomprar.forEach(function(boton){
+        boton.addEventListener("onclick",function(){
+            var h3 = this.parentElement.querySelectorAll("h3");
+            var nombre = h3.textContent;
+            iraproducto(nombre);
+        });
+    });
+
+
+
 };
-let accioncomprar = document.getElementsByClassName("bton-compra");
+//creamos un listener para cuando el DOM se termine de cargar, realice la funcion.
+window.addEventListener("DOMContentLoaded",function(){
+    //hacemos una peticion de productos a la base de datos
+    fetch("http://localhost/Neutro/codigo/php/Getproducto-fe-pp.php")
+    //convertimos la respuesta en un  objeto json.
+    .then(Response => Response.json())
+    .then(data=>{
+        information = data;
+        //usamos la funcion de mostrar pasandole de parametro los productos buscados.
+        // crearProductos(information);
+        mostrarproductos(information);
+    })
+});
 
 // fin cargar productos
 //cargar stat

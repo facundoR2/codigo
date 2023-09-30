@@ -109,7 +109,8 @@ body{
 .producto{
     display: flex;
     flex-grow: 1;
-    max-width: 370px;
+    max-width: 320px;
+    width: auto;
     flex-basis: 200;
     margin-left: 40px;
     margin-top: 20px;
@@ -170,10 +171,11 @@ body{
 }
 .nav-links{
     width: 300px;
-    height: 400px;
+    height:fit-content;
     padding-top:10px;
     padding-left:30px;
     padding-right:15px;
+    padding-bottom: 10px;
     line-height: 3em;
     list-style: none;
     align-items: center;
