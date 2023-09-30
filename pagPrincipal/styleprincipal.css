@@ -106,7 +106,7 @@ body{
     width: 100%;
     align-content: space-between;
 }
-#Producto{
+.producto{
     display: flex;
     flex-grow: 1;
     max-width: 370px;
@@ -127,7 +127,7 @@ body{
     flex-wrap: wrap;
     margin-left: 5px;
 }
-.producto{
+.Producto{
     display: inline-table;
     margin-left: 40px;
     margin-top: 20px;
@@ -169,7 +169,7 @@ body{
     background-position: center;
 }
 .nav-links{
-    width: 180px;
+    width: 300px;
     height: 400px;
     padding-top:10px;
     padding-left:30px;
@@ -190,13 +190,12 @@ body{
     border-color: whitesmoke;
     border-radius: 15px;
     align-content: space-around;
-    position: absolute;
+    position: relative;
 }
 .LBTON:hover{
     background-color: white;
     transform: translate(0px,-3px);
 }
-.LBTON:hover::before
 #piedepagina{
     margin-top: 50px;
     vertical-align: bottom;
