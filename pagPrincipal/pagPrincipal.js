@@ -67,7 +67,7 @@ function verificarSession(){
         return respuesta;
     }
 };
-//ficn seccion session.
+/////////////fin seccion session./////////////////
 //listeners de botones para navegar en las paginas.
 nuevologin.addEventListener("click",function(){
     verificarSession()
@@ -94,9 +94,9 @@ Go_tocart.addEventListener("click",function(){
         alert("por favor ingresa a una sesion para acceder a un carrito");
     }
 });
+
 //----------------seccion sobre Producto.----------------------------//
 //cargar productos.
-let contenedorproductos = document.getElementById("contenedor-productos");
 //funcion para redigir a una pagina cuando se de click en comprar a un producto.
 function iraproducto(Nombre){
     console.log(Nombre);
@@ -105,9 +105,7 @@ function iraproducto(Nombre){
     fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe-pp2.php",{
         method: 'POST',
         body: formdata
-    })
-
-
+    });
 };
 // fin funcion //
 //creamos un listener para cuando el DOM se termine de cargar, realice la funcion.
@@ -117,36 +115,40 @@ window.addEventListener("DOMContentLoaded",function(){
     //convertimos la respuesta en un  objeto json.
     .then(Response => Response.json())
     .then(data=>{
-        productos = data;
+        information = data;
         //usamos la funcion de mostrar pasandole de parametro los productos buscados.
-        mostrarproductos(productos);
+        // crearProductos(information);
+        mostrarproductos(information);
     })
-
 });
+
+
 //funcion para una pequeña cantidad de productos aleatorios.
-function mostrarproductos(productos){
-    for(var i=0;i<productos.length;i++){
+function mostrarproductos(information){
+    for(var i=0;i<information.length;i++){
+        let contenedorproductos = document.getElementById("contenedor-productos");
         //creamos div para el producto
         var producto = document.createElement("div");
         //le asigno nombre
-        producto.className ="producto";
-        var nombre = document.createElement("h4");
-        nombre.textContent = productos[i].Nombre;
+        producto.className ="Producto";
+        var nombre = document.createElement("h3");
+        nombre.textContent = information[i].Nombre;
         //creo y le asigno una imagen
         var img = document.createElement("img");
+        img.alt="no hay imagen disponible.";
+        img.src = information[i].Imagen;
         //todavia no esta la imagen, asi que solo declaramos el texto alternativo.
-        img.alt ="imagen del producto";
         //creamos el parrafo para las caracteristicas
         var caract = document.createElement("p");
-        caract.textContent = productos[i].Caracteristicas;
+        caract.innerText = information[i].Caracteristicas;
         var precio  = document.createElement("p");
         //creamos otro para el precio
-        precio.textContent = "$"+productos[i].Costo;
+        // producto.price.textContent=information[i].Costo;
+        precio.textContent = "$"+ information[i].Costo;
         //creamos y configuramos el boton de compra del producto
         var buttoncomprar = document.createElement("button");
         buttoncomprar.textContent="comprar";
         buttoncomprar.className="bton-compra";
-        buttoncomprar.onclick = "iraproducto(productos[i].Nombre)";
         //agregamos los items al contenedor "producto".
         producto.appendChild(img);
         producto.appendChild(nombre);
@@ -155,10 +157,13 @@ function mostrarproductos(productos){
         producto.appendChild(buttoncomprar);
         //agregamos el producto al contenedor de productos.
         contenedorproductos.appendChild(producto);
-    }
+    };
 };
+let accioncomprar = document.getElementsByClassName("bton-compra");
+
 // fin cargar productos
 //cargar stat
+
 
 
 //fin cargar stat
