@@ -24,7 +24,7 @@ botonBusqueda.addEventListener("click",function(){
         buscarProducto(B_item);
 });
 function buscarProducto(B_item){
-     var busqueda = B_item
+     var busqueda = B_item;
      let search_Fdata = new FormData();
      search_Fdata.append("Busqueda",busqueda);
 
@@ -101,64 +101,40 @@ function iraproducto(Nombre){
     console.log(Nombre);
     var formdata = new FormData();
     formdata.append("Nombre",Nombre);
-    fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe-pp2.php",{
+    fetch("http://localhost/Neutro/codigo/php/iraProducto-fe-pp2.php",{
         method: 'POST',
         body: formdata
-    });
+    })
+    .then(respuesta =>{
+        if(respuesta.ok){
+            return respuesta.json();
+        }
+    })
+    .then(data=>{
+        l
+    })
 };
 // fin funcion //
+var botones = document.querySelectorAll("Producto-Botondecompra");
+    botones.forEach((boton)=> {
+        boton.addEventListener("mouseover", function(){
+            console.log("entro");
+            boton.addEventListener("click",function(){
+                var h3 = this.parentElement.querySelector("h3");
+                var nombre = h3.textContent;
+                iraproducto(nombre);
 
-
-//funcion para una pequeña cantidad de productos aleatorios.
-function mostrarproductos(information){
-    for(var i=0;i<information.length;i++){
-        let contenedorproductos = document.getElementById("contenedor-productos");
-        //creamos div para el producto
-        var producto = document.createElement("div");
-        //le asigno nombre
-        producto.className ="Producto";
-        var nombre = document.createElement("h3");
-        nombre.textContent = information[i].Nombre;
-        nombre.nodeName= information[i].Nombre;
-        //creo y le asigno una imagen
-        var img = document.createElement("img");
-        img.alt="no hay imagen disponible.";
-        img.src = information[i].Imagen;
-        //todavia no esta la imagen, asi que solo declaramos el texto alternativo.
-        //creamos el parrafo para las caracteristicas
-        var caract = document.createElement("p");
-        caract.innerText = information[i].Caracteristicas;
-        var precio  = document.createElement("p");
-        //creamos otro para el precio
-        // producto.price.textContent=information[i].Costo;
-        precio.textContent = "$"+ information[i].Costo;
-        //creamos y configuramos el boton de compra del producto
-        var buttoncomprar = document.createElement("button");
-        buttoncomprar.textContent="comprar";
-        buttoncomprar.className="bton-compra";
-        //agregamos los items al contenedor "producto".
-        producto.appendChild(img);
-        producto.appendChild(nombre);
-        producto.appendChild(caract);
-        producto.appendChild(precio);
-        producto.appendChild(buttoncomprar);
-        //agregamos el producto al contenedor de productos.
-        contenedorproductos.appendChild(producto);
-        
-    };
-
-    let accioncomprar = document.querySelectorAll("bton-compra");
-    accioncomprar.forEach(function(boton){
-        boton.addEventListener("onclick",function(){
-            var h3 = this.parentElement.querySelectorAll("h3");
-            var nombre = h3.textContent;
-            iraproducto(nombre);
         });
     });
+});
 
+//funcion para una pequeña cantidad de productos aleatorios.
 
+// function mostrarproductos(information){
+    
+    
+// };
 
-};
 //creamos un listener para cuando el DOM se termine de cargar, realice la funcion.
 window.addEventListener("DOMContentLoaded",function(){
     //hacemos una peticion de productos a la base de datos
@@ -167,11 +143,54 @@ window.addEventListener("DOMContentLoaded",function(){
     .then(Response => Response.json())
     .then(data=>{
         information = data;
+        let contenedorproductos = document.getElementById("contenedor-productos");
+        for(var i=0;i<information.length;i++){
+            //creamos div para el producto
+            var producto = document.createElement("div");
+            //le asigno nombre
+            producto.className ="Producto";
+            var nombre = document.createElement("h3");
+            nombre.className="Newsproducts";
+            nombre.textContent = information[i].Nombre;
+            //creo y le asigno una imagen
+            var img = document.createElement("img");
+            img.alt="no hay imagen disponible.";
+            img.src = information[i].Imagen;
+            //todavia no esta la imagen, asi que solo declaramos el texto alternativo.
+            //creamos el parrafo para las caracteristicas
+            var caract = document.createElement("p");
+            caract.innerText = information[i].Caracteristicas;
+            var precio  = document.createElement("p");
+            var botoncompra = document.createElement("button");
+            botoncompra.className ="Producto-Botondecompra";
+            botoncompra.textContent="comprar";
+            botoncompra.onclick= function(){
+                var h3 = this.parentElement.querySelector("h3");
+                var nom = h3.textContent;
+                console.log("comprarste el producto: " + nom);
+                iraproducto(nom);
+            }
+            //creamos otro para el precio
+            // producto.price.textContent=information[i].Costo;
+            precio.textContent = "$"+ information[i].Costo;
+            //agregamos los items al contenedor "producto".
+            producto.appendChild(img);
+            producto.appendChild(nombre);
+            producto.appendChild(caract);
+            producto.appendChild(precio);
+            producto.appendChild(botoncompra);
+            //agregamos el producto al contenedor de productos.
+            contenedorproductos.appendChild(producto);
+        };
         //usamos la funcion de mostrar pasandole de parametro los productos buscados.
         // crearProductos(information);
-        mostrarproductos(information);
+        // mostrarproductos(information);
     })
+    
+    
 });
+
+
 
 // fin cargar productos
 //cargar stat
