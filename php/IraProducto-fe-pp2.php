@@ -1,6 +1,7 @@
 <?php 
 session_start();
 include("conexion.php");
+$_SESSION['jsonaEnviar']='';
 //capturamos el Id y Nombre del formData.
 // $Nombre =$_POST["Nombre"];
 $Nombre ="Impresora HP Laserjet Pro M428fdw";
@@ -15,8 +16,8 @@ if ($consulta && mysqli_num_rows($consulta)>0){
     while($fila =mysqli_fetch_assoc($consulta)){
         $resultado[]= $fila;
     }
-
-    echo json_encode($resultado);
+    $_SESSION['jsonaEnviar']=$resultado;
+    
 }
 else{
     echo "no se encontro nombre";
