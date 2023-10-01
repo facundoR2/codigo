@@ -17,10 +17,10 @@ if ($consulta && mysqli_num_rows($consulta)>0){
         $resultado[]= $fila;
     }
     $_SESSION['jsonaEnviar']=$resultado;
-    
+    echo json_encode("BUSQUEDA Y ENVIO EXITOSO");
 }
 else{
-    echo "no se encontro nombre";
+    echo json_encode("no se encontro nombre");
 }
 mysqli_close($conn);
 ?>
