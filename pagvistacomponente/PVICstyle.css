@@ -1,12 +1,23 @@
+@font-face{
+    font-family: 'Oswald', sans-serif;
+    src: url(../Fonts/Oswald-Bold.ttf)format(TrueType);
+    font-weight: 600;
+}
+/* config para que todo el cuerpo use la fuente dispuesta abajo */
+body{
+    font-family:'Oswald', sans-serif;
+    font-weight: 600;
+}
 *{
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 #Logo-tienda{
-    width: 120px;
+    width: 200px;
+    height: 80px;
     image-rendering: auto;
-    background-image: url(../imagenes/SINFFONDO.jpg);
+    background-image: url(../imagenes/LOGO.jpg);
     background-attachment: local;
 
 }
@@ -17,25 +28,54 @@
     padding: 10px;
     margin: 0;
     height: 90px;
-    background-color:rgb(253, 101, 13);
+    background-color:rgb(254, 106, 0,1);
 }
 #cabecera #buscador{
     justify-content: center;
-    width: 450px;
+    width: 600px;
 }
-#cabecera #Barrabusqueda{
-    width: 45em;
-    height: 2em;
+#Barrabusqueda{
+    width: 40em;
+    height: 3em;
     border-radius: 15px;
+    z-index: 1;
 
 }
-#cabecera #BotonBuscar{
+#BotonBuscar{
     align-items: center;
-    padding-right:10px ;
+    z-index:2;
+    padding: 9px 10px;
+    position: relative;
+    right: 69px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
 }
-#cabecera #Login{
-    justify-content: right;
-    padding-right:50px;
+#buscador{
+    display: flex;
+    align-items: center;
+}
+#Login{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 20%;
+    padding-left: 3px;
+    align-items:center;
+    align-content: center;
+}
+#labelusuario{
+    padding-right: 5px;
+}
+#Bingresar{
+    margin-left: 3px;
+    border: 0;
+    padding: 10px 20px;
+    font-size: medium;
+    color: white;
+    background: rgb(155, 63, 9);
+    position: relative;
+    box-shadow: 3px 3px rgb(97, 39, 6);
 }
 #Lmenu{
     display: flex;
@@ -85,14 +125,14 @@
     box-shadow: 0px 5px 3px rgb(95, 95, 95);
 }
 
-.menulista #Bcarrito{
+/* .menulista #Bcarrito{
     background-image:url(../extras/carrito-icono.png);
     background-repeat: no-repeat;
     height: 30px;
     width: 40px;
     background-size: 30px 30px;
     background-position: center;
-}
+} */
 .menulista #Bmododark{
     background-image: url(../extras/brillo-y-contraste.png);
     background-repeat: no-repeat;
