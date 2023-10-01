@@ -111,22 +111,24 @@ function iraproducto(Nombre){
         }
     })
     .then(data=>{
-        l
-    })
+        if(data ==="BUSQUEDA Y ENVIO EXITOSO"){
+            window.location.href="http://localhost/Neutro/codigo/pagvistacomponente/PVICindex.html";
+        };
+    });
 };
 // fin funcion //
-var botones = document.querySelectorAll("Producto-Botondecompra");
-    botones.forEach((boton)=> {
-        boton.addEventListener("mouseover", function(){
-            console.log("entro");
-            boton.addEventListener("click",function(){
-                var h3 = this.parentElement.querySelector("h3");
-                var nombre = h3.textContent;
-                iraproducto(nombre);
+// var botones = document.querySelectorAll("Producto-Botondecompra");
+//     botones.forEach((boton)=> {
+//         boton.addEventListener("mouseover", function(){
+//             console.log("entro");
+//             boton.addEventListener("click",function(){
+//                 var h3 = this.parentElement.querySelector("h3");
+//                 var nombre = h3.textContent;
+//                 iraproducto(nombre);
 
-        });
-    });
-});
+//         });
+//     });
+// });
 
 //funcion para una pequeña cantidad de productos aleatorios.
 
