@@ -19,7 +19,6 @@ formulario.addEventListener("submit", function(Event){
     var formdata = new FormData();
     formdata.append("Mail",mail);
     formdata.append("Contraseña",contraseña);
-
     fetch("http://localhost/Neutro/codigo/php/registro.php", {
         method: "POST",
         body: formdata
