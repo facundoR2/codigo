@@ -1,32 +1,69 @@
+@font-face{
+    font-family: 'Oswald', sans-serif;
+    src: url(../../Fonts/Oswald-Bold.ttf)format(TrueType);
+    font-weight: 600;
+}
+body{
+    font-family:'Oswald', sans-serif;
+    font-weight: 600;
+}
 *{
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
+/* //////seccion cabecera ///////// */
+#Logo-tienda{
+    width: 200px;
+    height: 80px;
+    image-rendering: auto;
+    background-image: url(../../imagenes/LOGO.jpg);
+    background-attachment: local;
+}
 #cabecera{
     display: flex;
     width: auto;
     justify-content: space-around;
-    padding: 0px;
+    padding: 10px;
     margin: 0;
-    height: 50px;
-    background-color:rgb(230, 145, 16);
+    height: 90px;
+    background-color:rgb(254, 106, 0,1);
 }
 #cabecera #buscador{
     justify-content: center;
+    width: 600px;
 }
-#cabecera #BotonBuscar{
+#Barrabusqueda{
+    width: 40em;
+    height: 3em;
+    border-radius: 15px;
+    z-index: 1;
+
+}
+#BotonBuscar{
     align-items: center;
-    padding-right:10px ;
-}
-#cabecera #Login{
-    justify-content: right;
-    padding-right:50px;
+    z-index:2;
+    padding: 9px 10px;
+    position: relative;
+    right: 69px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
 }
 #buscador{
     display: flex;
     align-items: center;
 }
+#Login{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 20%;
+    padding-left: 3px;
+    align-items:center;
+    align-content: center;
+}
+
 
 #vistamenu{
     display: flex;
@@ -38,27 +75,59 @@
     padding-right: 30px;
     box-shadow: 0px 5px 3px rgb(95, 95, 95);
 }
-#centro{
-    background-image: url(../../extras/tiendadifuminada.jpeg);
+/* ////////// primera seccion de la pagina ////////// */
+#centro1{
+    background-image: url(../../imagenes/tiendadifuminada.jpg);
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
     display:flex;
     align-items: center;
     justify-content: center;
-    height: 300px;
+    height: 40em;
     width:auto;
 }
 #contenedorLogin{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
+    background-color:lightgray;
     width: fit-content;
     height: 200px;
+    border-radius: 10%;
 }
+#contenedorLogin ul{
+    padding: 10px 40px;
+    list-style: none;
+    width: 300px;
+}
+
+#formulariologin ul{
+    list-style: none;
+
+}
+/* ///////// segunda seccion de la pagina registro /////////*/
 #piedepagina{
     display: flexbox;
-    background-color:rgb(230, 145, 16);
+    background-color:rgb(254, 106, 0,1);
 
 
 }
+/*                            _
+                          .' `'.__
+                         /      \ `'"-,
+        .-''''--...__..-/ .     |      \
+      .'               ; :'     '.  a   |
+     /                 | :.       \     =\
+    ;                   \':.      /  ,-.__;.-;`
+   /|     .              '--._   /-.7`._..-;`
+  ; |       '                |`-'      \  =|
+  |/\        .   -' /     /  ;         |  =/
+  (( ;.       ,_  .:|     | /     /\   | =|
+   ) / `\     | `""`;     / |    | /   / =/
+     | ::|    |      \    \ \    \ `--' =/
+    /  '/\    /       )    |/     `-...-`
+   /    | |  `\    /-'    /;
+   \  ,,/ |    \   D    .'  \
+jgs `""`   \  nnh  D_.-'L__nnh
+            `"""` */
