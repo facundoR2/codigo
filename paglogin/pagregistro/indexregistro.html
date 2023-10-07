@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="cabecera"><!--seccion head con flogin y logo-->
-        <img   id="Logo-tienda" src="../imagenes/LOGO.jpg"alt="LOGO">
+        <img   id="Logo-tienda" src="../../imagenes/LOGO.jpg"alt="LOGO">
         <div id="buscador">
             <input id="Barrabusqueda"type="text">
             <button id="BotonBuscar">buscar</button>
@@ -16,20 +16,27 @@
     </div>
     <div id="vistamenu"></div>
     </div>
-    <div id="centro">
+    <section id="centro1" class="secciones-login">
         <div id="contenedorLogin">
-            <form id="formulariologin" action="../../php/registro.php"  method="post" accept-charset="UTF-8">
-                <ul>
-                    <li id="L-mail"><label for="Iptmail">Mail</label></li>
-                    <li id="In-mail"><input type="email" name="Mail" id="Mail" placeholder="ejemplo@hotmail.com"></li>
-                    <li id="L-con"><label for="Iptcontraseña">Contraseña</label></li>
-                    <li id="In-con"><input type="password" name="Contraseña" id="Contraseña" placeholder="Contraseña" required></li>
-                    <li id=""><button type="submit">Registrarse</button></li>
-                </ul>
-            </form>
-            
+            <ul>
+                <li>
+                    <form id="formulariologin" action="../../php/registro.php"  method="post" accept-charset="UTF-8">
+                        <ul id="form-login-ul">
+                            <li id="L-mail-lb"><label for="Mail">Mail</label></li>
+                            <li id="L-mail-inp"><input type="email" name="Mail" id="Mail" placeholder="ejemplo@hotmail.com"></li>
+                            <li id="L-pass-lb"><label for="Contraseña">Contraseña</label></li>
+                            <li id="L-pass-inp"><input type="password" name="Contraseña" id="Contraseña" placeholder="Contraseña" required></li>
+                            <li id="L-bton-submit"><button type="submit">Registrarse</button></li>
+                        </ul>
+                    </form>
+                </li>
+                <li><button>recuperar mi cuenta</button></li>
+            </ul> 
         </div>
-    </div>
+    </section>
+    <section id="centro2" class="secciones-login">
+        <h1>Te puede interesar</h1>
+    </section>
     <script src="neutroregistro.js"></script>
 </body>
 <footer id="piedepagina"><!--pie de pagina con info de la empresa y derechos de uso-->
