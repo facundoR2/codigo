@@ -9,14 +9,14 @@
 <body>
     <section>
         <div id="cabecera"><!--seccion head con flogin ,logo y barra buscadora-->
-            <h1>LOGO</h1>
+            <img   id="Logo-tienda" src="../imagenes/LOGO.jpg"alt="LOGO" title="inicio">
             <div id="buscador">
                 <input id="Barrabusqueda"type="text" placeholder="ejemplo:'procesador tal'">
                 <button id="BotonBuscar" target="_blank">buscar</button>
             </div>
             <div id="Login">
                 <label id="labelusuario">cliente</label>
-                <button id="Bingresar" type="button">Ingresar</button>
+                <button  class="boton3D" id="Bingresar" type="button">Ingresar</button>
             </div>
         </div>
         <div id="vistamenu"><!--seccion menu con opciones para vista(modo oscuro,casillas o filas y carrito)-->
@@ -37,15 +37,13 @@
             <li><button class="LBTON">historial(prox)</button></li>
             <li><button class="LBTON" id="bton-productos">Productos</button></li>
         </ul>
-        <div id="Producto">
-            <ul>
-                <li><img class="imagenProducto" alt="imagen del producto"></li>
-                <li><h1>imagen</h1></li>
-                <li><h1>PRECIO $9999</h1></li>
-                <li><p>descripcion breve</p></li>
-                <li><button id="mirar">Comprar</button></li>
-            </ul>
+        <div id="contenedor-marcas">
+            <h1>MARCAS</h1>
         </div>
+        <div class="layout-productos">
+            <div id="contenedor-productos"></div>
+        </div>
+
         <script src="f-acc.js"></script>
     </section>
     <footer><!--pie de pagina con info de la empresa y derechos de uso-->
