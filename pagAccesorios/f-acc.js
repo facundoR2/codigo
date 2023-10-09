@@ -9,7 +9,9 @@ let Go_products = document.getElementById("bton-productos");
 // seccion para la funcionalidad de busqueda.
 let buscador = document.getElementById("buscador");
 let botonBusqueda = document.getElementById("BotonBuscar");
-
+logoitem.addEventListener("click",function(){
+    window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
+});
 buscador.addEventListener("click",function(){
     let B_item = document.getElementById('Barrabusqueda').value;
     document.getElementById("Barrabusqueda").innerHTML = B_item;
