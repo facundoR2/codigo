@@ -1,8 +1,3 @@
-//se agrega una fuente para mejor calidad visual.
-// FontFace: {
-//     new (family="", source= "" | BinaryData, descriptors? FontFaceDescriptors | undefined): FontFace;
-//     prototype: FontFace;
-// }
 
 //se agregan los listeners para los buttons del menu lateral.
 let nuevologin = document.getElementById('Bingresar');
@@ -14,7 +9,10 @@ let Go_mypc = document.getElementById("bton-ATP");
 //////////// seccion para la funcionalidad de busqueda ////////////////////.
 let buscador = document.getElementById("buscador");
 let botonBusqueda = document.getElementById("BotonBuscar");
-
+let logoitem = document.getElementById("Logo-tienda");
+logoitem.addEventListener("click",function(){
+    window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
+});
 botonBusqueda.addEventListener("click",function(){
     //si precina tecla enter.
         let B_item = document.getElementById('Barrabusqueda').value;
@@ -50,7 +48,7 @@ function buscarProducto(B_item){
 
 };
 /////////////////////////////////////// fin seccion busqueda.////////////////
-/////////////////////////seccion verificaciones//////////////
+//////////////////////////////////////seccion verificaciones/////////////////
 function verificarSession(){
     let usuarionombre = document.getElementById("labelusuario");
     var usuario = usuarionombre.textContent;
@@ -94,7 +92,7 @@ Go_tocart.addEventListener("click",function(){
     }
 });
 
-//----------------seccion sobre Producto.----------------------------//
+//---------------------seccion sobre Producto.----------------------------//
 //cargar productos.
 //funcion para redigir a una pagina cuando se de click en comprar a un producto.
 function iraproducto(Nombre){
