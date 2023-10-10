@@ -96,23 +96,12 @@ Go_tocart.addEventListener("click",function(){
 //cargar productos.
 //funcion para redigir a una pagina cuando se de click en comprar a un producto.
 function iraproducto(Nombre){
+    //verificamos que capturo el nombre.
     console.log(Nombre);
-    var formdata = new FormData();
-    formdata.append("Nombre",Nombre);
-    fetch("http://localhost/Neutro/codigo/php/iraProducto-fe-pp2.php",{
-        method: 'POST',
-        body: formdata
-    })
-    .then(respuesta =>{
-        if(respuesta.ok){
-            return respuesta.json();
-        }
-    })
-    .then(data=>{
-        if(data ==="BUSQUEDA Y ENVIO EXITOSO"){
-            window.location.href="http://localhost/Neutro/codigo/pagvistacomponente/PVICindex.html";
-        };
-    });
+    //agregamos el nombre dentro de sessionStorege(solo se almacena dentro de la session hasta que se cierra o reinicia la pag).
+    sessionStorage.setItem("producto",Nombre);
+    window.location.href="http://localhost/Neutro/codigo/pagvistacomponente/PVICindex.html";
+            
 };
 // fin funcion //
 // var botones = document.querySelectorAll("Producto-Botondecompra");
@@ -159,11 +148,13 @@ window.addEventListener("DOMContentLoaded",function(){
             //todavia no esta la imagen, asi que solo declaramos el texto alternativo.
             //creamos el parrafo para las caracteristicas
             var caract = document.createElement("p");
+            caract.className="Product-p";
             caract.innerText = information[i].Caracteristicas;
             var precio  = document.createElement("p");
+            precio.className="Product-p";
             var botoncompra = document.createElement("button");
             botoncompra.className ="Producto-Botondecompra";
-            botoncompra.textContent="comprar";
+            botoncompra.textContent="Reservar";
             botoncompra.onclick= function(){
                 var h3 = this.parentElement.querySelector("h3");
                 var nom = h3.textContent;
