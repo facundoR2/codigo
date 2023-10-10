@@ -47,53 +47,58 @@ function compraproducto(){
 ///////funciones dentro de el producto mostrado.//////////
 window.addEventListener("DOMContentLoaded",function(){
     //hacemos peticion para buscar el producto seleccionado.
-    fetch("http://localhost/Neutro/codigo/php/Getproducto-fe-pvc.php")
-    .then(Response =>Response.json())
+    let nombre =sessionStorage.getItem("producto");
+    this.sessionStorage.clear();
+    console.log(nombre);
+    var formdata  =new FormData();
+    formdata.append("Nombre",nombre);
+    fetch("http://localhost/Neutro/codigo/php/Getproducto-fe-pvc.php",{
+        method: 'POST',
+        body: formdata,
+    }).then(Response =>Response.json())
     .then(data =>{
+        console.log(data);
         let contentview = document.getElementById("content-prcto-view");
         let content_dataproduct = document.getElementById("info-producto-compra");
-        if(data =="NO hay datos"){
-
-        }else
-        {
-            //se crean li para ordenar la info y precio.
-            var m_ul =document.createElement("ul");
-            var li1 =document.createElement("li");
-            var li2 =document.createElement("li");
-            var li3 =document.createElement("li");
-            var li4 =document.createElement("li");
-            //se crea el p para caract.
-            var infp = document.createElement("p");
-            infp.textContent = data.Caracteristicas;
-            infp.className="INFOproducto";
-            // se crea el p para PRecio.
-            var precio = document.createElement("p");
-            precio.textContent= "$"+data.Costo;
-            precio.className="PRECIO-Producto";
-            // se crea el Img para la imagen del producto.
-            var imagen = document.createElement("img");
-            imagen.src = data.Imagen;
-            imagen.alt ="<h1>NO se recuperó imagen del producto</h1>";
-            imagen.className="IMAGEN-Producto";
-            var boton_carrito = document.createElement("button");
-            boton_carrito.className ="Producto-comp-btons";
-            boton_carrito.textContent="añadir a carrito";
-            var botoncompra = document.createElement("button");
-            botoncompra.className ="Producto-comp-btons";
-            botoncompra.textContent="comprar";
-            botoncompra.onclick= function(){
-                compraproducto();
-                console.log("compraste el producto");
-            };
-            contentview.appendChild(imagen);
-            li1.appendChild(infp);
-            li2.appendChild(precio);
-            li3.appendChild(botoncompra);
-            li4.appendChild(boton_carrito);
-            content_dataproduct.appendChild(li1);
-            content_dataproduct.appendChild(li2);
-            content_dataproduct.appendChild(li3);
-            content_dataproduct.appendChild(li4);
-        }
+        //se crean li para ordenar la info y precio.
+        var m_ul =document.createElement("ul");
+        var li1 =document.createElement("li");
+        var li2 =document.createElement("li");
+        var li3 =document.createElement("li");
+        var li4 =document.createElement("li");
+        //se crea el p para caract.
+        var infp = document.createElement("p");
+        infp.textContent = data[0].Caracteristicas;
+        infp.className="INFOproducto";
+        // se crea el p para PRecio.
+        var precio = document.createElement("p");
+        precio.textContent= "$"+data[0].Costo;
+        precio.className="PRECIO-Producto";
+        // se crea el Img para la imagen del producto.
+        var imagen = document.createElement("img");
+        imagen.src = data[0].Imagen;
+        imagen.alt ="<h1>NO se recuperó imagen del producto</h1>";
+        imagen.className="IMAGEN-Producto";
+        var boton_carrito = document.createElement("button");
+        boton_carrito.className ="Producto-comp-btons";
+        boton_carrito.textContent="añadir a carrito";
+        var botoncompra = document.createElement("button");
+        botoncompra.className ="Producto-comp-btons";
+        botoncompra.textContent="comprar";
+        botoncompra.onclick= function(){
+            compraproducto();
+            console.log("compraste el producto");
+        };
+        contentview.appendChild(imagen);
+        li1.appendChild(infp);
+        li2.appendChild(precio);
+        li3.appendChild(botoncompra);
+        li4.appendChild(boton_carrito);
+        m_ul.appendChild(li1);
+        m_ul.appendChild(li2);
+        m_ul.appendChild(li3);
+        m_ul.appendChild(li4);
+        content_dataproduct.appendChild(m_ul);
     });
+
 });
