@@ -48,7 +48,6 @@ function compraproducto(){
 window.addEventListener("DOMContentLoaded",function(){
     //hacemos peticion para buscar el producto seleccionado.
     let nombre =sessionStorage.getItem("producto");
-    this.sessionStorage.clear();
     console.log(nombre);
     var formdata  =new FormData();
     formdata.append("Nombre",nombre);
@@ -58,10 +57,11 @@ window.addEventListener("DOMContentLoaded",function(){
     }).then(Response =>Response.json())
     .then(data =>{
         console.log(data);
-        let contentview = document.getElementById("content-prcto-view");
-        let content_dataproduct = document.getElementById("info-producto-compra");
+        let contentview = document.getElementById("img-producto-reserva");
+        let content_dataproduct = document.getElementById("info-producto-reserva");
         //se crean li para ordenar la info y precio.
         var m_ul =document.createElement("ul");
+        m_ul.className="Ulproducto";
         var li1 =document.createElement("li");
         var li2 =document.createElement("li");
         var li3 =document.createElement("li");
@@ -77,11 +77,11 @@ window.addEventListener("DOMContentLoaded",function(){
         // se crea el Img para la imagen del producto.
         var imagen = document.createElement("img");
         imagen.src = data[0].Imagen;
-        imagen.alt ="<h1>NO se recuperó imagen del producto</h1>";
+        imagen.alt ="NO se recuperó imagen del producto";
         imagen.className="IMAGEN-Producto";
         var boton_carrito = document.createElement("button");
         boton_carrito.className ="Producto-comp-btons";
-        boton_carrito.textContent="añadir a carrito";
+        boton_carrito.textContent="añadir al carrito";
         var botoncompra = document.createElement("button");
         botoncompra.className ="Producto-comp-btons";
         botoncompra.textContent="comprar";
@@ -89,7 +89,6 @@ window.addEventListener("DOMContentLoaded",function(){
             compraproducto();
             console.log("compraste el producto");
         };
-        contentview.appendChild(imagen);
         li1.appendChild(infp);
         li2.appendChild(precio);
         li3.appendChild(botoncompra);
@@ -99,6 +98,7 @@ window.addEventListener("DOMContentLoaded",function(){
         m_ul.appendChild(li3);
         m_ul.appendChild(li4);
         content_dataproduct.appendChild(m_ul);
+        contentview.appendChild(imagen);
     });
 
 });
