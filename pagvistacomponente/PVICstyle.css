@@ -77,11 +77,14 @@ body{
     position: relative;
     box-shadow: 3px 3px rgb(97, 39, 6);
 }
+/* ----------inicio seccion del producto y los botones de navegacion-------- */
+/* ---parte de los botones de navegacion---- */
 #Lmenu{
     display: flex;
     width: 100%;
     align-content: space-between;
 }
+/* ------------parte del producto seleccionado--------- */
 #Vistaproducto{
     display: block;
 }
@@ -90,19 +93,6 @@ body{
     align-content: space-around;
 
 }
-/* #Producto{
-    display: flex;
-    margin-left: 40px;
-    margin-top: 20px;
-    margin-right: 30px;
-    margin-bottom: 30px;
-    border: 10px;
-    border-radius: 15px;
-    padding: 50px;
-    background-color:rgb(230, 145, 16);
-    border-color:rgb(102, 99, 94);
-    border-style:outset;
-} */
 #buscador{
     display: flex;
     align-items: center;
