@@ -12,6 +12,7 @@ body{
     font-family: 'Oswald', sans-serif;
     font-weight: 600;
 }
+/* seccion cabecera */
 #Logo-tienda{
     width: 200px;
     height: 80px;
@@ -25,7 +26,8 @@ body{
     width: auto;
     justify-content: space-between;
     padding: 10px;
-    background-color:rgb(253, 101, 13);
+    padding-right: 20px;
+    background-color:rgb(254,106,0)
 }
 #cabecera #buscador{
     justify-content: center;
@@ -40,18 +42,7 @@ body{
     align-items: center;
     padding-right:10px ;
 }
-#contenedor-Login{
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    align-content: center;
-    align-items: center;
-    padding-right:2%;
-}
-#contenedor-Login #Bingresar{
-    padding-top: 10px;
 
-}
 #buscador{
     display: flex;
     align-items: center;
@@ -72,81 +63,33 @@ body{
     justify-content: right;
     box-shadow: 0px 5px 3px rgb(95, 95, 95);
 }
+/*-------------- fin seccion cabecera ---------------------*/
+/* 1ra seccion de la paginalogin. */
+#centro{
+    display: flex;
+    background-image: url(../imagenes/pexels-athena-2582932.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+#login{
+    display:inline-flex;
+    width: 100%;
+    height: auto;
+    align-content: center;
+    flex-direction: column;
+    
+    
+}
+/* seccion de botones de redireccion. */
 #Lmenu{
     display: flex;
     border-left: 10px;
 }
-#centro{
-    display: flex;
-}
-#centro #lmenu{
-    justify-content: left;
-}
-#centro #Lmenu li{
-    justify-content: space-between;
-    line-height: 3.5em;
-
-
-}
-#centro .Formasconexion{
-    margin: 0;
-    width: 100%;
-    padding-top: 3%;
-    background-image: url(../imagenes/pexels-athena-2582932.jpg);
-    background-repeat: no-repeat;
-    background-position: 30% 30%;
-    background-attachment: local;
-    background-size: cover;
-    justify-content: center;
-    align-content: center;  
-}
-.FCBTON{
-    font-family: 'Oswald', sans-serif;
-    font-weight: 600;
-    background-color:rgb(253, 101, 13);
-    transition:  transform 0.3s ease;
-}
-.FCBTON::after, .FCBTON::before{
-    content:"";
-    position: absolute;
-    opacity: 0.3;
-    background: rgb(252, 123, 49);
-    border-radius: inherit;
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-    transition:  transform 0.3s ease;
-}
-.FCBTON:hover{
-    transform: translate(-12px, -12px);
-}
-.FCBTON:hover::after{
-    transform: translate(-6px, -6px);
-}
-.FCBTON:hover::before{
-    transform: translate(12px, 12px);
-}
-#centro .Formasconexion ul{
-    list-style: none;
-}
-#centro .Formasconexion li{
-    marker: none;
-    padding-left: 40%;
-    line-height: 3.5em;
-    justify-content: center;
-    
-    
-}
-#centro .Formasconexion button{
-    marker: none;
-    height: 100px;
-    width: 200px;
-}
-
 .nav-links{
     list-style: none;
     width: 180px;
-    height: 380px;
+    height: fit-content;
     padding-left: 20px;
     align-items: center;
     justify-content: center;
@@ -173,6 +116,95 @@ body{
 .LBTON:hover::before{
     transform: translate(0px, 7px);
 }
+#centro #Lmenu li{
+    justify-content: space-between;
+    line-height: 3.5em;
+}
+/* fin seccion bton redireccion */
+/* ----------------- seccion contenedor login --------------- */
+
+/* seccion  user and pass  */
+
+#contenedorLogin{
+    display: flex;
+    width: fit-content;
+    height: 200px;
+    margin: auto;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(253, 101, 13);
+    border-radius: 10%;
+    padding-left:10%;
+    padding-right: 10%;
+    
+}
+#Lista-form{
+    list-style: none;
+}
+/* seccion optionslogin */
+.Formasconexion{
+    display: flex;
+    margin: auto;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    width: 50%;
+    justify-content: center;
+    align-content: center; 
+}
+.Formasconexion ul{
+    display: flex;
+    width: max-content;
+    flex-direction: row;
+    list-style: none; 
+    line-height: 24px; 
+}
+.Formasconexion li{
+    width: 100%;
+    line-height: 3.5em;
+    margin-left: 3%;
+    margin-right: 3%;
+    /* padding-left: 3%;
+    padding-right: 3%;  */
+    justify-content: center;
+}
+.FCBTON{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    color: whitesmoke;
+    background-color:rgb(253, 101, 13);
+    border-radius: 10%;
+    transition:  transform 0.3s ease;
+}
+.FCBTON::after, .FCBTON::before{
+    content:"";
+    position: absolute;
+    opacity: 0.3;
+    background: rgb(252, 123, 49);
+    border-radius: inherit;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition:  transform 0.3s ease;
+}
+.FCBTON:hover{
+    transform: translate(-12px, -12px);
+}
+.FCBTON:hover::after{
+    transform: translate(-6px, -6px);
+}
+.FCBTON:hover::before{
+    transform: translate(12px, 12px);
+}
+
+#centro .Formasconexion button{
+    marker: none;
+    height: 100px;
+    width: 200px;
+}
+
 
 #piedepagina{
     display: flexbox;
