@@ -8,20 +8,10 @@
 </head>
 <body>
     <div id="cabecera"><!--seccion head con flogin y logo-->
-        <img   id="Logo-tienda" src="../imagenes/LOGO.jpg"alt="LOGO">
-        <div id="buscador">
-            <input id="Barrabusqueda"type="text">
-            <button id="BotonBuscar">buscar</button>
-        </div>
-        <div id="contenedor-Login">
-            <label id="TUsuarioActual">cliente</label>
-            <button id="Bingresar">Ingresar</button>
-        </div>
+        <img   id="Logo-tienda" src="../imagenes/LOGO.jpg" alt="LOGO">
     </div>
-    <div id="vistamenu"><!--seccion menu con opciones para vista(modo oscuro,casillas o filas y carrito)-->
-
-    </div>
-    <div id="centro">
+    <div id="vistamenu"></div>
+    <seccion id="centro">
         <div id="Lmenu"><!--seccion de menu principal lateral-->
             <ul class="nav-links">
                 <li><button class="LBTON" id="btoninicio">Inicio</button></li>
@@ -30,17 +20,25 @@
                 <li><button class="LBTON" id="btonATP">Arma tu PC</button></li>
             </ul>
         </div>
-        <div class="Formasconexion"><!--seccion donde se muestran las tarjetas con productos-->
-            <ul>
-                <li><button class="FCBTON" type="button" id="btonRegistrar">Registrarse</button></li>
-                <li><button class="FCBTON" type="button" id="btonlogin">ingresar con Cuenta Neutro </button></li>
-                <li><button class="FCBTON" type="button" id="Btonrecuperarcuenta">Recuperar mi Cuenta </button></li>
-            </ul>
-            
-            
-            
-        </div>
-    </div>
+        <section id="login">
+            <div id="contenedorLogin">
+                <form id="formulariologin"  method="post" accept-charset="UTF-8">
+                    <ul id="Lista-form">
+                        <li id="L-mail"><label for="Iptmail">Mail</label></li>
+                        <li id="In-mail"><input type="email" name="IngMail" id="IngMail" placeholder="ejemplo@hotmail.com"required></li>
+                        <li id="L-con"><label for="Iptcontraseña">Contraseña</label></li>
+                        <li id="In-con"><input type="password" name="IngContraseña" id="IngContraseña" placeholder="Contraseña" required></li>
+                        <li id="bton-submit"><button type="submit">Iniciar sesion</button></li>
+                    </ul>
+                </form>
+            </div>
+            <div class="Formasconexion"><!--seccion donde se muestran las tarjetas con productos-->
+                <button class="FCBTON" type="button" id="btonRegistrar">Registrarse</button>
+                <button class="FCBTON" type="button" id="Btonrecuperarcuenta">Recuperar mi Cuenta</button>
+                
+            </div>
+        </section>
+    </seccion>
     
     <script src="scriptlogin.js"></script>
     
