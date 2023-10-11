@@ -24,13 +24,45 @@ Go_login.addEventListener("click",function(){
 });
 Go_inicio.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
-})
+});
 Go_accesorios.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagAccesorios/Acc-index.html";
-})
+});
 Go_categorias.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagCategorias/index.html";
-})
+});
 Go_ATP.addEventListener("click",function(){
     window.location.href="http://localhost/neutro/codigo/pagArmarTuPc/index.html";
-})
+});
+//////////fin seccion botones de navegacion////////////.
+// funcion para iniciar session.
+var formulario = document.querySelector("formulariologin");
+formulario.addEventListener("submit", function(Event){
+    Event.preventDefault();
+    // crea variables para recolectar los valores del formulario login
+    var email = document.getElementById("IngMail");
+    var contraseña = document.getElementById("IngContraseña");
+    var nombre = email.innerText;
+    var pass = contraseña.textContent;
+    console.log(nombre);
+    console.log(pass);
+    var formdata = new FormData();
+    formdata.append("Mail",email);
+    formdata.append("Contraseña",contraseña);
+
+    fetch("LoginsUsuario.php", {
+        method: "POST",
+        body: formdata
+    })
+    .then(function(respuesta){
+        if(respuesta.ok){
+            return respuesta.json();
+        }else{
+            //mostrar error de respuesta no exitosa
+            throw new Error("respuesta salio mal");
+        }
+    })
+    .then(function(data){
+        console.log(data);
+    });
+});
