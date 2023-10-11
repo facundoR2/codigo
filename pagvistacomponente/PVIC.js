@@ -1,5 +1,5 @@
 //listener para la barra de busqueda:
-let menupricipal = document.getElementById("Logo-tienda");
+let Mp_Logo = document.getElementById("Logo-tienda");
 
 //se agregan los listeners para los buttons del menu lateral.
 let nuevologin = document.getElementById('Bingresar');
@@ -9,8 +9,24 @@ let Go_tocart = document.getElementById("bton-carrito");
 let Go_mypc = document.getElementById("bton-ATP");
 let Go_products = document.getElementById("bton-productos");
 
+////// validaciones para la barra de busqueda///////.
+function verificarSession(){
+    let nomUsuario = document.getElementById("labelusuario");
+    var nombre_de_session = nomUsuario.textContent;
+    console.log(nombre_de_session);
+    if(nombre_de_session ==="cliente"){
+        alert("no has ingresado a una session");
+        window.location.href="http://localhost/neutro/codigo/paglogin/loginindex.html";
+        var respuesta = false;
+        return respuesta;
+    }else{
+        alert("estas en una session");
+        var respuesta = true;
+        return respuesta;
+    }
+}
 //listeners de botones para navegar en las paginas.
-menupricipal.addEventListener("click",function(){
+Mp_Logo.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
 });
 nuevologin.addEventListener("click",function(){
@@ -18,7 +34,7 @@ nuevologin.addEventListener("click",function(){
     if(verificarSession==true){
         alert("ya estas en una session");
     }else{
-        window.location.href="http://localhost/Neutro/codigo/paglogin/index.html";
+        window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
     }
     
 });
@@ -40,10 +56,30 @@ Go_tocart.addEventListener("click",function(){
     }
 });
 
-//////////////////////// seccion mostrar producto buscado.
-function compraproducto(){
+//////////////////////// seccion mostrar producto buscado.////////////.
 
+/////////////////seccion validaciones respecto a producto.////////////////////////
+
+//////fin seccion validaciones.////////////////////
+////// seccion de funciones de Producto /////////////.
+function compraproducto(){
+    verificarSession();
+    if(verificarSession==true){
+        alert("estas en una session, puedes reservar el Producto.");
+    }else{
+        // window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
+    }
 };
+function reservarProduct(){
+    verificarSession();
+    if(verificarSession==true){
+        alert("estas en una session, puedes reservar el Producto.");
+    }else{
+        window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
+    }
+
+}
+
 ///////funciones dentro de el producto mostrado.//////////
 window.addEventListener("DOMContentLoaded",function(){
     //hacemos peticion para buscar el producto seleccionado.
@@ -89,6 +125,10 @@ window.addEventListener("DOMContentLoaded",function(){
             compraproducto();
             console.log("compraste el producto");
         };
+        boton_carrito.onclick= function(){
+            reservarProduct();
+            console.log("intentaste reservar el producto");
+        }
         li1.appendChild(infp);
         li2.appendChild(precio);
         li3.appendChild(botoncompra);
