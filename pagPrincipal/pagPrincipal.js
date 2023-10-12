@@ -41,7 +41,7 @@ function buscarProducto(B_item){
     })
     .then(function(data){
         console.log(data);
-        localStorage.setItem("busqueda",JSON.stringify(data));
+        sessionStorage.setItem("busqueda",JSON.stringify(data));
         window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/PBOindex.html?datos=" +JSON.stringify(data);
     });
 
@@ -103,26 +103,8 @@ function iraproducto(Nombre){
     window.location.href="http://localhost/Neutro/codigo/pagvistacomponente/PVICindex.html";
             
 };
-// fin funcion //
-// var botones = document.querySelectorAll("Producto-Botondecompra");
-//     botones.forEach((boton)=> {
-//         boton.addEventListener("mouseover", function(){
-//             console.log("entro");
-//             boton.addEventListener("click",function(){
-//                 var h3 = this.parentElement.querySelector("h3");
-//                 var nombre = h3.textContent;
-//                 iraproducto(nombre);
 
-//         });
-//     });
-// });
-
-//funcion para una pequeña cantidad de productos aleatorios.
-
-// function mostrarproductos(information){
-    
-    
-// };
+/////////////funcion para una pequeña cantidad de productos aleatorios.///////////
 
 //creamos un listener para cuando el DOM se termine de cargar, realice la funcion.
 window.addEventListener("DOMContentLoaded",function(){
@@ -145,13 +127,10 @@ window.addEventListener("DOMContentLoaded",function(){
             var img = document.createElement("img");
             img.alt="no hay imagen disponible.";
             img.src = information[i].Imagen;
-            //todavia no esta la imagen, asi que solo declaramos el texto alternativo.
-            //creamos el parrafo para las caracteristicas
-            var caract = document.createElement("p");
-            caract.className="Product-p";
-            caract.innerText = information[i].Caracteristicas;
+            //creamos y asignamos un parrafo para el precio.
             var precio  = document.createElement("p");
             precio.className="Product-p";
+            precio.textContent = "$"+ information[i].Costo;
             var botoncompra = document.createElement("button");
             botoncompra.className ="Producto-Botondecompra";
             botoncompra.textContent="Reservar";
@@ -161,13 +140,9 @@ window.addEventListener("DOMContentLoaded",function(){
                 console.log("comprarste el producto: " + nom);
                 iraproducto(nom);
             }
-            //creamos otro para el precio
-            // producto.price.textContent=information[i].Costo;
-            precio.textContent = "$"+ information[i].Costo;
             //agregamos los items al contenedor "producto".
             producto.appendChild(img);
             producto.appendChild(nombre);
-            producto.appendChild(caract);
             producto.appendChild(precio);
             producto.appendChild(botoncompra);
             //agregamos el producto al contenedor de productos.
