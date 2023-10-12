@@ -144,6 +144,9 @@ body{
 #Lista-form{
     list-style: none;
 }
+#In-mail{
+    margin-bottom: 5%;
+}
 /* seccion optionslogin */
 .Formasconexion{
     display: flex;
@@ -174,6 +177,7 @@ body{
     font-family: 'Oswald', sans-serif;
     font-weight: 600;
     color: whitesmoke;
+    margin-right: 3%;
     background-color:rgb(253, 101, 13);
     border-radius: 10%;
     transition:  transform 0.3s ease;

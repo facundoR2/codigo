@@ -7,21 +7,13 @@ var Go_accesorios =document.getElementById("bton-accesorios");
 var Go_categorias = document.getElementById("btoncategorias");
 var Go_ATP = document.getElementById("btonATP");
 // listener para botones de conexion.
-let Go_registro = document.getElementById("btonRegistrar");
-let Go_login = document.getElementById("btonlogin");
 let Go_recovery = document.getElementById("Btonrecuperarcuenta");
 
 //listener para botones cabecera.
 Icon_logo.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
 });
-//listener para el boton que ingresa ¿
-Go_registro.addEventListener("click",function(){
-    window.location.href="http://localhost/Neutro/codigo/paglogin/pagregistro/indexregistro.html";
-});
-Go_login.addEventListener("click",function(){
-    window.location.href="http://localhost/Neutro/codigo/paglogin/loginNeutro/indexlogin.html";
-});
+//listener para los botones de navegacion.
 Go_inicio.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
 });
@@ -40,17 +32,19 @@ var formulario = document.querySelector("formulariologin");
 formulario.addEventListener("submit", function(Event){
     Event.preventDefault();
     // crea variables para recolectar los valores del formulario login
-    var email = document.getElementById("IngMail");
-    var contraseña = document.getElementById("IngContraseña");
-    var nombre = email.innerText;
-    var pass = contraseña.textContent;
+    var email = document.getElementById("InitEmail").value;
+    var contraseña = document.getElementById("InitContraseña").value;
+    //luego se escribe el valor sobre la variable.
+    document.getElementById("initEmail").innerHTML = email;
+    document.getElementById("initContraseña").innerHTML = contraseña;
+
     console.log(nombre);
     console.log(pass);
     var formdata = new FormData();
     formdata.append("Mail",email);
     formdata.append("Contraseña",contraseña);
 
-    fetch("LoginsUsuario.php", {
+    fetch("http://localhost/Neutro/codigo/php/LoginUsuario.php", {
         method: "POST",
         body: formdata
     })
@@ -64,5 +58,12 @@ formulario.addEventListener("submit", function(Event){
     })
     .then(function(data){
         console.log(data);
+        if(data ==="busqueda exitosa"){
+            if(data.Nivel === 1){
+                alert("has iniciado sesion como cliente");
+                window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
+                
+            }
+        }
     });
 });

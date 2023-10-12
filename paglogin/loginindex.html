@@ -22,13 +22,13 @@
         </div>
         <section id="login">
             <div id="contenedorLogin">
-                <form id="formulariologin"  method="post" accept-charset="UTF-8">
+                <form id="formulariologin" action="../php/LoginUsuario.php"  method="post" accept-charset="UTF-8">
                     <ul id="Lista-form">
-                        <li id="L-mail"><label for="Iptmail">Mail</label></li>
-                        <li id="In-mail"><input type="email" name="IngMail" id="IngMail" placeholder="ejemplo@hotmail.com"required></li>
-                        <li id="L-con"><label for="Iptcontraseña">Contraseña</label></li>
-                        <li id="In-con"><input type="password" name="IngContraseña" id="IngContraseña" placeholder="Contraseña" required></li>
-                        <li id="bton-submit"><button type="submit">Iniciar sesion</button></li>
+                        <li class="li-form-label"><label for="iniEmail">Mail</label></li>
+                        <li class="li-form-input"><input type="email" name="initEmail" id="initEmail" placeholder="ejemplo@hotmail.com"required></li>
+                        <li class="li-form-label"><label for="initContraseña">Contraseña</label></li>
+                        <li class="li-form-input"><input type="password" name="initContraseña" id="initContraseña" placeholder="Contraseña" required></li>
+                        <li class="li-form-sub-bton"><button id="bton-submit" type="submit">Iniciar sesion</button></li>
                     </ul>
                 </form>
             </div>
