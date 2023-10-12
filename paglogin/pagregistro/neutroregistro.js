@@ -1,7 +1,5 @@
-// funcion para iniciar session.
+// funcion para registrarse.
 var formulario = document.getElementById("formulariologin");
-
-
 formulario.addEventListener("submit", function(Event){
     Event.preventDefault();
     // crea variables para recolectar los valores del formulario login
