@@ -1,13 +1,13 @@
 @font-face{
     font-family: 'Oswald', sans-serif;
-    src: url(../Fonts/Oswald-Bold.ttf)format(TrueType);
+    src: url(../css/Fonts/Oswald-Bold.ttf)format(TrueType);
     font-weight: 600;
 }
+/* config para que todo el cuerpo use la fuente dispuesta abajo */
 body{
     font-family:'Oswald', sans-serif;
     font-weight: 600;
 }
-
 *{
     margin: 0px;
     padding: 0px;
