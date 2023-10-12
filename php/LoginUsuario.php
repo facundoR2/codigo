@@ -1,5 +1,5 @@
 <?php
-include("../../php/conexion.php");
+include("conexion.php");
 //confirmamos si lo conseguimos y luego capturamos el mail y contraseña por el post.
 if(isset($_POST["Mail"]) && isset($_POST["Contraseña"])){
     $usuario = filter_var($_POST["Mail"], FILTER_SANITIZE_STRING);
