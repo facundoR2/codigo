@@ -14,11 +14,11 @@ body{
     box-sizing: border-box;
 }
 #Logo-tienda{
-    width: 120px;
-    image-rendering: auto;
-    background-image: url(../imagenes/SINFFONDO.jpg);
+    width: 200px;
+    height: 80px;
+    image-rendering: optimizeQuality;
+    background-image: url(../css/imagenes/LOGO.jpg);
     background-attachment: local;
-
 }
 #cabecera{
     display: flex;
@@ -119,10 +119,17 @@ body{
 .LBTON{
     width: 130px;
     height: 30px;
-    background-color: chocolate;
+    font-family:'Oswald', sans-serif;
+    font-weight: 300;
+    background-color:rgb(253, 101, 13);
     border-color: whitesmoke;
     border-radius: 15px;
     align-content: space-around;
+    position: relative;
+}
+.LBTON:hover{
+    background-color: white;
+    transform: translate(0px,-3px);
 }
 #piedepagina{
     margin-top: 50px;
