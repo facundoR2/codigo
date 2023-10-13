@@ -44,8 +44,6 @@ function buscarProducto(B_item){
         sessionStorage.setItem("busqueda",JSON.stringify(data));
         window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/PBOindex.html";
     });
-
-
 };
 /////////////////////////////////////// fin seccion busqueda.////////////////
 //////////////////////////////////////seccion verificaciones/////////////////
