@@ -9,7 +9,7 @@
 <body>
     <div id="cabecera"><!--seccion head con flogin ,logo y barra buscadora-->
         <div id="Logo">
-            <h1>LOGO</h1>
+            <img   id="Logo-tienda" src="../css/imagenes/LOGO.jpg"alt="LOGO" title="inicio">
         </div>
         <div id="buscador">
             <input id="Barrabusqueda"type="text">
@@ -31,12 +31,24 @@
             <li><button class="LBTON" id="bton-productos">Productos</button></li>
         </ul>
         <div id="buscador-confiltros">
+            <span id="alertas"></span>
             <form id="formulario-busqueda">
                 <ul>
-                    <li><label>tipo</label></li>
-                    <li><input type="search"></li>
-                    <option>tipo1</option>
-                    <option>tipo2</option>
+                    <li><label for="categorias">categorias</label></li>
+                    <li><select id="categorias">
+                        <option value=" "></option>
+                        <option value="notebooks">notebooks</option>
+                        <option value="muebles">muebles</option>
+                        <option value="componentes">componentes</option>
+                        <option value="impresoras">impresoras</option>
+                    </select></li>
+                    <li><label for="precios">precios</label></li>
+                    <li><select id="precios">
+                        <option value=" "></option>
+                        <option value="300">300</option>
+                        <option value="1000">1000</option>
+                    </select></li>
+                    <li><button id="bb-f-bton" type="submit">Buscar</button></li>
                 </ul>
             </form>
         </div>
