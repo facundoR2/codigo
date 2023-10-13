@@ -42,7 +42,7 @@ function buscarProducto(B_item){
     .then(function(data){
         console.log(data);
         sessionStorage.setItem("busqueda",JSON.stringify(data));
-        window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/PBOindex.html?datos=" +JSON.stringify(data);
+        window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/PBOindex.html";
     });
 
 
