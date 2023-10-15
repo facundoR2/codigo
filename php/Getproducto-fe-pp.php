@@ -1,6 +1,6 @@
 <?php
 include ("conexion.php");
-session_start();
+
 
 //$conect para consultas.
 $sql = "SELECT * FROM stock ORDER BY RAND() LIMIT 5";
@@ -15,5 +15,4 @@ mysqli_close($conn);
 // echo json_encode("productos azar buscados exitosamente");
 $json = json_encode($productos);
 echo $json;
-session_destroy();
 ?>
