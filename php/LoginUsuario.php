@@ -1,30 +1,48 @@
 <?php
 include("conexion.php");
+
+$usuario = $_POST["Mail"];
+$contraseña = ($_POST["Contraseña"]); 
 //confirmamos si lo conseguimos y luego capturamos el mail y contraseña por el post.
 if(isset($_POST["Mail"]) && isset($_POST["Contraseña"])){
-    $usuario = filter_var($_POST["Mail"], FILTER_SANITIZE_STRING);
-    $contraseña = filter_var($_POST["Contraseña"], FILTER_SANITIZE_STRING);
 
-    //prepara consulta SQL para buscar el usuario por Mail.
-    $sql = "SELECT * FROM info WHERE Mail = :Mail";
+    //prepara consulta SQL para buscar el usuario y contraseña de tabla usuarios.
+    $sql = "SELECT * FROM usuarios WHERE NombreUsuario = ?";
+    //preparamos la consulta.
     $stmt = $conn->prepare($sql);
 
-    //ejecuta la consulta con el valor de nombre de usuario.
-    $stmt->execute(array(":Mail"=> $usuario));
+    //asignamos los parametros a la consulta.
+    $stmt->bind_param("s", $usuario);
 
-    $nombre = $stmt->fetch(PDO::FETCH_ASSOC);
+    //ejecutamos la consulta
+    $stmt->execute();
 
-    if(!$nombre){
-        echo json_encode("busqueda exitosa");
-        //inicia una sesion y fuarda el nombre de usuario en una variable de session.
-        session_start();
-        
-        $_SESSION["username"] = $usuario;
-    }else{
-        echo json_encode("usuario no encontrado");
+    //se agrupa el resultado con una variable.
+    $stmt->bind_result($id, $idcarrito, $NombreUsuario,$hash,$nivel);
+
+    //creamos un array para los datos.
+    $datos =array();
+    
+    //recorremos el resultado
+    while($stmt->fetch()){
+        //usamos passwordverify para comparar la contraseña con el hash.
+        if(password_verify($contraseña, $hash)){
+            //se confirma el usuario, iniciamos session.
+            session_start();
+            //guardamos el nombre del usuario en una variable de sesion.
+            $_SESSION["username"] = $usuario;
+            //se procede a guardar los datos en el array
+            $datos[] =array("idcarrito"=>$idcarrito, "NombreUsuario"=>$NombreUsuario, "Nivel"=>$nivel);
+            //se devuelve el array con los datos.
+            echo json_encode($datos);
+        }else{
+            echo json_encode("usuario u contraseña incorrecto");
+        }
     }
-}else{
-    echo json_encode("datos incompletos");
-}
 
+}else{
+    echo json_encode("datos incompletos o vacios");
+}
+//cerramos conexion con BD.
+$conn->close();
 ?>
