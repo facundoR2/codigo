@@ -11,18 +11,14 @@ let Go_products = document.getElementById("bton-productos");
 
 ////// validaciones para la barra de busqueda///////.
 function verificarSession(){
-    let nomUsuario = document.getElementById("labelusuario");
-    var nombre_de_session = nomUsuario.textContent;
-    console.log(nombre_de_session);
-    if(nombre_de_session ==="cliente"){
+    //crea la variable que contiene el label
+    var nomUsuario = document.getElementById("labelusuario");
+    if(nomUsuario.innerText ==="cliente"){
         alert("no has ingresado a una session");
         window.location.href="http://localhost/neutro/codigo/paglogin/loginindex.html";
-        var respuesta = false;
-        return respuesta;
+        return false;
     }else{
-        alert("estas en una session");
-        var respuesta = true;
-        return respuesta;
+        return true;
     }
 }
 //listeners de botones para navegar en las paginas.
@@ -57,31 +53,7 @@ Go_tocart.addEventListener("click",function(){
 });
 
 //////////////////////// seccion mostrar producto buscado.////////////.
-
-/////////////////seccion validaciones respecto a producto.////////////////////////
-
-//////fin seccion validaciones.////////////////////
-////// seccion de funciones de Producto /////////////.
-function compraproducto(){
-    verificarSession();
-    if(verificarSession==true){
-        alert("estas en una session, puedes reservar el Producto.");
-    }else{
-        // window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
-    }
-};
-function reservarProduct(){
-    verificarSession();
-    if(verificarSession==true){
-        alert("estas en una session, puedes reservar el Producto.");
-    }else{
-        window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
-    }
-
-}
-
-///////funciones dentro de el producto mostrado.//////////
-window.addEventListener("DOMContentLoaded",function(){
+function traerproducto(){
     //hacemos peticion para buscar el producto seleccionado.
     let nombre =sessionStorage.getItem("producto");
     console.log(nombre);
@@ -121,24 +93,54 @@ window.addEventListener("DOMContentLoaded",function(){
         var botoncompra = document.createElement("button");
         botoncompra.className ="Producto-comp-btons";
         botoncompra.textContent="comprar";
-        botoncompra.onclick= function(){
-            compraproducto();
-            console.log("compraste el producto");
-        };
         boton_carrito.onclick= function(){
             reservarProduct();
             console.log("intentaste reservar el producto");
         }
         li1.appendChild(infp);
         li2.appendChild(precio);
-        li3.appendChild(botoncompra);
         li4.appendChild(boton_carrito);
         m_ul.appendChild(li1);
         m_ul.appendChild(li2);
-        m_ul.appendChild(li3);
         m_ul.appendChild(li4);
         content_dataproduct.appendChild(m_ul);
         contentview.appendChild(imagen);
     });
+}
+/////////////////seccion validaciones respecto a producto.////////////////////////
+
+//////fin seccion validaciones.////////////////////
+////// seccion de funciones de Producto /////////////.
+function reservarProduct(){
+    var verf =verificarSession();
+    if(verf){
+        alert("estas en una session, puedes reservar el Producto.");
+        window.location.href="http://localhost/Neutro/codigo/pagCarrito/cart_index.html";
+
+    }if(!verf){
+        alert("no estas en una session");
+        window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
+    }
+
+}
+
+///////funciones dentro de el producto mostrado.//////////
+function configsession(){
+    var label = document.getElementById("labelusuario");
+    var usuario = sessionStorage.getItem("usuario:");
+    if(usuario ==="" || usuario ===null){
+        label.innerHTML="cliente";
+    }else{
+        label.innerHTML = usuario;
+    }
+    
+    
+};
+
+//--fin seccion funciones del producto.---///
+
+window.addEventListener("DOMContentLoaded",function(){
+    traerproducto();
+    configsession();
 
 });
