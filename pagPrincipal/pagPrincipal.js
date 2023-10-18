@@ -102,11 +102,8 @@ function iraproducto(Nombre){
             
 };
 
-/////////////funcion para una pequeña cantidad de productos aleatorios.///////////
-
-//creamos un listener para cuando el DOM se termine de cargar, realice la funcion.
-window.addEventListener("DOMContentLoaded",function(){
-    //hacemos una peticion de productos a la base de datos
+/////////////---------seccion trerproducto----------///////////
+function traerproducto(){
     fetch("http://localhost/Neutro/codigo/php/Getproducto-fe-pp.php")
     //convertimos la respuesta en un  objeto json.
     .then(Response => Response.json())
@@ -146,10 +143,20 @@ window.addEventListener("DOMContentLoaded",function(){
             //agregamos el producto al contenedor de productos.
             contenedorproductos.appendChild(producto);
         };
-        //usamos la funcion de mostrar pasandole de parametro los productos buscados.
-        // crearProductos(information);
-        // mostrarproductos(information);
-    })
+    });
+
+};
+////////////----------fin funcion------------------- ////////
+///////////-----------seccion configsession------////////
+function configsession(){
+    var usuario = sessionStorage.getItem("usuario:");
+    var label = document.getElementById("labelusuario");
+    label.innerText = usuario;
+}
+//creamos un listener para cuando el DOM se termine de cargar, realice la funcion.
+window.addEventListener("DOMContentLoaded",function(){
+    traerproducto();
+    configsession();
     
     
 });
