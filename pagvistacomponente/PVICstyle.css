@@ -17,7 +17,7 @@ body{
     width: 200px;
     height: 80px;
     image-rendering: auto;
-    background-image: url(../imagenes/LOGO.jpg);
+    background-image: url(../css/imagenes/LOGO.jpg);
     background-attachment: local;
 
 }
