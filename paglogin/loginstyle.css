@@ -157,9 +157,9 @@ body{
     width: 6em;
 }
 .form-input{
-    width: 12em;
+    width: 18em;
     height: 3em;
-    border-radius: 10%;
+    border-radius: 15px;
     white-space: nowrap;
     font-size: medium;
 }
