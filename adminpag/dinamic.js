@@ -49,6 +49,6 @@ window.addEventListener("DOMContentLoaded",function(){
     if(usuario==null || usuario==" "){
         this.alert("usted no esta en una session");
     }else{
-        this.alert("bienvenido",usuario);
+        this.alert("bienvenido "+usuario);
     }
 });
