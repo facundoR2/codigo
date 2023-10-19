@@ -1,13 +1,17 @@
 //se agregan listeners para la seccion cabecera.
 let Icon_logo = document.getElementById("Logo-tienda");
 
-//se agregan los listeners para los buttons del menu lateral.
+//variables  para los buttons del menu lateral.
 var Go_inicio = document.getElementById("btoninicio");
 var Go_accesorios =document.getElementById("bton-accesorios");
 var Go_categorias = document.getElementById("btoncategorias");
 var Go_ATP = document.getElementById("btonATP");
-// listener para botones de conexion.
+// variables para botones de conexion.
+let btonRegistrar = document.getElementById("btonRegistrar");
 let Go_recovery = document.getElementById("Btonrecuperarcuenta");
+
+
+
 
 //listener para botones cabecera.
 Icon_logo.addEventListener("click",function(){
@@ -26,9 +30,15 @@ Go_categorias.addEventListener("click",function(){
 Go_ATP.addEventListener("click",function(){
     window.location.href="http://localhost/neutro/codigo/pagArmarTuPc/index.html";
 });
-//////////fin seccion botones de navegacion////////////.
-// funcion para iniciar session.
-
+//listener para botones de conexion
+btonRegistrar.addEventListener("click",function(){
+    window.location.href="http://localhost/Neutro/codigo/paglogin/pagregistro/indexregistro.html";
+});
+Go_recovery.addEventListener("click",function(){
+    window.location.href="http://localhost/Neutro/codigo/paglogin/recuperacionlogin/recover_login.html";
+});
+////-------------------fin seccion botones de navegacion--------------////.
+////-------------------inicio funcion iniciar session-----------------------////.
 //parte de validaciones de session
 
 function validaremail(email){
@@ -44,6 +54,7 @@ function validarcontraseña(contraseña){
 
 }
 //fin parte de validaciones de session
+
 var formulario = document.getElementById("formulariologin");
 formulario.addEventListener("submit", function(Event){
     Event.preventDefault();
@@ -80,21 +91,22 @@ formulario.addEventListener("submit", function(Event){
                     throw new Error("respuesta salio mal");
                 }
             }).then(function(data){
+                var user = data[0].NombreUsuario;
                 if(data[0].Nivel ==1){
                     console.log(data);
-                    alert("Bienvenido "+ data[0].NombreUsuario);
-                    sessionStorage.setItem("usuario:",data[0].NombreUsuario,data[0].Nivel)
+                    alert("Bienvenido "+ user);
+                    sessionStorage.setItem("usuario:",data[0].NombreUsuario)
                     window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
                 }
                 if(data[0].Nivel ==2){
                     console.log(data);
-                    alert("Bienvenido admin: "+data[0].NombreUsuario);
-                    sessionStorage.setItem("usuario:",data[0]);
+                    alert("Bienvenido admin: "+ data[0].NombreUsuario);
+                    sessionStorage.setItem("usuario:",data[0].NombreUsuario);
                     window.location.href="http://localhost/Neutro/codigo/adminpag/ADindex.html";
                 }
                 if(data[0].Nivel ==3){
-                    alert("Bienvenido admin: "+data[0].NombreUsuario);
-                    sessionStorage.setItem("usuario:",data[0]);
+                    alert("Bienvenido admin: "+ data[0].NombreUsuario);
+                    sessionStorage.setItem("usuario:",data[0].NombreUsuario);
                     window.location.href="http://localhost/Neutro/codigo/adminpag/ADindex.html";
 
                 }
