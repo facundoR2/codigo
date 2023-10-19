@@ -1,19 +1,17 @@
 // funcion para registrarse.
-var formulario = document.getElementById("formulariologin");
-formulario.addEventListener("submit", function(Event){
-    Event.preventDefault();
-    // crea variables para recolectar los valores del formulario login
-    // primero se crea la variable para obtener el valor
-    var mail = document.getElementById("Mail").value;
-    //luego se escribe el valor sobre la variable
-    document.getElementById("Mail").innerHTML = mail;
-    var contraseña = document.getElementById("Contraseña").value;
-    document.getElementById("Contraseña").innerHTML = contraseña;
-    var nombre = mail;
-    var pass = contraseña;
-    //confirmacion de que se capturo los datos correctamente.
-    console.log(nombre);
-    console.log(pass);
+function validaremail(email){
+    //expresion que verifica si el elmail tiene patron de usuario@dominio.extension .(acepta ñ).
+    const formadominio = /^ [a-zA-Z0-9._-]+@ [a-zA-Z0-9.-]+\. ( [a-zA-Z]{2,4})+$/;
+    return(formadominio.test(email));
+        
+}
+function validarcontraseña(contraseña){
+    //expresion que verifica si tiene almenos 8 caracteres, una letra mayuscula,una letra minuscula,un numero.
+    var regla_ex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
+    return regla_ex.test(contraseña);
+
+}
+function insertarNuevoUsuario( mail, contraseña){
     var formdata = new FormData();
     formdata.append("Mail",mail);
     formdata.append("Contraseña",contraseña);
@@ -31,5 +29,35 @@ formulario.addEventListener("submit", function(Event){
     })
     .then(function(data){
         console.log(data);
+        if(data[1]==="se inserto usuario Correctamente"){
+            alert("se a creado el USUARIO CORRECTAMENTE");
+            window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
+        }
     });
+
+}
+var formulario = document.getElementById("formularioRegistro");
+formulario.addEventListener("submit", function(Event){
+    Event.preventDefault();
+     // crea variables para recolectar los valores del formulario login
+    // primero se crea la variable para obtener el valor
+    let mail = document.getElementById("Reg-ipt-email").value;
+    //luego se escribe el valor sobre la variable
+    document.getElementById("Reg-ipt-email").innerHTML = mail;
+    let contraseña = document.getElementById("Reg-ipt-contraseña").value;
+    document.getElementById("Reg-ipt-contraseña").innerHTML = contraseña;
+    // le pasamos las variables a las funciones de validacion.
+    validaremail(mail);
+    validarcontraseña(contraseña);
+    if(validaremail(mail)==true){
+        alert("Email incorrecto");
+    }else{
+        if(validarcontraseña(contraseña)==false){
+            alert("Contraseña incorrecta");
+        }else{
+            console.log(mail);
+            console.log(contraseña);
+            insertarNuevoUsuario(mail, contraseña);
+        }
+    }
 });
