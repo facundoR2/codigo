@@ -153,6 +153,32 @@ function configsession(){
     var label = document.getElementById("labelusuario");
     label.innerText = usuario;
 }
+////////////----------fin funcion------------------- ////////
+//-----funcionalidad de  confirmar cookies--------////
+function crearCookie(nombre, valor, dias){
+    var fecha = new Date();
+    fecha.setTime(fecha.getTime() + (dias*24*60*60*1000));
+    var expira = "expires="+ fecha.toUTCString();
+    document.cookie = nombre + "=" + valor + ";" + expira +";path=/";
+}
+// Función para obtener el valor de una cookie por su nombre
+function obtenerCookie(nombre) {
+    var nombreCookie = nombre + "=";
+    var cookies = document.cookie.split(';');
+    for(var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i];
+      while (cookie.charAt(0) == ' ') {
+        cookie = cookie.substring(1);
+      }
+      if (cookie.indexOf(nombreCookie) == 0) {
+        return cookie.substring(nombreCookie.length, cookie.length);
+      }
+    }
+    return"";
+  }
+function confirmarCookies(){
+}
+////////////------------fin funcionalidad----------------------------////.
 //creamos un listener para cuando el DOM se termine de cargar, realice la funcion.
 window.addEventListener("DOMContentLoaded",function(){
     traerproducto();
