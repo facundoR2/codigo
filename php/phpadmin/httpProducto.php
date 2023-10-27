@@ -7,13 +7,17 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
     $sql = "SELECT * FROM productos";
     
     //preparamos la request
-    $stmt= mysqli_query($conn,$sql);
+    $stmt= $conn->query($sql);
     //ejecutamos la secuencia
-    $datos = mysqli_fetch_all($stmt,MYSQLI_ASSOC);
-    print_r($datos);
-    $json = json_encode($datos);
-    echo $json;
+    $stmt->execute();
+    $products = array();
+    if($stmt->num_rows > 0){
+        while($row = $stmt->fetch_assoc()){
+            $products[] = $row;
+        }
+    }
     $conn->close();
+    return  json_encode($products);
 
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
