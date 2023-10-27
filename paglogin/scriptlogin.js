@@ -95,18 +95,18 @@ formulario.addEventListener("submit", function(Event){
                 if(data[0].Nivel ==1){
                     console.log(data);
                     alert("Bienvenido "+ user);
-                    sessionStorage.setItem("usuario:",data[0].NombreUsuario)
+                    sessionStorage.setItem("usuario",data[0].NombreUsuario)
                     window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
                 }
                 if(data[0].Nivel ==2){
                     console.log(data);
                     alert("Bienvenido admin: "+ data[0].NombreUsuario);
-                    sessionStorage.setItem("usuario:",data[0].NombreUsuario);
+                    sessionStorage.setItem("usuario",data[0].NombreUsuario);
                     window.location.href="http://localhost/Neutro/codigo/adminpag/ADindex.html";
                 }
                 if(data[0].Nivel ==3){
                     alert("Bienvenido admin: "+ data[0].NombreUsuario);
-                    sessionStorage.setItem("usuario:",data[0].NombreUsuario);
+                    sessionStorage.setItem("usuario",data[0].NombreUsuario);
                     window.location.href="http://localhost/Neutro/codigo/adminpag/ADindex.html";
 
                 }
