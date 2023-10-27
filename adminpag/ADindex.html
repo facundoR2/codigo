@@ -9,15 +9,11 @@
 <body>
     <section id="cabecera"><!--seccion head con flogin ,logo y barra buscadora-->
         <div id="logo">
-            <h1>LOGO</h1>
-        </div>
-        <div id="buscador">
-            <input id="Barrabusqueda"type="text">
-            <button id="BotonBuscar">buscar</button>
+            <img   id="Logo-tienda" src="../css/imagenes/LOGO.jpg"alt="LOGO" title="inicio">
         </div>
         <div id="Login">
-            <label id="TUsuarioActual">cliente</label>
-            <button id="ingresar">Ingresar</button>
+            <label id="labelusuario">cliente</label>
+            <button id="Bingresar">Ingresar</button>
         </div>
     </section>
     <div id="Vmenu"><!--seccion de menu principal lateral-->
@@ -26,32 +22,23 @@
                 <button class="menulista" id="Bmododark"></button>
                 <button class="menulista" id="Bcasillas">vista casillas</button>
                 <button class="menulista" id="Blista">vista listas</button>
-                <button class="menulista" id="Bcarrito"></button>
             </ul>
     
         </div>
     </div>
     </section>
     <section id="Lmenu"><!--seccion de menu principal lateral-->
-        <ul class="nav-links">
-            <li><button class="LBTON">graficas</button></li>
-            <li><button class="LBTON">accesorios</button></li>
-            <li><button class="LBTON">categorias</button></li>
-            <li><button class="LBTON">carrito</button></li>
-            <li><button class="LBTON">arma tu pc</button></li>
-            <li> <button class="LBTON">estadisticas</button></li>
-            <li><button class="LBTON">Productos</button></li>
-            
-        </ul>
-    
-    <div id="Producto">
-        <ul>
-            <li><h1>imagen</h1></li>
-            <li><h1>PRECIO $9999</h1></li>
-            <li><p>descripcion breve</p></li>
-        </ul>
-    </div>
+        <div>
+            <ul class="nav-links">
+                <li><button class="LBTON" id="bton-grafics-stats">graficas y estadisticas</button></li>
+                <li><button class="LBTON" id="bton-adm-Products">Productos</button></li>
+                <li><button class="LBTON" id="bton-adm-orders">Reservas</button></li>
+            </ul>
+        </div>
+        <div id="contenedor_graficos"></div>
+        
 </section>
+<script src="dinamic.js"></script>
 </body>
 <footer ><!--pie de pagina con info de la empresa y derechos de uso-->
     <div id="piedepagina">

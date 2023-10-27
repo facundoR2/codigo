@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tienda online</title>
+    <link rel="stylesheet" href="neutroregistro.css">
+</head>
+<body>
+    <div id="cabecera"><!--seccion head con flogin y logo-->
+        <img   id="Logo-tienda" src="../../imagenes/LOGO.jpg"alt="LOGO">
+        <div id="buscador">
+            <input id="Barrabusqueda"type="text">
+            <button id="BotonBuscar">buscar</button>
+        </div>
+    </div>
+    <div id="vistamenu"></div>
+    </div>
+    <section id="centro1" class="secciones-login">
+        <div id="contenedorLogin">
+            <ul>
+                <li>
+                    <form id="formulariologin" action="../../php/registro.php"  method="post" accept-charset="UTF-8">
+                        <ul id="form-login-ul">
+                            <li id="L-mail-lb"><label for="Mail">Mail</label></li>
+                            <li id="L-mail-inp"><input type="email" name="Mail" id="Mail" placeholder="ejemplo@hotmail.com"></li>
+                            <li id="L-pass-lb"><label for="Contraseña">Contraseña</label></li>
+                            <li id="L-pass-inp"><input type="password" name="Contraseña" id="Contraseña" placeholder="Contraseña" required></li>
+                            <li id="L-bton-submit"><button type="submit">Registrarse</button></li>
+                        </ul>
+                    </form>
+                </li>
+                <li><button>recuperar mi cuenta</button></li>
+            </ul> 
+        </div>
+    </section>
+    <section id="centro2" class="secciones-login">
+        <h1>Te puede interesar</h1>
+    </section>
+    <script src="neutroregistro.js"></script>
+</body>
+<footer id="piedepagina"><!--pie de pagina con info de la empresa y derechos de uso-->
+    <div>
+        <h6>derechos reservados para el creador de esta y todas las paginas asociadas a este software<br>
+        cualquier copia o reproduccion se penará con spam infinito.</h6>
+    </div>
+
+</footer>
+</html>

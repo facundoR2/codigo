@@ -14,7 +14,7 @@ inicio.addEventListener("click",function(){
     campousuario.addEventListener("change",()=>{
         sessionStorage.setItem("autosave",campousuario.innerHTML);
     })
-    window.location.reload();
+    window.location.href="http://localhost/Neutro/codigo/adminpag/ADindex.html";
 });
 ADMproducts.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/adminpag/adminproduct/ADMpindex.html";
@@ -25,30 +25,3 @@ Grafics.addEventListener("click",function(){
 orders.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/adminpag/ordenes/orders_index.html";
 })
-
-// ------------------- fin botones de nav ------------------//
-// -----------------funcion para solicitar los datos de las tablas---------//
- async function obtenerinfo(){
-
-    let respuesta = await fetch ("http://localhost/Neutro/codigo/php/phpadmin/httpProducto.php");
-    if(respuesta.ok){
-        let datos = await respuesta.json();
-        let tabla = document.createElement("table");
-        let tbody = document.createElement("tbody");
-        for(let item of datos){
-            let fila = document.createElement("tr");
-            let celdaId = document.createElement("td");
-            celdaId.textContent= item.id;
-            let celdaNombre = document.createElement("td");
-            celdaNombre.textContent = item.Nombre;
-        }
-    }
-}
-window.addEventListener("DOMContentLoaded",function(){
-    let usuario = sessionStorage.getItem("usuario:");
-    if(usuario==null || usuario==" "){
-        this.alert("usted no esta en una session");
-    }else{
-        this.alert("bienvenido "+usuario);
-    }
-});

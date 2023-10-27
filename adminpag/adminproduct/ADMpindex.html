@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ADMpstyle.css">
+</head>
+<body>
+    <section id="cabecera"><!--seccion head con flogin ,logo y barra buscadora-->
+        <div id="logo">
+            <img   id="Logo-tienda" src="../../css/imagenes/LOGO.jpg"alt="LOGO" title="inicio">
+        </div>
+        <div id="Login">
+            <label id="labelusuario">cliente</label>
+            <button id="Bingresar">Ingresar</button>
+        </div>
+    </section>
+    <section id="1seccion">
+        <section id="Lmenu">
+            <ul class="nav-links">
+                <li><button class="LBTON">Favoritos(prox)</button></li>
+                <li><button class="LBTON" id="bton-accesorios">accesorios</button></li>
+                <li><button class="LBTON" id="bton-categorias">categorias</button></li>
+                <li><button class="LBTON" id="bton-carrito">carrito</button></li>
+                <li><button class="LBTON" id="bton-ATP">arma tu pc</button></li>
+                <li><button class="LBTON">historial</button></li>
+                <li><button class="LBTON" id="bton-productos">Productos</button></li>
+            </ul>
+        </section>
+        <section id="controlador productos">
+            <h1>PRODUCTOS</h1>
+            <div id="contenedor-prcto-search"></div> <!--contenedor que mostrara todos los productos generados en una tabla-->
+            <div id="contenedor-prcto-mod">
+                <form class="formulariosADM" id="form-prcto">
+                    <ul class="form-uls">
+                        <li class="form-lis"><label for="prcto-in-id">id</label></li>
+                        <li class="form-lis"><input name="prcto-in-id" type="text" placeholder="solo numeros,"></li>
+                        <li class="form-lis"><label>nombre</label></li>
+                        <li class="form-lis"><input name="prcto-in-nombre" type="text" title="nombre del producto" placeholder="nombre del producto ej: notebook samsung"></li>
+                        <li class="form-lis"><label>Caracteristicas</label></li>
+                        <li class="form-lis"><input name="prcto-in-crtcs"></li>
+                        <li class="form-lis"><label>imagen</label></li>
+                        <li class="form-lis"><input name="prcto-in-img"></li>
+                        <li class="form-lis"><label>Estado</label></li>
+                        <li class="form-lis"><input name="prcto-in-Estado"></li>
+                        <li class="form-lis"><label>Categoria</label></li>
+                        <li class="form-lis"><input name="prcto-in-Categoria"></li>
+                    </ul>
+                </form>
+            </div> <!-- contenedor del formulario para crear o modificar productos  -->
+        </section>
+    </section>
+    <section id="controlador-ofertas">
+        <h1>OFERTAS</h1>
+        <div id="contenedor-oferts-search"></div> <!--contenedor que mostrara todas las ofertas generadas en una tabla-->
+        <div id="contenedor-oferts-mod">
+            <form class="formulariosADM" id="form-oferts">
+                <ul>
+                    <li class="form-lis"></li>
+                    <li class="form-lis"></li>
+                    <li class="form-lis"></li>
+                    <li class="form-lis"></li>
+                </ul>
+            </form>
+        </div> <!-- contenedor del formulario para crear o modificar ofertas  -->
+    </section>
+    <section id="controlador-reservas">
+        <h1>RESERVAS</h1>
+        <div id="contenedor-bookings-search"></div> <!--contenedor que mostrara todas las reservas generadas en una tabla-->
+        <div id="contenedor-bookings-mod">
+            <form class="formulariosADM" id="form-oferts">
+                <ul>
+                    <li class="form-lis"></li>
+                    <li class="form-lis"></li>
+                    <li class="form-lis"></li>
+                    <li class="form-lis"></li>
+                </ul>
+            </form>
+        </div> <!-- contenedor del formulario para crear o modificar reservas  -->
+
+    </section>
+    <script src="ADMpfunctions.js"></script>
+</body>
+</html> 

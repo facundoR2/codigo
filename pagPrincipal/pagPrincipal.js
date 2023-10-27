@@ -1,8 +1,3 @@
-//se agrega una fuente para mejor calidad visual.
-// FontFace: {
-//     new (family="", source= "" | BinaryData, descriptors? FontFaceDescriptors | undefined): FontFace;
-//     prototype: FontFace;
-// }
 
 //se agregan los listeners para los buttons del menu lateral.
 let nuevologin = document.getElementById('Bingresar');
@@ -10,12 +5,14 @@ let BtonAccesorios = document.getElementById("bton-accesorios");
 let BtonCategorias = document.getElementById("bton-categorias");
 let Go_tocart = document.getElementById("bton-carrito");
 let Go_mypc = document.getElementById("bton-ATP");
-let Go_products = document.getElementById("bton-productos");
 
 //////////// seccion para la funcionalidad de busqueda ////////////////////.
 let buscador = document.getElementById("buscador");
 let botonBusqueda = document.getElementById("BotonBuscar");
-
+let logoitem = document.getElementById("Logo-tienda");
+logoitem.addEventListener("click",function(){
+    window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
+});
 botonBusqueda.addEventListener("click",function(){
     //si precina tecla enter.
         let B_item = document.getElementById('Barrabusqueda').value;
@@ -25,7 +22,7 @@ botonBusqueda.addEventListener("click",function(){
         buscarProducto(B_item);
 });
 function buscarProducto(B_item){
-     var busqueda = B_item
+     var busqueda = B_item;
      let search_Fdata = new FormData();
      search_Fdata.append("Busqueda",busqueda);
 
@@ -44,14 +41,12 @@ function buscarProducto(B_item){
     })
     .then(function(data){
         console.log(data);
-        localStorage.setItem("busqueda",JSON.stringify(data));
-        window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/PBOindex.html?datos=" +JSON.stringify(data);
+        sessionStorage.setItem("busqueda",JSON.stringify(data));
+        window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/PBOindex.html";
     });
-
-
 };
-//////// fin seccion busqueda.////////////////
-//////////seccion verificaciones//////////////
+/////////////////////////////////////// fin seccion busqueda.////////////////
+//////////////////////////////////////seccion verificaciones/////////////////
 function verificarSession(){
     let usuarionombre = document.getElementById("labelusuario");
     var usuario = usuarionombre.textContent;
@@ -95,71 +90,126 @@ Go_tocart.addEventListener("click",function(){
     }
 });
 
-//----------------seccion sobre Producto.----------------------------//
+//---------------------seccion sobre Producto.----------------------------//
 //cargar productos.
 //funcion para redigir a una pagina cuando se de click en comprar a un producto.
 function iraproducto(Nombre){
+    //verificamos que capturo el nombre.
     console.log(Nombre);
-    var formdata = new FormData();
-    formdata.append("Nombre",Nombre);
-    fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe-pp2.php",{
-        method: 'POST',
-        body: formdata
-    });
+    //agregamos el nombre dentro de sessionStorege(solo se almacena dentro de la session hasta que se cierra o reinicia la pag).
+    sessionStorage.setItem("producto",Nombre);
+    window.location.href="http://localhost/Neutro/codigo/pagvistacomponente/PVICindex.html";
+            
 };
-// fin funcion //
-//creamos un listener para cuando el DOM se termine de cargar, realice la funcion.
-window.addEventListener("DOMContentLoaded",function(){
-    //hacemos una peticion de productos a la base de datos
+
+/////////////---------seccion trerproducto----------///////////
+function traerproducto(){
     fetch("http://localhost/Neutro/codigo/php/Getproducto-fe-pp.php")
     //convertimos la respuesta en un  objeto json.
     .then(Response => Response.json())
     .then(data=>{
         information = data;
-        //usamos la funcion de mostrar pasandole de parametro los productos buscados.
-        // crearProductos(information);
-        mostrarproductos(information);
+        let contenedorproductos = document.getElementById("contenedor-productos");
+        for(var i=0;i<information.length;i++){
+            //creamos div para el producto
+            var producto = document.createElement("div");
+            //le asigno nombre
+            producto.className ="Producto";
+            producto.onclick=function(){
+                var h3 = this.querySelector("h3");
+                var nom = h3.textContent;
+                console.log("comprarste el producto: " + nom);
+                iraproducto(nom);
+            }
+            var nombre = document.createElement("h3");
+            nombre.className="Newsproducts";
+            nombre.textContent = information[i].Nombre;
+            //creo y le asigno una imagen
+            var img = document.createElement("img");
+            img.alt="no hay imagen disponible.";
+            img.src = information[i].Imagen;
+            //creamos y asignamos un parrafo para el precio.
+            var precio  = document.createElement("p");
+            precio.className="Product-p";
+            precio.textContent = "$"+ information[i].Costo;
+            //agregamos los items al contenedor "producto".
+            producto.appendChild(img);
+            producto.appendChild(nombre);
+            producto.appendChild(precio);
+            //agregamos el producto al contenedor de productos.
+            contenedorproductos.appendChild(producto);
+        };
+    });
+
+};
+////////////----------fin funcion------------------- ////////
+///////////-----------seccion configsession------////////
+function configsession(){
+    var label = document.getElementById("labelusuario");
+    var botonsession = document.getElementById("Bingresar");
+    var usuario = sessionStorage.getItem("usuario");
+    if( label =="" || !usuario){
+        label.innerHTML="cliente";
+        
+    }else{
+        label.innerHTML = usuario;
+        botonsession.innerHTML ="cerrar session";
+    }
+        
+        
+
+};
+////////////----------fin funcion------------------- ////////
+//-----funcionalidad de  confirmar cookies--------////
+function crearCookie(nombre, valor, dias){
+    var fecha = new Date();
+    fecha.setTime(fecha.getTime() + (dias*24*60*60*1000));
+    var expira = "expires="+ fecha.toUTCString();
+    document.cookie = nombre + "=" + valor + ";" + expira +";path=/";
+}
+// Función para obtener el valor de una cookie por su nombre
+function obtenerCookie(nombre) {
+    var nombreCookie = nombre + "=";
+    var cookies = document.cookie.split(';');
+    for(var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i];
+      while (cookie.charAt(0) == ' ') {
+        cookie = cookie.substring(1);
+      }
+      if (cookie.indexOf(nombreCookie) == 0) {
+        return cookie.substring(nombreCookie.length, cookie.length);
+      }
+    }
+    return"";
+  }
+function confirmarCookies(){
+    const botonAceptarCookies  =document.getElementById("bton-aceptar-cookies");
+    const avisocookies = document.getElementById("aviso-cookies");
+    const fondoavisocookies = document.getElementById("fondo-aviso-cookies");
+
+    if(!localStorage.getItem('Cookies-aceptadas')){
+        avisocookies.classList.add("activo");
+        fondoavisocookies.classList.add("activo");
+    }
+    botonAceptarCookies.addEventListener("click",() =>{
+        avisocookies.classList.remove("activo");
+        fondoavisocookies.classList.remove("activo");
+
+        localStorage.setItem('Cookies-aceptadas', true);
+        crearCookie("aceptarCookies","si",365);
     })
+}
+////////////------------fin funcionalidad----------------------------////.
+//creamos un listener para cuando el DOM se termine de cargar, realice la funcion.
+window.addEventListener("DOMContentLoaded",function(){
+    confirmarCookies();
+    traerproducto();
+    configsession();
+    
+    
 });
 
 
-//funcion para una pequeña cantidad de productos aleatorios.
-function mostrarproductos(information){
-    for(var i=0;i<information.length;i++){
-        let contenedorproductos = document.getElementById("contenedor-productos");
-        //creamos div para el producto
-        var producto = document.createElement("div");
-        //le asigno nombre
-        producto.className ="Producto";
-        var nombre = document.createElement("h3");
-        nombre.textContent = information[i].Nombre;
-        //creo y le asigno una imagen
-        var img = document.createElement("img");
-        img.alt="no hay imagen disponible.";
-        img.src = information[i].Imagen;
-        //todavia no esta la imagen, asi que solo declaramos el texto alternativo.
-        //creamos el parrafo para las caracteristicas
-        var caract = document.createElement("p");
-        caract.innerText = information[i].Caracteristicas;
-        var precio  = document.createElement("p");
-        //creamos otro para el precio
-        // producto.price.textContent=information[i].Costo;
-        precio.textContent = "$"+ information[i].Costo;
-        //creamos y configuramos el boton de compra del producto
-        var buttoncomprar = document.createElement("button");
-        buttoncomprar.textContent="comprar";
-        buttoncomprar.className="bton-compra";
-        //agregamos los items al contenedor "producto".
-        producto.appendChild(img);
-        producto.appendChild(nombre);
-        producto.appendChild(caract);
-        producto.appendChild(precio);
-        producto.appendChild(buttoncomprar);
-        //agregamos el producto al contenedor de productos.
-        contenedorproductos.appendChild(producto);
-    };
-};
-let accioncomprar = document.getElementsByClassName("bton-compra");
 
 // fin cargar productos
 //cargar stat

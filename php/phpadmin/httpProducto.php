@@ -1,14 +1,32 @@
 <!-- en este php se incluiran los comandos GET;POST;UPDATE;DELETE fisico y ideal -->
-<?php 
-if [("REQUEST_METHOD") === 'GET']{
-}
-if [("REQUEST_METHOD") === 'POST']{
+<?php
+include("../conexion.php");
+
+if($_SERVER['REQUEST_METHOD'] === 'GET'){
+
+    $sql = "SELECT * FROM productos";
+    
+    //preparamos la request
+    $stmt= $conn->query($sql);
+    //ejecutamos la secuencia
+    $stmt->execute();
+    $products = array();
+    if($stmt->num_rows > 0){
+        while($row = $stmt->fetch_assoc()){
+            $products[] = $row;
+        }
+    }
+    $conn->close();
+    return  json_encode($products);
 
 }
-if [("REQUEST_METHOD") === 'UPDATE']{
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 }
-if [("REQUEST_METHOD") === 'DELETE']{
+if ($_SERVER['REQUEST_METHOD'] === 'PUT'){
+
+}
+if ($_SERVER['REQUEST_METHOD'] === 'Delete'){
     
 }
 

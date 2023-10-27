@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tienda online</title>
     <link rel="stylesheet" href="neutroregistro.css">
 </head>
+
 <body>
     <div id="cabecera"><!--seccion head con flogin y logo-->
-        <img   id="Logo-tienda" src="../imagenes/LOGO.jpg"alt="LOGO">
+        <img id="Logo-tienda" src="../../css/imagenes/LOGO.jpg" alt="LOGO">
         <div id="buscador">
-            <input id="Barrabusqueda"type="text">
+            <input id="Barrabusqueda" type="text">
             <button id="BotonBuscar">buscar</button>
         </div>
     </div>
     <div id="vistamenu"></div>
     </div>
-    <div id="centro">
-        <div id="contenedorLogin">
-            <form id="formulariologin" action="../../php/registro.php"  method="post" accept-charset="UTF-8">
-                <ul>
-                    <li id="L-mail"><label for="Iptmail">Mail</label></li>
-                    <li id="In-mail"><input type="email" name="Mail" id="Mail" placeholder="ejemplo@hotmail.com"></li>
-                    <li id="L-con"><label for="Iptcontraseña">Contraseña</label></li>
-                    <li id="In-con"><input type="password" name="Contraseña" id="Contraseña" placeholder="Contraseña" required></li>
-                    <li id=""><button type="submit">Registrarse</button></li>
+    <section id="registro" class="secciones-login">
+        <div id="contenedorRegistro">
+            <form id="formularioRegistro"  action="../../php/registro.php" method="POST" accept-charset="UTF-8">
+                <ul id="form-Reg-ul">
+                    <li><label class="form-label" for="Reg-ipt-email">Email</label></li>
+                    <li><input class="form-input" type="email" name="Reg-ipt-email" id="Reg-ipt-email" placeholder="ejemplo@hotmail.com"></li>
+                    <li><label class="form-label" for="Reg-ipt-contraseña" id="Reg-lb-pass">Contraseña</label></li>
+                    <li><input class="form-input" type="password" name="Reg-ipt-contraseña" id="Reg-ipt-contraseña" placeholder="Contraseña" required></li>
+                    <li><button class="form-sub-bton bton" type="submit" id="Reg-btn-submit"><span>Registrarse</span></button></li>
                 </ul>
             </form>
-            
         </div>
-    </div>
+    </section>
+    <section id="extras" class="secciones-login">
+        <h1>Te puede interesar</h1>
+    </section>
     <script src="neutroregistro.js"></script>
 </body>
 <footer id="piedepagina"><!--pie de pagina con info de la empresa y derechos de uso-->
     <div>
         <h6>derechos reservados para el creador de esta y todas las paginas asociadas a este software<br>
-        cualquier copia o reproduccion se penará con spam infinito.</h6>
+            cualquier copia o reproduccion se penará con spam infinito.</h6>
     </div>
 
 </footer>
+
 </html>
