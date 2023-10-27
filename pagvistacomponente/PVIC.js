@@ -12,8 +12,8 @@ let Go_products = document.getElementById("bton-productos");
 ////// validaciones para la barra de busqueda///////.
 function verificarSession(){
     //crea la variable que contiene el label
-    var nomUsuario = document.getElementById("labelusuario");
-    if(nomUsuario.innerText ==="cliente"){
+    var nomUsuario = sessionStorage.getItem("usuario");
+    if(!nomUsuario){
         alert("no has ingresado a una session");
         window.location.href="http://localhost/neutro/codigo/paglogin/loginindex.html";
         return false;
@@ -90,11 +90,10 @@ function traerproducto(){
         var boton_carrito = document.createElement("button");
         boton_carrito.className ="Producto-comp-btons";
         boton_carrito.textContent="añadir al carrito";
-        var botoncompra = document.createElement("button");
-        botoncompra.className ="Producto-comp-btons";
-        botoncompra.textContent="comprar";
         boton_carrito.onclick= function(){
-            reservarProduct();
+            var idproduct = data[0].id;
+            var nombreproducto = data[0].Nombre;
+            reservarProduct(idproduct,nombreproducto);
             console.log("intentaste reservar el producto");
         }
         li1.appendChild(infp);
@@ -111,10 +110,26 @@ function traerproducto(){
 
 //////fin seccion validaciones.////////////////////
 ////// seccion de funciones de Producto /////////////.
-function reservarProduct(){
+function Meter_en_carrito(idproduct, nombreproducto){
+
+    var formdata = new FormData();
+    var nombre_usuario = sessionStorage.getItem("usuario");
+    formdata.append("id",idproduct);
+    formdata.append("Nombreusuario",nombre_usuario);
+    formdata.append("producto", nombreproducto);
+    
+    fetch("http://localhost/Neutro/codigo/php/carrito/CarritoActions.php",{
+        method: 'POST',
+        body: formdata,
+    });
+
+
+}
+function reservarProduct(idproduct, nombreproducto){
     var verf =verificarSession();
     if(verf){
         alert("estas en una session, puedes reservar el Producto.");
+        Meter_en_carrito(idproduct,nombreproducto);
         window.location.href="http://localhost/Neutro/codigo/pagCarrito/cart_index.html";
 
     }if(!verf){
@@ -127,14 +142,16 @@ function reservarProduct(){
 ///////funciones dentro de el producto mostrado.//////////
 function configsession(){
     var label = document.getElementById("labelusuario");
-    var usuario = sessionStorage.getItem("usuario:");
-    if(usuario ==="" || usuario ===null){
+    var botonsession = document.getElementById("Bingresar");
+    var usuario = sessionStorage.getItem("usuario");
+    if( label =="" || !usuario){
         label.innerHTML="cliente";
+        
+
     }else{
         label.innerHTML = usuario;
+        botonsession.innerHTML ="cerrar session";
     }
-    
-    
 };
 
 //--fin seccion funciones del producto.---///
