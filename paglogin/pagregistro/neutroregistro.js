@@ -1,3 +1,9 @@
+//listener para la barra de busqueda:
+let Mp_Logo = document.getElementById("Logo-tienda");
+//listeners de botones para navegar en las paginas.
+Mp_Logo.addEventListener("click",function(){
+    window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
+});
 // funcion para registrarse.
 function validaremail(email){
     //expresion que verifica si el elmail tiene patron de usuario@dominio.extension .(acepta ñ).
