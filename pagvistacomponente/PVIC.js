@@ -21,6 +21,7 @@ function verificarSession(){
         return true;
     }
 }
+
 //listeners de botones para navegar en las paginas.
 Mp_Logo.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
