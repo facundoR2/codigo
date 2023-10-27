@@ -43,7 +43,7 @@ function buscarProducto(B_item){
 
 };
 // fin seccion busqueda.
-//seccion verificaciones
+//--------------seccion configuraciones de session-----------//.
 function verificarSession(){
     let usuarionombre = document.getElementById("labelusuario");
     var usuario = usuarionombre.textContent;
@@ -59,6 +59,18 @@ function verificarSession(){
         return respuesta;
     }
 };
+function configsession(){
+    var label = document.getElementById("labelusuario");
+    var botonsession = document.getElementById("Bingresar");
+    var usuario = sessionStorage.getItem("usuario");
+    if( label =="" || !usuario){
+        label.innerHTML="cliente";
+        
+    }else{
+        label.innerHTML = usuario;
+        botonsession.innerHTML ="cerrar session";
+    } 
+};
 //ficn seccion session.
 //listeners de botones para navegar en las paginas.
 nuevologin.addEventListener("click",function(){
@@ -68,7 +80,6 @@ nuevologin.addEventListener("click",function(){
     }else{
         window.location.href="http://localhost/Neutro/codigo/paglogin/index.html";
     }
-    
 });
 BtonCategorias.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagCategorias/index.html";
