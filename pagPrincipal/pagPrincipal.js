@@ -115,6 +115,12 @@ function traerproducto(){
             var producto = document.createElement("div");
             //le asigno nombre
             producto.className ="Producto";
+            producto.onclick=function(){
+                var h3 = this.querySelector("h3");
+                var nom = h3.textContent;
+                console.log("comprarste el producto: " + nom);
+                iraproducto(nom);
+            }
             var nombre = document.createElement("h3");
             nombre.className="Newsproducts";
             nombre.textContent = information[i].Nombre;
@@ -126,20 +132,10 @@ function traerproducto(){
             var precio  = document.createElement("p");
             precio.className="Product-p";
             precio.textContent = "$"+ information[i].Costo;
-            var botoncompra = document.createElement("button");
-            botoncompra.className ="Producto-Botondecompra";
-            botoncompra.textContent="Reservar";
-            botoncompra.onclick= function(){
-                var h3 = this.parentElement.querySelector("h3");
-                var nom = h3.textContent;
-                console.log("comprarste el producto: " + nom);
-                iraproducto(nom);
-            }
             //agregamos los items al contenedor "producto".
             producto.appendChild(img);
             producto.appendChild(nombre);
             producto.appendChild(precio);
-            producto.appendChild(botoncompra);
             //agregamos el producto al contenedor de productos.
             contenedorproductos.appendChild(producto);
         };
@@ -149,10 +145,20 @@ function traerproducto(){
 ////////////----------fin funcion------------------- ////////
 ///////////-----------seccion configsession------////////
 function configsession(){
-    var usuario = sessionStorage.getItem("usuario:");
     var label = document.getElementById("labelusuario");
-    label.innerText = usuario;
-}
+    var botonsession = document.getElementById("Bingresar");
+    var usuario = sessionStorage.getItem("usuario");
+    if( label =="" || !usuario){
+        label.innerHTML="cliente";
+        
+    }else{
+        label.innerHTML = usuario;
+        botonsession.innerHTML ="cerrar session";
+    }
+        
+        
+
+};
 ////////////----------fin funcion------------------- ////////
 //-----funcionalidad de  confirmar cookies--------////
 function crearCookie(nombre, valor, dias){
@@ -177,10 +183,26 @@ function obtenerCookie(nombre) {
     return"";
   }
 function confirmarCookies(){
+    const botonAceptarCookies  =document.getElementById("bton-aceptar-cookies");
+    const avisocookies = document.getElementById("aviso-cookies");
+    const fondoavisocookies = document.getElementById("fondo-aviso-cookies");
+
+    if(!localStorage.getItem('Cookies-aceptadas')){
+        avisocookies.classList.add("activo");
+        fondoavisocookies.classList.add("activo");
+    }
+    botonAceptarCookies.addEventListener("click",() =>{
+        avisocookies.classList.remove("activo");
+        fondoavisocookies.classList.remove("activo");
+
+        localStorage.setItem('Cookies-aceptadas', true);
+        crearCookie("aceptarCookies","si",365);
+    })
 }
 ////////////------------fin funcionalidad----------------------------////.
 //creamos un listener para cuando el DOM se termine de cargar, realice la funcion.
 window.addEventListener("DOMContentLoaded",function(){
+    confirmarCookies();
     traerproducto();
     configsession();
     

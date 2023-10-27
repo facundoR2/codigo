@@ -13,6 +13,73 @@ body{
     padding: 0px;
     box-sizing: border-box;
 }
+/* seccion del aviso de cookies. */
+.aviso-cookies{
+    display: none;
+    background: #fff;
+    padding: 20px;
+    width: calc(100% - 40px);
+    max-width: 300px;
+    line-height: 150%;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 100;
+    padding-top: 60px;
+    box-shadow: 0px 2px 20px 10px rgba(90, 89, 89, 0.25);
+    text-align: center;
+}
+.aviso-cookies.activo{
+    display: block;
+}
+.aviso-cookies .img-cookie{
+    max-width: 100px;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+.aviso-cookies .titulo-cookie,
+.aviso-cookies .parrafocookies{
+    margin-bottom: 15px;
+
+}
+.aviso-cookies .boton{
+    width: 100%;
+    background: #595959;
+    border: none;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:  .3s ease all;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+.aviso-cookies a{
+    color: rgb(18, 18, 119);
+    text-decoration: none;
+    font-size: 14px;
+}
+.aviso-cookies a:hover{
+    text-decoration: underline;
+}
+.fondo-aviso-cookies{
+    display: none;
+    background-color: rgba(0, 0, 0, 0.25);
+    position: fixed;
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    top:0;
+    left: 0;
+}
+.fondo-aviso-cookies.activo{
+    display: block;
+}
+/* fin seccion cookies */
 #Logo-tienda{
     width: 200px;
     height: 80px;
