@@ -13,11 +13,12 @@ body{
     padding: 0px;
     box-sizing: border-box;
 }
+/* -----------seccion cabecera----------------- */
 #Logo-tienda{
     width: 200px;
     height: 80px;
     image-rendering: optimizeQuality;
-    background-image: url(../imagenes/LOGO.jpg);
+    background-image: url(../../css/imagenes/LOGO.jpg);
     background-attachment: local;
 }
 #cabecera{
@@ -38,11 +39,7 @@ body{
     align-items:center;
     align-content: center;
 }
-#Lmenu{
-    display: flex;
-    width: 100%;
-    align-content: space-between;
-}
+
 #Login{
     display: flex;
     align-items:center;
@@ -72,13 +69,48 @@ body{
     padding-right: 30px;
     box-shadow: 0px 5px 3px rgb(95, 95, 95);
 }
-/* primera seccion  */
+/* ---------///////////////primera seccion\\\\\\\\\\\\\\\  */
+#primera_seccion{
+    display: flex;
+    justify-content: space-around;
+    width: auto;
+    height: auto;
+    align-items: flex-start;
+}
+.formulariosADM{
+    background-color: rgb(226, 223, 223);
+    border-radius: 10px;
+    padding: 1em;
+}
+.form-lis{
+    list-style: none;
+}
+.form-label{
+    font-family:'Oswald', sans-serif;
+    font-weight: 300;
+    padding-top: 3px;
+    font-size: large;
+}
+.form-input{
+    width: 20em;
+    height: 2em;
+    border-radius: 10px;
+    padding-bottom: 3px;
+    padding-left: 2px;
+}
+/* --------div menu de navegacion lateral---------- */
+#Lmenu{
+    flex-grow: 0.02;
+    
+}
 .nav-links{
     width: 180px;
-    height: 400px;
+    height: auto;
     padding-top:10px;
     padding-left:30px;
     padding-right:15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     line-height: 3em;
     list-style: none;
     align-items: center;
@@ -100,4 +132,116 @@ body{
 .LBTON:hover{
     background-color: white;
     transform: translate(0px,-3px);
+}
+/* -------- seccion controlador productos-------- */
+#controlador-productos{
+    flex-grow: 2;
+    margin-top: 5px;
+    margin-left: 5px;
+    display: grid;
+    height: 40em;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+    "titulo titulo"
+    "mod search";
+    align-items: center;
+    justify-content: center;
+}
+#controlador-productos h1{
+    grid-area: titulo;
+}
+#contenedor-prcto-search{
+    grid-area: search;
+}
+#contenedor-prcto-mod {
+    grid-area: mod;
+}
+/*----------- contenedor prcto-mod------------ */
+#contenedor-prcto-mod{
+    display: flex;
+    height: 40em;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: center;
+    padding: 1em 2em;
+    background-color: #fe6a00;
+    margin-left: 3px;
+}
+/* ------------contenedor prcto search--------- */
+#contenedor-prcto-search{
+    height: 40em;
+    background-color: #ff6a00;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 2em;
+}
+#contenedor-filas-prcto{
+    display: block;
+    height: 100%;
+    margin: 2em;
+    background-color: #d45a03;
+
+}
+/* --------------------/////////segunda seccion\\\\\\\\\\----------- */
+#segunda_seccion{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: auto;
+    margin-top: 2em;
+    align-items: flex-start;
+}
+/* -----------seccion publicidad--------- */
+#layout-publicidad{
+    flex-grow: 0.02;
+    width: 180px;
+}
+/* -----------seccion controlador ofertas--------- */
+#controlador-ofertas{
+    flex-grow: 2;
+    display: grid;
+    display: grid;
+    margin-top: 5px;
+    margin-left: 5px;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+    "titulo titulo"
+    "mod search";
+    align-items: center;
+    justify-content: center;
+}
+/* ----------layout titulo----- */
+#layout-titulo{
+    grid-area: titulo;
+    align-items: center;
+    justify-content: center;
+}
+/* ----------contenedor oferts-search-------- */
+#contenedor-oferts-search{
+    flex-grow: 1;
+    grid-area: search;
+    height: 40em;
+    background-color: #fe6a00;
+    align-items: center;
+    justify-content: center;
+}
+/* ----------contenedor oferts-mod-------- */
+#contenedor-oferts-mod{
+    height: 40em;
+    grid-area: mod;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: center;
+    padding: 1em 2em;
+    background-color: #fe6a00;
+    margin-left: 3px;
+}
+/* --------/////SECCION FOOTER\\\\\\------------- */
+footer{
+    margin-top: 2em;
+    padding-top: 10px;
+    height: 10em;
+    background-color: #fe6a00;
 }
