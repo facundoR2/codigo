@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="acc-stile.scss">
 </head>
+
 <body>
     <section>
         <div id="cabecera"><!--seccion head con flogin ,logo y barra buscadora-->
-            <img   id="Logo-tienda" src="../imagenes/LOGO.jpg"alt="LOGO" title="inicio">
+            <img id="Logo-tienda" src="../imagenes/LOGO.jpg" alt="LOGO" title="inicio">
             <div id="buscador">
-                <input id="Barrabusqueda"type="text" placeholder="ejemplo:'procesador tal'">
+                <input id="Barrabusqueda" type="text" placeholder="ejemplo:'procesador tal'">
                 <button id="BotonBuscar" target="_blank">buscar</button>
             </div>
             <div id="Login">
                 <label id="labelusuario">cliente</label>
-                <button  class="boton3D" id="Bingresar" type="button">Ingresar</button>
+                <button class="boton3D" id="Bingresar" type="button">Ingresar</button>
             </div>
         </div>
         <div id="vistamenu"><!--seccion menu con opciones para vista(modo oscuro,casillas o filas y carrito)-->
@@ -24,28 +26,50 @@
     </section>
     <section id="Lmenu">
         <ul class="nav-links">
-            <li><button class="LBTON">Favoritos(prox)</button></li>
             <li><button class="LBTON" id="bton-accesorios">accesorios</button></li>
             <li><button class="LBTON" id="bton-categorias">categorias</button></li>
-            <li><button class="LBTON" id="bton-carrito">carrito(prox)</button></li>
+            <li><button class="LBTON" id="bton-carrito">carrito</button></li>
             <li><button class="LBTON" id="bton-ATP">arma tu pc(prox)</button></li>
-            <li><button class="LBTON">historial(prox)</button></li>
             <li><button class="LBTON" id="bton-productos">Productos</button></li>
         </ul>
-        <div id="contenedor-marcas">
-            <h1>MARCAS</h1>
-        </div>
-        <div class="layout-productos">
-            <div id="contenedor-productos"></div>
-        </div>
+        <section id="layout-items">
+            <div class="box" id="box-marcas">
+                <h1 class="h1-contenedores">MARCAS</h1>
+                <div class="layout-productos">
+                    <div id="contenedor-Marcas"></div>
+                </div>
+            </div>
+            <div class="box" id="box-auriculares">
+                <h1 class="h1-contenedores">Auriculares</h1>
+                <div id="contenedor_auriculares"></div>
+            </div>
+            <div class="box" id="box-webcams">
+                <h1 class="h1-contenedores">Webcams</h1>
+                <div id="contenedor_webcams"></div>
+            </div>
+            <div class="box" id="box-teclados">
+                <h1 class="h1-contenedores">Teclados</h1>
+                <div id="contenedor_teclados"></div>
+            </div>
+            <div class="box" id="box-impresoras">
+                <h1 class="h1-contenedores">Impresoras</h1>
+                <div id="contenedor_impresoras"></div>
+            </div>
+            <div class="box" id="box-routers">
+                <h1 class="h1-contenedores">Routers</h1>
+                <div id="contenedor_Routers"></div>
+            </div>
+        </section>
 
-        <script src="f-acc.js"></script>
+        
     </section>
+    <script src="Acc-functions.js"></script>
     <footer><!--pie de pagina con info de la empresa y derechos de uso-->
         <div>
             <h6>derechos reservados para el creador de esta y todas las paginas asociadas a este software<br>
-            cualquier copia o reproduccion se penará con spam infinito.</h6>
+                cualquier copia o reproduccion se penará con spam infinito.</h6>
         </div>
-    
+
 </body>
+
 </html>
