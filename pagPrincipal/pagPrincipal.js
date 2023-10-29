@@ -53,7 +53,7 @@ function verificarSession(){
     console.log(usuario);
     if (usuario == "cliente"){
         alert("no has ingresado a una session");
-        window.location.href="http://localhost/neutro/codigo/paglogin/index.html";
+        window.location.href="http://localhost/neutro/codigo/paglogin/loginindex.html";
         var respuesta = false;
         return respuesta;
     }else{
@@ -73,7 +73,7 @@ nuevologin.addEventListener("click",function(){
     }
 }); 
 BtonCategorias.addEventListener("click",function(){
-    window.location.href="http://localhost/Neutro/codigo/pagCategorias/index.html";
+    window.location.href="http://localhost/Neutro/codigo/pagCategorias/category_index.html";
 });
 BtonAccesorios.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagAccesorios/Acc-index.html";
@@ -140,7 +140,6 @@ function traerproducto(){
             contenedorproductos.appendChild(producto);
         };
     });
-
 };
 ////////////----------fin funcion------------------- ////////
 ///////////-----------seccion configsession------////////
@@ -154,10 +153,7 @@ function configsession(){
     }else{
         label.innerHTML = usuario;
         botonsession.innerHTML ="cerrar session";
-    }
-        
-        
-
+    }     
 };
 ////////////----------fin funcion------------------- ////////
 //-----funcionalidad de  confirmar cookies--------////
