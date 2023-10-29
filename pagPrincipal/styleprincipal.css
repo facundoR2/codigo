@@ -96,7 +96,7 @@ body{
     height: 90px;
     background-color:rgb(254, 106, 0,1);
 }
-#cabecera #buscador{
+#buscador{
     justify-content: center;
     width: 600px;
 }
@@ -105,7 +105,6 @@ body{
     height: 3em;
     border-radius: 15px;
     z-index: 1;
-
 }
 #BotonBuscar{
     align-items: center;
