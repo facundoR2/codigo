@@ -72,7 +72,7 @@ body{
 /* ---------///////////////primera seccion\\\\\\\\\\\\\\\  */
 #primera_seccion{
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-evenly; */
     width: auto;
     height: auto;
     align-items: flex-start;
@@ -135,12 +135,12 @@ body{
 }
 /* -------- seccion controlador productos-------- */
 #controlador-productos{
-    flex-grow: 2;
+    flex-grow: 1;
     margin-top: 5px;
     margin-left: 5px;
     display: grid;
     height: 40em;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(1,1fr);
     grid-template-rows: auto 1fr;
     grid-template-areas: 
     "titulo titulo"
@@ -154,35 +154,81 @@ body{
 #contenedor-prcto-search{
     grid-area: search;
 }
-#contenedor-prcto-mod {
+#editar-producto{
     grid-area: mod;
 }
-/*----------- contenedor prcto-mod------------ */
-#contenedor-prcto-mod{
+/* -----------contenedor editar-producto */
+#editar-producto{
+    flex-grow: 2;
     display: flex;
-    height: 40em;
+    /* margin-top: 2em; */
+    height: 30em;
+    width: 15em;
     align-items: center;
-    justify-content: flex-start;
+    justify-content:center;
     align-content: center;
-    padding: 1em 2em;
+    padding: 1em;
     background-color: #fe6a00;
+    box-shadow: 1px 5px 12px 9px rgb(218, 91, 0);
+    margin-left: 3px;
+}
+#layout-edit-producto{
+    flex-grow: 2;
+    display: flex;
+    /* margin-top: 2em; */
+    height: 30em;
+    width: 15em;
+    align-items: center;
+    justify-content:center;
+    align-content: center;
+    padding: 1em;
+    background-color: #fe6a00;
+    box-shadow: 1px 5px 12px 9px rgb(218, 91, 0);
     margin-left: 3px;
 }
 /* ------------contenedor prcto search--------- */
 #contenedor-prcto-search{
-    height: 40em;
+    /* display: flexbox; */
+    height: 30em;
     background-color: #ff6a00;
     align-items: center;
-    justify-content: center;
-    padding: 1em 2em;
+    align-content: center;
+    justify-content:center;
+    padding: 1vh 2vw;
 }
-#contenedor-filas-prcto{
-    display: block;
-    height: 100%;
-    margin: 2em;
-    background-color: #d45a03;
+#contenedor-productos{
+    overflow: auto;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    height: 20em;
+    padding: 1%;
+    background-color: #ebebeb;
+    border-radius: 10px;
+}
+
+.th-productos{
+    align-items: center;
+    justify-content: center;
+    padding-right: 2em;
+}
+.tr-producto{
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+}
+.td-producto{
+    width: 5em;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    /* display: table-cell; */
+    border: 1px solid black;
 
 }
+
 /* --------------------/////////segunda seccion\\\\\\\\\\----------- */
 #segunda_seccion{
     display: flex;

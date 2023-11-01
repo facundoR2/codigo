@@ -1,58 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="ADMpstyle.css">
 </head>
+
 <body>
     <section id="cabecera"><!--seccion head con flogin ,logo y barra buscadora-->
         <div id="logo">
-            <img   id="Logo-tienda" src="../../css/imagenes/LOGO.jpg"alt="LOGO" title="inicio">
+            <img id="Logo-tienda" src="../../css/imagenes/LOGO.jpg" alt="LOGO" title="inicio">
         </div>
         <div id="Login">
             <label id="labelusuario">cliente</label>
             <button id="Bingresar">Ingresar</button>
         </div>
     </section>
-    <span id="vistamenu"></span>
-    <section id="primera_seccion">
+    <div id="vistamenu">
         <section id="Lmenu">
-            <ul class="nav-links">
-                <li><button class="LBTON" id="lm-bton-inicio">inicio</button></li>
-                <li><button class="LBTON" id="lm-bton-productos">productos</button></li>
-                <li><button class="LBTON" id="lm-bton-ofertas">ofertas</button></li>
-
-            </ul>
+                <button class="LBTON" id="lm-bton-inicio">inicio</button>
+                <button class="LBTON" id="lm-bton-productos">productos</button>
+                <button class="LBTON" id="lm-bton-ofertas">ofertas</button>
+                <button class="LBTON" id="nuevoProducto">CREAR NUEVO PRODUCTO</button>
         </section>
+    </div>
+    <section id="primera_seccion">
+        
         <section id="controlador-productos">
             <h1>PRODUCTOS</h1>
-            <div id="contenedor-prcto-search">
-                <div id="contenedor-filas-prcto">
-                    <ul>
-                        <li>algo</li>
-                    </ul>
+            <section id="editar-producto">
+                <div id="layout-edit-producto">
+                    <div id="contenedor_edit">
+                        <form class="formulariosADM" id="form-prcto" enctype="multipart/form-data">
+                            <ul class="form-uls">
+                                <li class="form-lis"><label class="form-label" for="prcto-in-id">idproducto</label></li>
+                                <li class="form-lis"><input class="form-input"  id="prcto-in-id"  name="prcto-in-id" type="text" placeholder="nrostock+nrocategoria+nroproducto"></li>
+                                <li class="form-lis"><label class="form-label" for="prcto-in-nombre">nombre</label></li>
+                                <li class="form-lis"><input class="form-input" id="prcto-in-nombre" name="prcto-in-nombre" type="text" title="nombre del producto" placeholder="nombre del producto ej: notebook samsung"></li>
+                                <li class="form-lis"><label class="form-label" for="prcto-in-crtcs">Caracteristicas</label></li>
+                                <li class="form-lis"><input class="form-input" id="prcto-in-crtcs" name="prcto-in-crtcs"></li>
+                                <li class="form-lis"><label class="form-label" for="prcto-in-img">imagen</label></li>
+                                <li class="form-lis"><input class="form-input" id="prcto-in-img" name="prcto-in-img" placeholder="ingrese URL de la ubicacion de la imagen"></li>
+                                <li class="form-lis"><label class="form-label" for="prcto-in-Estado">Estado</label></li>
+                                <li class="form-lis"><input class="form-input" id="prcto-in-Estado"  name="prcto-in-Estado"></li>
+                                <li class="form-lis"><label class="form-label" for="prcto-in-Categoria">Categoria</label></li>
+                                <li class="form-lis"><select class="form-input" id="prcto-in-Categoria" name="prcto-in-Categoria">
+                                    <option value="0">Colocar Categoria</option>
+                                </select></li>
+                                <button class="form-submit" id="bton-prcto-submit" type="submit" name="prcto-submit">Agregar</button>
+                            </ul>
+                        </form>
+                    </div>
                 </div>
-            </div> <!--contenedor que mostrara todos los productos generados en una tabla-->
-            <div id="contenedor-prcto-mod">
-                <form class="formulariosADM" id="form-prcto">
-                    <ul class="form-uls">
-                        <li class="form-lis"><label class="form-label" for="prcto-in-id">id</label></li>
-                        <li class="form-lis"><input class="form-input" name="prcto-in-id" type="text" placeholder="solo numeros,"></li>
-                        <li class="form-lis"><label class="form-label">nombre</label></li>
-                        <li class="form-lis"><input class="form-input" name="prcto-in-nombre" type="text" title="nombre del producto" placeholder="nombre del producto ej: notebook samsung"></li>
-                        <li class="form-lis"><label class="form-label">Caracteristicas</label></li>
-                        <li class="form-lis"><input class="form-input" name="prcto-in-crtcs"></li>
-                        <li class="form-lis"><label class="form-label">imagen</label></li>
-                        <li class="form-lis"><input class="form-input" name="prcto-in-img"></li>
-                        <li class="form-lis"><label class="form-label">Estado</label></li>
-                        <li class="form-lis"><input class="form-input" name="prcto-in-Estado"></li>
-                        <li class="form-lis"><label class="form-label">Categoria</label></li>
-                        <li class="form-lis"><input class="form-input" name="prcto-in-Categoria"></li>
-                    </ul>
-                </form>
-            </div> <!-- contenedor del formulario para crear o modificar productos  -->
+            </section>
+            <div id="contenedor-prcto-search"><!--contenedor que mostrara todos los productos generados en una tabla-->              
+                <div id="contenedor-productos"></div>
+            </div> 
         </section>
     </section>
     <section id="segunda_seccion">
@@ -62,27 +67,26 @@
             </div>
         </section>
         <section id="controlador-ofertas">
-            <div id="layout-titulo"><h1>OFERTAS</h1></div>
-            <div id="contenedor-oferts-search">
-                <ul>
-                    <li>algo</li>
-                </ul>
+            <div id="layout-titulo">
+                <h1>OFERTAS</h1>
             </div>
-            </div> <!--contenedor que mostrara todas las ofertas generadas en una tabla-->
-            <div id="contenedor-oferts-mod">
+            <div id="contenedor-oferts-mod"><!-- contenedor del formulario para crear o modificar ofertas  -->
                 <form class="formulariosADM" id="form-oferts">
                     <ul>
                         <li class="form-lis"><label class="form-label">id</label></li>
-                        <li class="form-lis"><input class="form-input"></li>
+                        <li class="form-lis"><input class="form-input"Id="form-ofert-input-id"></li>
                         <li class="form-lis"><label class="form-label">nombre producto</label></li>
-                        <li class="form-lis"><input class="form-input"></li>
-                        <li class="form-lis"><label class="form-label">precio anterior</label></li>
-                        <li class="form-lis"><input class="form-input"></li>
+                        <li class="form-lis"><input class="form-input" id="form-ofert-input-nombre"></li>
+                        <li class="form-lis"><label class="form-label" >precio anterior</label></li>
+                        <li class="form-lis"><input class="form-input" id="form-ofert-input-precioA"></li>
                         <li class="form-lis"><label class="form-label">precio actual</label> </li>
-                        <li class="form-lis"><input class="form-input"></li>
+                        <li class="form-lis"><input class="form-input" id="form-ofert-input-precioB"></li>
                     </ul>
                 </form>
-            </div> <!-- contenedor del formulario para crear o modificar ofertas  -->
+            </div>
+            <div id="contenedor-oferts-search"><!--contenedor que mostrara todas las ofertas generadas en una tabla-->
+                <div id="contenedor_ofertas"></div>
+            </div> 
         </section>
     </section>
     <script src="ADMpfunctions.js"></script>
@@ -90,8 +94,9 @@
 <footer><!--pie de pagina con info de la empresa y derechos de uso-->
     <div>
         <h6>derechos reservados para el creador de esta y todas las paginas asociadas a este software<br>
-        cualquier copia o reproduccion se penará con spam infinito.</h6>
+            cualquier copia o reproduccion se penará con spam infinito.</h6>
     </div>
 
 </footer>
-</html> 
+
+</html>
