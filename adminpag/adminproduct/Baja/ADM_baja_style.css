@@ -1,0 +1,119 @@
+@font-face{
+    font-family: 'Oswald', sans-serif;
+    src: url(../css/Fonts/Oswald-Bold.ttf)format(TrueType);
+    font-weight: 600;
+}
+/* config para que todo el cuerpo use la fuente dispuesta abajo */
+body{
+    font-family:'Oswald', sans-serif;
+    font-weight: 600;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+/* -----------seccion cabecera----------------- */
+#Logo-tienda{
+    width: 200px;
+    height: 80px;
+    image-rendering: optimizeQuality;
+    background-image: url(../../css/imagenes/LOGO.jpg);
+    background-attachment: local;
+}
+#cabecera{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 0;
+    height: 90px;
+    background-color:rgb(254, 106, 0,1);
+}
+
+#Login{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 20%;
+    padding-left: 3px;
+    align-items:center;
+    align-content: center;
+}
+
+#Login{
+    display: flex;
+    align-items:center;
+    justify-content: right;
+
+}
+#labelusuario{
+    padding-right: 5px;
+}
+#Bingresar{
+    margin-left: 3px;
+    border: 0;
+    padding: 10px 20px;
+    font-size: medium;
+    color: white;
+    background: rgb(155, 63, 9);
+    position: relative;
+    box-shadow: 3px 3px rgb(97, 39, 6);
+}
+#vistamenu{
+    display: flex;
+    width: auto;
+    height: 40px;
+    background-color: grey;
+    align-items: center;
+    justify-content: right;
+    box-shadow: 0px 5px 3px rgb(95, 95, 95);
+}
+#primera_seccion{
+    display: flex;
+    justify-content:flex-start;
+    width: auto;
+    height: auto;
+    align-items: flex-start;
+}
+/* --------div menu de navegacion lateral---------- */
+#Lmenu{
+    flex-grow: 0.02;
+    
+}
+.nav-links{
+    width: 180px;
+    height: auto;
+    padding-top:10px;
+    padding-left:30px;
+    padding-right:15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    line-height: 3em;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    background-color: rgb(45, 44, 44);
+}
+.LBTON{
+    width: 130px;
+    height: 30px;
+    font-family:'Oswald', sans-serif;
+    font-weight: 300;
+    background-color:rgb(253, 101, 13);
+    border-color: whitesmoke;
+    border-radius: 15px;
+    align-content: space-around;
+    position: relative;
+}
+.LBTON:hover{
+    background-color: white;
+    transform: translate(0px,-3px);
+}
+/* -----seccion editar-producto------- */
+#editar-producto{
+    padding-left: 20px;
+}
+/*----------- contenedor prcto-mod------------ */
+
+/* ------------------seccion formularios-------- */
