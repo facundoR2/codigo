@@ -17,6 +17,21 @@ function validarcontraseña(contraseña){
     return regla_ex.test(contraseña);
 
 }
+function validarduplicado(mail,contraseña){
+    var formdata = new FormData();
+    formdata.append("Mail",mail);
+    formdata.append("Contraseña",contraseña);
+    fetch("http://localhost/Neutro/codigo/php/usuarios/verificacion_registro.php",{
+        method: 'POST',
+        body: formdata,
+    })
+    .then(function(response){
+        if(response.ok){
+            console.log(response);
+        }
+    })
+}
+//----------fin seccion validaciones----//
 function insertarNuevoUsuario( mail, contraseña){
     var formdata = new FormData();
     formdata.append("Mail",mail);
@@ -63,7 +78,8 @@ formulario.addEventListener("submit", function(Event){
         }else{
             console.log(mail);
             console.log(contraseña);
-            insertarNuevoUsuario(mail, contraseña);
+            validarduplicado(mail,contraseña);
+            // insertarNuevoUsuario(mail, contraseña);
         }
     }
 });
