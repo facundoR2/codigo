@@ -22,13 +22,15 @@ Go_inicio.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
 });
 Go_accesorios.addEventListener("click",function(){
-    window.location.href="http://localhost/Neutro/codigo/pagAccesorios/Acc-index.html";
+    alert("esta funcion todavia no esta lista");
+    // window.location.href="http://localhost/Neutro/codigo/pagAccesorios/Acc-index.html";
 });
 Go_categorias.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagCategorias/index.html";
 });
 Go_ATP.addEventListener("click",function(){
-    window.location.href="http://localhost/neutro/codigo/pagArmarTuPc/index.html";
+    alert("esta funcion todavia no esta lista");
+    // window.location.href="http://localhost/neutro/codigo/pagArmarTuPc/index.html";
 });
 //listener para botones de conexion
 btonRegistrar.addEventListener("click",function(){

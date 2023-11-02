@@ -57,7 +57,8 @@ BtonAccesorios.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagAccesorios/Acc-index.html";
 });
 Go_mypc.addEventListener("click",function(){
-    window.location.href="http://localhost/Neutro/codigo/pagArmarTuPc/index.html";
+    alert("esta funcion todavia no esta lista");
+    // window.location.href="http://localhost/Neutro/codigo/pagArmarTuPc/index.html";
 });
 Go_tocart.addEventListener("click",function(){
     verificarSession()

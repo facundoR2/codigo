@@ -42,7 +42,8 @@ nuevologin.addEventListener("click",function(){
     }
 });
 BtonCategorias.addEventListener("click",function(){
-    window.location.href="http://localhost/Neutro/codigo/pagCategorias/index.html";
+    alert("esta funcion todavia no esta lista");
+    // window.location.href="http://localhost/Neutro/codigo/pagCategorias/index.html";
 });
 
 Go_mypc.addEventListener("click",function(){
