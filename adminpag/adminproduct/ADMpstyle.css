@@ -39,13 +39,6 @@ body{
     align-items:center;
     align-content: center;
 }
-
-#Login{
-    display: flex;
-    align-items:center;
-    justify-content: right;
-
-}
 #labelusuario{
     padding-right: 5px;
 }

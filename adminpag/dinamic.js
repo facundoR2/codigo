@@ -27,6 +27,18 @@ orders.addEventListener("click",function(){
 })
 
 // ------------------- fin botones de nav ------------------//
+function config_status_session(){
+    var label = document.getElementById("labelusuario");
+    var botonsession = document.getElementById("Bingresar");
+    var usuario = sessionStorage.getItem("usuario");
+    if( label =="" || !usuario){
+        label.innerHTML="cliente";
+        
+    }else{
+        label.innerHTML = usuario;
+        botonsession.innerHTML ="cerrar session";
+    }     
+};
 // -----------------funcion para solicitar los datos de las tablas---------//
  async function obtenerinfo(){
 
@@ -45,10 +57,5 @@ orders.addEventListener("click",function(){
     }
 }
 window.addEventListener("DOMContentLoaded",function(){
-    let usuario = sessionStorage.getItem("usuario:");
-    if(usuario==null || usuario==" "){
-        this.alert("usted no esta en una session");
-    }else{
-        this.alert("bienvenido "+usuario);
-    }
+    config_status_session();
 });

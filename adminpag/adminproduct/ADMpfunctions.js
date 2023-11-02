@@ -26,9 +26,13 @@ function validar_Edicion_producto(nombre,Caracteristicas,imagen,Estado,Categoria
     if(nombre === "" && Caracteristicas ===""){
         //revisa si los campos estan vacios
     }
+    
     //verificar si es solo texto,
     //verificar si esta todo en miniscula(eceptuando url imagen);
     // "" si la categoria esta seleccionada y no tiene valor "0".
+    if(Categoria.value="0"){
+        alert("Categoria invalida,por favor verifique");
+    }
 
 
 
