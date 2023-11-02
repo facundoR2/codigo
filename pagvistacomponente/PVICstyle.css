@@ -3,6 +3,11 @@
     src: url(../Fonts/Oswald-Bold.ttf)format(TrueType);
     font-weight: 600;
 }
+@font-face {
+    font-family: 'Oswald-Regular', sans-serif;
+    src: url(../css/Fonts/Oswald-Regular.ttf)format(TrueType);
+    font-weight: 400;
+}
 /* config para que todo el cuerpo use la fuente dispuesta abajo */
 body{
     font-family:'Oswald', sans-serif;
@@ -97,14 +102,7 @@ body{
     padding-right: 30px;
     box-shadow: 0px 5px 3px rgb(95, 95, 95);
 }
-.menulista #Bmododark{
-    background-image: url(../extras/brillo-y-contraste.png);
-    background-repeat: no-repeat;
-    height: 30px;
-    width: 40px;
-    background-size: 30px 30px;
-    background-position: center;
-}
+
 /* ----------inicio seccion del producto y los botones de navegacion-------- */
 /* ---parte de los botones de navegacion---- */
 #Lmenu{
@@ -139,15 +137,27 @@ body{
     flex-direction: row;
     flex-wrap: nowrap;
     margin: 4% 7%;
-    background-color: aqua;
+    padding: 2em;
+    border-radius: 10px;
+    background-color:rgb(141, 141, 140) ;
 }
 #img-producto-reserva{
+    display: contents;
     width: 320px;
     height: 250px;
+    border-image-width: auto;
+    justify-content: center;
     align-content: center;
     text-align: center;
     min-height: min-content;
     min-width: min-content;
+    box-shadow: 0px 6px 13px 2px;
+}
+.IMAGEN-Producto{
+    display: flex;
+    border-radius: 10%;
+    width: 35vw;
+    height: 36vh;
 }
 #info-producto-reserva{
     list-style: none;
@@ -161,6 +171,22 @@ body{
 }
 .Ulproducto li{
     width: 10em;
+}
+/* #info-producto-reserva p{} */
+/* -----------seccion botones del producto mostrado.------- */
+.Producto-comp-btons{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+    background-color: blue;
+    color: aliceblue;
+    border-radius: 10px;
+    width: 10em;
+    height: 5em;
+    font-family:'Oswald';
+    font-weight: 600;
 }
 
 #Vistaproducto{

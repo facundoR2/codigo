@@ -5,10 +5,12 @@ let Mp_Logo = document.getElementById("Logo-tienda");
 let nuevologin = document.getElementById('Bingresar');
 let BtonAccesorios = document.getElementById("bton-accesorios");
 let BtonCategorias = document.getElementById("bton-categorias");
+let GO_inicio = document.getElementById("bton-inicio");
 let Go_tocart = document.getElementById("bton-carrito");
 let Go_mypc = document.getElementById("bton-ATP");
 let Go_products = document.getElementById("bton-productos");
 
+//////-.---------------------funcionalidad de la cabecera----------------------////////
 ////// validaciones para la barra de busqueda///////.
 function verificarSession(){
     //crea la variable que contiene el label
@@ -21,20 +23,33 @@ function verificarSession(){
         return true;
     }
 }
+//////  fin--------validaciones para la barra de busqueda-------///////.
 
+//////-.--------------------- fin funcionalidad de la cabecera----------------------////////
 //listeners de botones para navegar en las paginas.
+GO_inicio.addEventListener("click",function(){
+    window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
+})
 Mp_Logo.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
 });
 nuevologin.addEventListener("click",function(){
-    verificarSession()
-    if(verificarSession==true){
-        alert("ya estas en una session");
-    }else{
-        window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
+    if(nuevologin.innerHTML ==="Ingresar"){
+        verificarSession()
+        if(verificarSession==true){
+            alert("ya estas en una session, por favor cierra tu sesion si quieres iniciar otra diferente.");
+            botonsession.innerHTML ="cerrar session";
+        }else{
+            window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
+        }
+    }if(nuevologin.innerHTML =="cerrar session"){
+        //limpia todas las variables de la session.
+        sessionStorage.clear();
+        //devuelve a pagina principal.
+        window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
     }
     
-});
+}); 
 BtonCategorias.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagCategorias/index.html";
 });
@@ -54,6 +69,8 @@ Go_tocart.addEventListener("click",function(){
 });
 
 //////////////////////// seccion mostrar producto buscado.////////////.
+
+//funcionalidad respecto al producto seleccionado.
 function traerproducto(){
     //hacemos peticion para buscar el producto seleccionado.
     let nombre =sessionStorage.getItem("producto");
@@ -85,23 +102,32 @@ function traerproducto(){
         precio.className="PRECIO-Producto";
         // se crea el Img para la imagen del producto.
         var imagen = document.createElement("img");
-        imagen.src = data[0].Imagen;
+        imagen.src = data[0].imagen;
         imagen.alt ="NO se recuperó imagen del producto";
         imagen.className="IMAGEN-Producto";
+        var boton_comprar = document.createElement("button");
+        boton_comprar.className = "Producto-comp-btons";
+        boton_comprar.textContent="Reservar ahora";
+        boton_comprar.onclick=function(){
+            var idproduct = data[0].id_producto;
+            ReservarAhora(idproduct);
+        }
         var boton_carrito = document.createElement("button");
         boton_carrito.className ="Producto-comp-btons";
         boton_carrito.textContent="añadir al carrito";
         boton_carrito.onclick= function(){
-            var idproduct = data[0].id;
+            var idproduct = data[0].id_producto;
             var nombreproducto = data[0].Nombre;
             reservarProduct(idproduct,nombreproducto);
             console.log("intentaste reservar el producto");
         }
         li1.appendChild(infp);
         li2.appendChild(precio);
+        li3.appendChild(boton_comprar);
         li4.appendChild(boton_carrito);
         m_ul.appendChild(li1);
         m_ul.appendChild(li2);
+        m_ul.appendChild(li3);
         m_ul.appendChild(li4);
         content_dataproduct.appendChild(m_ul);
         contentview.appendChild(imagen);
@@ -125,6 +151,40 @@ function Meter_en_carrito(idproduct, nombreproducto){
     });
 
 
+}
+function confirmacion_compra(idproduct){
+    var formdata = new FormData();
+    formdata.append("producto",idproduct);
+    alert("se creara un un pdf para validar el tramite");
+
+}
+function ReservarAhora(idproduct){
+    var formdata = new FormData();
+    var estado_producto = "Comprado";
+    formdata.append("producto",idproduct);
+    formdata.append("estado",estado_producto);
+    fetch("http://localhost/Neutro/codigo/php/producto/verificar_existencias_Reservas.php",{
+        method: 'POST',
+        body: formdata,
+    })
+    .then(function(Response){
+        if (Response.ok){
+            return Response.json();
+        }
+    }).then(function(data){
+        console.log(data);
+        if(data ==="no hay producto disponible"){
+            if(window.confirm("el producto se encuentra AGOTADO, por favor consulte en nuestros locales para mas info.")){
+                window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
+            };
+        }else{
+            console.log("en este momento se creara un pdf con los datos de tramite.");
+            confirmacion_compra(idproduct);
+        }
+    })
+    //busca consulta que id del producto estan disponibles.
+    //genera su reserva cambiando su estado.
+    //genera pdf con numero de tramite.
 }
 function reservarProduct(idproduct, nombreproducto){
     var verf =verificarSession();
@@ -156,9 +216,32 @@ function configsession(){
 };
 
 //--fin seccion funciones del producto.---///
-
+//---seccion cookies------//
+function crearCookie(nombre, valor, dias){
+    var fecha = new Date();
+    fecha.setTime(fecha.getTime() + (dias*24*60*60*1000));
+    var expira = "expires="+ fecha.toUTCString();
+    document.cookie = nombre + "=" + valor + ";" + expira +";path=/";
+}
+// Función para obtener el valor de una cookie por su nombre
+function obtenerCookie(nombre) {
+    var nombreCookie = nombre + "=";
+    var cookies = document.cookie.split(';');
+    for(var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i];
+      while (cookie.charAt(0) == ' ') {
+        cookie = cookie.substring(1);
+      }
+      if (cookie.indexOf(nombreCookie) == 0) {
+        return cookie.substring(nombreCookie.length, cookie.length);
+      }
+    }
+    return"";
+}
+//--- fin seccion cookies------//
 window.addEventListener("DOMContentLoaded",function(){
     traerproducto();
+    verificarSession();
     configsession();
 
 });
