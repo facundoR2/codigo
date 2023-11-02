@@ -3,7 +3,7 @@ include ("conexion.php");
 
 
 //$conect para consultas.
-$sql = "SELECT * FROM stock ORDER BY RAND() LIMIT 5";
+$sql = "SELECT * FROM productos WHERE Estado ='alta' ORDER BY RAND() LIMIT 5";
 $resultado = mysqli_query($conn,$sql);
 $productos =array();
 if (mysqli_num_rows($resultado)>0){

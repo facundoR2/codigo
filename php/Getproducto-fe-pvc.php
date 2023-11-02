@@ -7,7 +7,7 @@ $Nombre =$_POST["Nombre"];
 //sanitizar el nombre para evitar inyeccion sql
 $Nombre =mysqli_real_escape_string($conn,$Nombre);
 // realizamos la busqueda en la base de datos ?
-$consulta= mysqli_query($conn, "SELECT * FROM stock WHERE Nombre='$Nombre'");
+$consulta= mysqli_query($conn, "SELECT * FROM productos WHERE Nombre='$Nombre' LIMIT 1");
 //creamos un array para capturar los resultados (si es que hay).
 $resultado = array();
 //verificar si algun registro coincide.

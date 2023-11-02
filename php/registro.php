@@ -6,6 +6,7 @@ $contraseña = $_POST['Contraseña'];
 // se encripta la contraseña por seguridad.
 $hash = password_hash($contraseña, PASSWORD_DEFAULT);
 
+
 //primero por reglas de clave fornea , creamos el carrito del nuevo usuario.
 //creamos un array para la confirmaciones.
 $confirm = array();
