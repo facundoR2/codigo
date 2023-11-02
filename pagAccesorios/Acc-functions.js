@@ -26,11 +26,19 @@ buscador.addEventListener("click",function(){
 });
 //listeners de botones para navegar en las paginas.
 nuevologin.addEventListener("click",function(){
-    verificarSession()
-    if(verificarSession==true){
-        alert("ya estas en una session");
-    }else{
-        window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
+    if(nuevologin.innerHTML ==="Ingresar"){
+        verificarSession()
+        if(verificarSession==true){
+            alert("ya estas en una session, por favor cierra tu sesion si quieres iniciar otra diferente.");
+            botonsession.innerHTML ="cerrar session";
+        }else{
+            window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
+        }
+    }if(nuevologin.innerHTML =="cerrar session"){
+        //limpia todas las variables de la session.
+        sessionStorage.clear();
+        //devuelve a pagina principal.
+        window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
     }
 });
 BtonCategorias.addEventListener("click",function(){
