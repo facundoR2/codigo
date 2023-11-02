@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="acc-stile.scss">
+    <link rel="stylesheet" href="acc-stile.css">
 </head>
 
 <body>
     <section>
         <div id="cabecera"><!--seccion head con flogin ,logo y barra buscadora-->
-            <img id="Logo-tienda" src="../imagenes/LOGO.jpg" alt="LOGO" title="inicio">
+            <img id="Logo-tienda" src="../css/imagenes/LOGO.jpg" alt="LOGO" title="inicio">
             <div id="buscador">
                 <input id="Barrabusqueda" type="text" placeholder="ejemplo:'procesador tal'">
                 <button id="BotonBuscar" target="_blank">buscar</button>
@@ -26,38 +26,43 @@
     </section>
     <section id="Lmenu">
         <ul class="nav-links">
-            <li><button class="LBTON" id="bton-accesorios">accesorios</button></li>
+            <li><button class="LBTON" id="bton-inicio">inicio</button></li>
             <li><button class="LBTON" id="bton-categorias">categorias</button></li>
             <li><button class="LBTON" id="bton-carrito">carrito</button></li>
             <li><button class="LBTON" id="bton-ATP">arma tu pc(prox)</button></li>
-            <li><button class="LBTON" id="bton-productos">Productos</button></li>
         </ul>
         <section id="layout-items">
-            <div class="box" id="box-marcas">
-                <h1 class="h1-contenedores">MARCAS</h1>
-                <div class="layout-productos">
-                    <div id="contenedor-Marcas"></div>
-                </div>
-            </div>
             <div class="box" id="box-auriculares">
                 <h1 class="h1-contenedores">Auriculares</h1>
-                <div id="contenedor_auriculares"></div>
+                <div class="contenedor-accesorio" id="6"></div>
             </div>
             <div class="box" id="box-webcams">
                 <h1 class="h1-contenedores">Webcams</h1>
-                <div id="contenedor_webcams"></div>
+                <div class="contenedor-accesorio" id="contenedor_webcams"></div>
             </div>
             <div class="box" id="box-teclados">
                 <h1 class="h1-contenedores">Teclados</h1>
-                <div id="contenedor_teclados"></div>
+                <div class="contenedor-accesorio" id="16"></div>
             </div>
             <div class="box" id="box-impresoras">
                 <h1 class="h1-contenedores">Impresoras</h1>
-                <div id="contenedor_impresoras"></div>
+                <div class="contenedor-accesorio" id="3"></div>
             </div>
             <div class="box" id="box-routers">
                 <h1 class="h1-contenedores">Routers</h1>
-                <div id="contenedor_Routers"></div>
+                <div class="contenedor-accesorio" id="contenedor_Routers"></div>
+            </div>
+            <div class="box" id="box-mouses">
+                <h1 class="h1-contenedores">mouses</h1>
+                <div class="contenedor-accesorio" id="13"></div>
+            </div>
+            <div class="box" id="box-laptops">
+                <h1 class="h1-contenedores">laptops</h1>
+                <div class="contenedor-accesorio" id="8"></div>
+            </div>
+            <div class="box" id="box-notebooks">
+                <h1 class="h1-contenedores">notebooks</h1>
+                <div class="contenedor-accesorio" id="9"></div>
             </div>
         </section>
 
