@@ -22,7 +22,17 @@ btonProductos.addEventListener("click", function () {
 //--------------------- funcionalidad de seccion productos---------------\\.
 
 //----funcion para editar en formulario--//.
-function validar_Edicion_producto(){};//validaciones para la edicion de un producto.
+function validar_Edicion_producto(nombre,Caracteristicas,imagen,Estado,Categoria){
+    if(nombre === "" && Caracteristicas ===""){
+        //revisa si los campos estan vacios
+    }
+    //verificar si es solo texto,
+    //verificar si esta todo en miniscula(eceptuando url imagen);
+    // "" si la categoria esta seleccionada y no tiene valor "0".
+
+
+
+};//validaciones para la edicion de un producto.
 //fin validaciones//
 
 function traerCategorias(idselect){
@@ -33,7 +43,7 @@ function traerCategorias(idselect){
             return response.json();
         }
     }).then(function(data){
-        console.log(data);
+        // console.log(data);
         for(let i=0;i<data.categorias.length;i++){
             let option = document.createElement("option");
             option.value= data.categorias[i].id;
@@ -61,9 +71,30 @@ function EditarProducto(Editar_idproduct, Editar_imgurl, Editar_caract, Editar_p
     
 
 };
+
+let formulario_productos = document.getElementById("form-prcto");
+formulario_productos.addEventListener("submit",e=>{
+    e.preventDefault();
+    let nombre = document.getElementById("prcto-in-id").value;
+    document.getElementById("prcto-in-nombre").innerHTML = nombre;
+    let Caracteristicas = document.getElementById("prcto-in-crtcs").value;
+    document.getElementById("prcto-in-crtcs").innerHTML = Caracteristicas;
+    let imagen = document.getElementById("prcto-in-img").value;
+    document.getElementById("prcto-in-img").innerHTML = imagen;
+    let Estado = document.getElementById("prcto-in-Estado").value;
+    document.getElementById("prcto-in-Estado").innerHTML = Estado;
+    let Categoria = document.getElementById("prcto-in-Categoria").value;
+    document.getElementById("prcto-in-Categoria").innerHTML = Categoria;
+
+    validar_Edicion_producto(nombre,Caracteristicas,imagen,Estado,Categoria);
+
+});
+
 //----fin funcion----//
 //----funcion para dar de baja producto--//
-function Dardebaja() { };
+function Dardebaja() { 
+    //aqui envia directamente a la pagina Baja a modo de verificacion por click accidental.
+};
 
 function traerproductos() {
     fetch("http://localhost/Neutro/codigo/php/phpadmin/httpProducto.php")
