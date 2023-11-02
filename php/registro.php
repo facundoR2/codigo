@@ -67,7 +67,24 @@ if($stmt->affected_rows > 0){
     $confirm[1] = "se inserto usuario Correctamente";
     // echo json_encode("se inserto usuario Correctamente");
     echo  json_encode($confirm);
+
+    //guardamos los datos en tabla info.
+
+    $id = NULL;
+    $sql_info = "INSERT INTO info ('id', 'Mail', 'Contraseña') VALUES (?, ?, ?)";
     
+    $stmt_info->prepare($sql_info);
+
+    $stmt_info->bind_param("iss",$id,$mail, $contraseña);
+    $stmt_info->execute();
+
+    $num_rows= $stmt_info->affected_rows;
+    if($num_rows>0){
+
+        echo "se guardo correctamente los datos";
+    }
+
+
 
 
 

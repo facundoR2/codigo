@@ -27,7 +27,7 @@ function validar_Edicion_producto(nombre,Caracteristicas,imagen,Estado,Categoria
         //revisa si los campos estan vacios
     }
     
-    //verificar si es solo texto,
+    //verificar si es solo texto en entradas(Estado);
     //verificar si esta todo en miniscula(eceptuando url imagen);
     // "" si la categoria esta seleccionada y no tiene valor "0".
     if(Categoria.value="0"){
@@ -351,7 +351,20 @@ function editarOferta(id,nombreproducto,precioAnterior,precioOferta) {
     input_oferta_precioB.value = precioOferta;
 }
 //---------seccion Domload-------------//.
+function config_status_session(){
+    var label = document.getElementById("labelusuario");
+    var botonsession = document.getElementById("Bingresar");
+    var usuario = sessionStorage.getItem("usuario");
+    if( label =="" || !usuario){
+        label.innerHTML="cliente";
+        
+    }else{
+        label.innerHTML = usuario;
+        botonsession.innerHTML ="cerrar session";
+    }     
+};
 window.addEventListener('DOMContentLoaded', function () {
+    config_status_session();
     traerproductos();
     traerOfertas();
     let idselect = "prcto-in-Categoria";

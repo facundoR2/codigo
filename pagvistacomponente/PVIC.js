@@ -152,11 +152,27 @@ function Meter_en_carrito(idproduct, nombreproducto){
 
 
 }
-function confirmacion_compra(idproduct){
-    var formdata = new FormData();
-    formdata.append("producto",idproduct);
-    alert("se creara un un pdf para validar el tramite");
+ function confirmacion_compra(idproduct){
+    var verf =verificarSession();
+    if(verf){
+        alert("estas en una session, puedes Comprar el Producto.");
+        var formdata = new FormData();
+        var estado ="Comprado";
+        formdata.append("idproducto",idproduct);
+        formdata.append("estado",estado);
 
+        alert("se creara un un pdf para validar el tramite");
+        //actualiza informacion y agrega datos a compra.
+        fetch("http://localhost/Neutro/codigo/php/producto/Confirmar_Compra.php",{
+            method: 'POST',
+            body: formdata,
+        })
+
+    }if(!verf){
+        alert("no estas en una session");
+        window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
+    }
+    
 }
 function ReservarAhora(idproduct){
     var formdata = new FormData();
@@ -181,7 +197,7 @@ function ReservarAhora(idproduct){
             console.log("en este momento se creara un pdf con los datos de tramite.");
             confirmacion_compra(idproduct);
         }
-    })
+    });
     //busca consulta que id del producto estan disponibles.
     //genera su reserva cambiando su estado.
     //genera pdf con numero de tramite.
