@@ -30,7 +30,6 @@ body{
     height: 90px;
     background-color:rgb(254, 106, 0,1);
 }
-
 #Login{
     display: flex;
     flex-wrap: nowrap;
@@ -221,7 +220,6 @@ body{
     border: 1px solid black;
 
 }
-
 /* --------------------/////////segunda seccion\\\\\\\\\\----------- */
 #segunda_seccion{
     display: flex;

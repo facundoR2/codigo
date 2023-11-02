@@ -60,27 +60,28 @@ Go_tocart.addEventListener("click",function(){
 });
 
 function buscarProducto(B_item){
-     var busqueda = B_item
-     let searchjson = JSON.stringify(busqueda);
-    fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe.php",{
-        method: 'GET',
-        body: searchjson
-    })
-    .then(function(respuesta){
-        if(respuesta.ok){
-            console.log("busqueda exitosa");
-            return respuesta.json();
-        }else{
-            console.log("busqueda incompleta");
-            window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/index.html";
-        }
-    })
-    .then(function(data){
-        console.log(data);
+    var busqueda = B_item;
+    let search_Fdata = new FormData();
+    search_Fdata.append("Busqueda",busqueda);
 
-    });
-
-
+   fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe-pp1.php",{
+       method: 'POST',
+       body: search_Fdata,
+   })
+   .then(function(respuesta){
+       if(respuesta.ok){
+           console.log("busqueda exitosa");
+           return respuesta.json();
+       }else{
+           console.log("busqueda incompleta");
+           window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/index.html";
+       }
+   })
+   .then(function(data){
+       console.log(data);
+       sessionStorage.setItem("busqueda",JSON.stringify(data));
+       window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/PBOindex.html";
+   });
 };
 //------------------- fin seccion busqueda--------------------//.
 //--------------seccion configuraciones de session-----------//.

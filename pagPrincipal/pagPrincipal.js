@@ -45,7 +45,7 @@ function buscarProducto(B_item){
 
     fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe-pp1.php",{
         method: 'POST',
-        body: search_Fdata
+        body: search_Fdata,
     })
     .then(function(respuesta){
         if(respuesta.ok){

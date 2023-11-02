@@ -30,7 +30,6 @@ body{
     height: 90px;
     background-color:rgb(254, 106, 0,1);
 }
-
 #Login{
     display: flex;
     flex-wrap: nowrap;
@@ -48,7 +47,6 @@ body{
     display: flex;
     align-items:center;
     justify-content: right;
-
 }
 #labelusuario{
     padding-right: 5px;
@@ -73,7 +71,6 @@ body{
     padding-right: 30px;
     box-shadow: 0px 5px 3px rgb(95, 95, 95);
 }
-
 .nav-links{
     width: 180px;
     height: max-content;
