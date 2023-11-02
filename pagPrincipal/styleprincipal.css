@@ -234,7 +234,6 @@ body{
     transition: .5s, color .10s;
     -webkit-transition: .5s, color .10s;
     -moz-transition: 5.s, color, .10s;
-
 }
 .Producto img{
     border-top-left-radius: 8%;

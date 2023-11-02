@@ -1,11 +1,27 @@
 
 //se agregan los listeners para los buttons del menu lateral.
 let nuevologin = document.getElementById('Bingresar');
-let BtonAccesorios = document.getElementById("bton-accesorios");
-let BtonCategorias = document.getElementById("bton-categorias");
+let Go_accesorios = document.getElementById("bton-accesorios");
 let Go_tocart = document.getElementById("bton-carrito");
 let Go_mypc = document.getElementById("bton-ATP");
 
+//listeners de botones para navegar en las paginas.
+
+Go_mypc.addEventListener("click",function(){
+    alert("esta funcion todavia no esta lista");
+    // window.location.href="http://localhost/Neutro/codigo/pagArmarTuPc/index.html";
+});
+Go_tocart.addEventListener("click",function(){
+    verificarSession()
+    if(verificarSession==true){
+        window.location.href="http://localhost/Neutro/codigo/pagCarrito/index.html";
+    }else{
+        alert("por favor ingresa a una sesion para acceder a un carrito");
+    }
+});
+Go_accesorios.addEventListener("click",function(){
+    window.location.href="http://localhost/Neutro/codigo/pagAccesorios/Acc-index.html";
+});
 //////////// seccion para la funcionalidad de busqueda ////////////////////.
 let buscador = document.getElementById("buscador");
 let botonBusqueda = document.getElementById("BotonBuscar");
@@ -21,6 +37,7 @@ botonBusqueda.addEventListener("click",function(){
         console.log(item);
         buscarProducto(B_item);
 });
+
 function buscarProducto(B_item){
      var busqueda = B_item;
      let search_Fdata = new FormData();
@@ -45,50 +62,38 @@ function buscarProducto(B_item){
         window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/PBOindex.html";
     });
 };
+nuevologin.addEventListener("click",function(){
+    if(nuevologin.innerHTML ==="Ingresar"){
+        verificarSession()
+        if(verificarSession==true){
+            alert("ya estas en una session, por favor cierra tu sesion si quieres iniciar otra diferente.");
+            botonsession.innerHTML ="cerrar session";
+        }else{
+            window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
+        }
+    }if(nuevologin.innerHTML =="cerrar session"){
+        //limpia todas las variables de la session.
+        sessionStorage.clear();
+        //devuelve a pagina principal.
+        window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
+    }
+    
+}); 
 /////////////////////////////////////// fin seccion busqueda.////////////////
 //////////////////////////////////////seccion verificaciones/////////////////
 function verificarSession(){
-    let usuarionombre = document.getElementById("labelusuario");
-    var usuario = usuarionombre.textContent;
-    console.log(usuario);
-    if (usuario == "cliente"){
-        alert("no has ingresado a una session");
+    //crea la variable que contiene el label
+    var nomUsuario = sessionStorage.getItem("usuario");
+    if(!nomUsuario){
+        // alert("no has ingresado a una session");
         window.location.href="http://localhost/neutro/codigo/paglogin/loginindex.html";
-        var respuesta = false;
-        return respuesta;
+        return false;
     }else{
-        alert("estas en una session");
-        var respuesta = true;
-        return respuesta;
+        return true;
     }
-};
+}
 /////////////fin seccion session./////////////////
-//listeners de botones para navegar en las paginas.
-nuevologin.addEventListener("click",function(){
-    verificarSession()
-    if(verificarSession==true){
-        alert("ya estas en una session");
-    }else{
-        window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
-    }
-}); 
-BtonCategorias.addEventListener("click",function(){
-    window.location.href="http://localhost/Neutro/codigo/pagCategorias/category_index.html";
-});
-BtonAccesorios.addEventListener("click",function(){
-    window.location.href="http://localhost/Neutro/codigo/pagAccesorios/Acc-index.html";
-});
-Go_mypc.addEventListener("click",function(){
-    window.location.href="http://localhost/Neutro/codigo/pagArmarTuPc/index.html";
-});
-Go_tocart.addEventListener("click",function(){
-    verificarSession()
-    if(verificarSession==true){
-        window.location.href="http://localhost/Neutro/codigo/pagCarrito/index.html";
-    }else{
-        alert("por favor ingresa a una sesion para acceder a un carrito");
-    }
-});
+
 
 //---------------------seccion sobre Producto.----------------------------//
 //cargar productos.
@@ -103,11 +108,14 @@ function iraproducto(Nombre){
 };
 
 /////////////---------seccion trerproducto----------///////////
+
+//agregar A para poder abrir el item para permitir el seleccionaiento en una nueva ventana altarena.(incluir en los test de unidad)
 function traerproducto(){
     fetch("http://localhost/Neutro/codigo/php/Getproducto-fe-pp.php")
     //convertimos la respuesta en un  objeto json.
     .then(Response => Response.json())
     .then(data=>{
+        console.log(data);
         information = data;
         let contenedorproductos = document.getElementById("contenedor-productos");
         for(var i=0;i<information.length;i++){
@@ -120,14 +128,14 @@ function traerproducto(){
                 var nom = h3.textContent;
                 console.log("comprarste el producto: " + nom);
                 iraproducto(nom);
-            }
+            };
             var nombre = document.createElement("h3");
             nombre.className="Newsproducts";
             nombre.textContent = information[i].Nombre;
             //creo y le asigno una imagen
             var img = document.createElement("img");
             img.alt="no hay imagen disponible.";
-            img.src = information[i].Imagen;
+            img.src = information[i].imagen;
             //creamos y asignamos un parrafo para el precio.
             var precio  = document.createElement("p");
             precio.className="Product-p";
@@ -143,7 +151,7 @@ function traerproducto(){
 };
 ////////////----------fin funcion------------------- ////////
 ///////////-----------seccion configsession------////////
-function configsession(){
+function config_status_session(){
     var label = document.getElementById("labelusuario");
     var botonsession = document.getElementById("Bingresar");
     var usuario = sessionStorage.getItem("usuario");
@@ -200,7 +208,8 @@ function confirmarCookies(){
 window.addEventListener("DOMContentLoaded",function(){
     confirmarCookies();
     traerproducto();
-    configsession();
+    config_status_session();
+
     
     
 });
