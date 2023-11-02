@@ -83,11 +83,7 @@ if($stmt->affected_rows > 0){
 
         echo "se guardo correctamente los datos";
     }
-
-
-
-
-
+    
 }else{
     echo "error al insertar usuario.";
 }
