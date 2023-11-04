@@ -202,7 +202,12 @@ function confirmarCookies(){
         localStorage.setItem('Cookies-aceptadas', true);
         crearCookie("aceptarCookies","si",365);
     })
-}
+};
+
+// async function comprobarproducto(id){
+//     var estado = await(comprobarestado());
+
+// }
 ////////////------------fin funcionalidad----------------------------////.
 //creamos un listener para cuando el DOM se termine de cargar, realice la funcion.
 window.addEventListener("DOMContentLoaded",function(){
