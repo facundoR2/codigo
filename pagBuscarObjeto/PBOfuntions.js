@@ -1,5 +1,6 @@
 //se agregan los listeners para los buttons del menu lateral.
 let nuevologin = document.getElementById('Bingresar');
+let GO_inicio = document.getElementById("bton-inicio");
 let BtonAccesorios = document.getElementById("bton-accesorios");
 let BtonCategorias = document.getElementById("bton-categorias");
 let Go_tocart = document.getElementById("bton-carrito");
@@ -69,27 +70,28 @@ buscador.addEventListener("click",function(){
     buscarProducto(B_item);
 });
 function buscarProducto(B_item){
-     var busqueda = B_item
-     let searchjson = JSON.stringify(busqueda);
-    fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe-pbo.php",{
-        method: 'GET',
-        body: searchjson
-    })
-    .then(function(respuesta){
-        if(respuesta.ok){
-            console.log("busqueda exitosa");
-            return respuesta.json();
-        }else{
-            console.log("busqueda incompleta");
-            window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/index.html";
-        }
-    })
-    .then(function(data){
-        console.log(data);
+    var busqueda = B_item;
+    let search_Fdata = new FormData();
+    search_Fdata.append("Busqueda",busqueda);
 
-    });
-
-
+   fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe-pp1.php",{
+       method: 'POST',
+       body: search_Fdata,
+   })
+   .then(function(respuesta){
+       if(respuesta.ok){
+           console.log("busqueda exitosa");
+           return respuesta.json();
+       }else{
+           console.log("busqueda incompleta");
+           window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/index.html";
+       }
+   })
+   .then(function(data){
+       console.log(data);
+       sessionStorage.setItem("busqueda",JSON.stringify(data));
+       window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/PBOindex.html";
+   });
 };
 // fin seccion busqueda.
 //seccion verificaciones
@@ -117,7 +119,9 @@ nuevologin.addEventListener("click",function(){
     }else{
         window.location.href="http://localhost/Neutro/codigo/paglogin/index.html";
     }
-    
+});
+GO_inicio.addEventListener("click",function(){
+    window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
 });
 BtonCategorias.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagCategorias/index.html";
