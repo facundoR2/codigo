@@ -1,3 +1,4 @@
+// import { jsPDF } from "./js/jspdf.es.min.js";
 //listener para la barra de busqueda:
 let Mp_Logo = document.getElementById("Logo-tienda");
 
@@ -11,7 +12,7 @@ let Go_mypc = document.getElementById("bton-ATP");
 let Go_products = document.getElementById("bton-productos");
 
 //////-.---------------------funcionalidad de la cabecera----------------------////////
-////// validaciones para la barra de busqueda///////.
+//--validaciones para la barra de busqueda--//////.
 function verificarSession(){
     //crea la variable que contiene el label
     var nomUsuario = sessionStorage.getItem("usuario");
@@ -22,14 +23,14 @@ function verificarSession(){
     }else{
         return true;
     }
-}
-//////  fin--------validaciones para la barra de busqueda-------///////.
+};
+//--fin validaciones para la barra de busqueda--///////.
 
 //////-.--------------------- fin funcionalidad de la cabecera----------------------////////
 //listeners de botones para navegar en las paginas.
 GO_inicio.addEventListener("click",function(){
     window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
-})
+});
 Mp_Logo.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
 });
@@ -68,10 +69,8 @@ Go_tocart.addEventListener("click",function(){
         alert("por favor ingresa a una sesion para acceder a un carrito");
     }
 });
-
-//////////////////////// seccion mostrar producto buscado.////////////.
-
-//funcionalidad respecto al producto seleccionado.
+//////-.--------------------- fin funcionalidad de la cabecera----------------------////////.
+/////-------------------------seccion del producto seleccionado---------------------///////.
 function traerproducto(){
     //hacemos peticion para buscar el producto seleccionado.
     let nombre =sessionStorage.getItem("producto");
@@ -108,10 +107,10 @@ function traerproducto(){
         imagen.className="IMAGEN-Producto";
         var boton_comprar = document.createElement("button");
         boton_comprar.className = "Producto-comp-btons";
-        boton_comprar.textContent="Reservar ahora";
+        boton_comprar.textContent="Comprar";
         boton_comprar.onclick=function(){
             var idproduct = data[0].id_producto;
-            ReservarAhora(idproduct);
+            ComprarProducto(idproduct);
         }
         var boton_carrito = document.createElement("button");
         boton_carrito.className ="Producto-comp-btons";
@@ -133,27 +132,119 @@ function traerproducto(){
         content_dataproduct.appendChild(m_ul);
         contentview.appendChild(imagen);
     });
-}
-/////////////////seccion validaciones respecto a producto.////////////////////////
+};
 
-//////fin seccion validaciones.////////////////////
-////// seccion de funciones de Producto /////////////.
-function Meter_en_carrito(idproduct, nombreproducto){
-
-    var formdata = new FormData();
-    var nombre_usuario = sessionStorage.getItem("usuario");
-    formdata.append("id",idproduct);
-    formdata.append("Nombreusuario",nombre_usuario);
-    formdata.append("producto", nombreproducto);
+////////---funcionalidad  genereal respecto al producto seleccionado--///
+// function crearcomprobante_pdf(idproduct){
+//     var usuario = sessionStorage.getItem("usuario");
     
-    fetch("http://localhost/Neutro/codigo/php/carrito/CarritoActions.php",{
-        method: 'POST',
-        body: formdata,
-    });
 
+//     //creamos un papel
+//     const doc = new jsPDF();
+//     doc.text("hello word!", 10, 10);
+//     doc.text(idproduct,10,20);
+//     doc.text(usuario,10,30);
+//     doc.save("a4.pdf");
 
-}
- function confirmacion_compra(idproduct){
+// };
+
+async function comprobarestado(idproduct){
+    var formdata = new FormData();
+    formdata.append("producto",idproduct);
+    try{
+        let response = await fetch("http://localhost/Neutro/codigo/php/producto/verificarexistencia.php",{
+            method: 'POST',
+            body: formdata,
+        });
+        if(response.ok){
+            let data = await response.json();
+            //se evalua la respuesta.
+            if(data =="NO DISPONIBLE"){
+                if(window.confirm("el producto se encuentra AGOTADO, por favor consulte en nuestros locales para mas info.")){
+                    window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
+                };
+                
+
+            }else{
+                return data;
+            }
+        }else{
+            throw new Error("la consulta fetch falló");
+        }
+    }catch(error){
+        console.log(error);
+        return "OCURRIO un error al verificar el estado del producto";
+    }
+    
+   
+};
+async function Modificar_estado(idproduct, estado){
+    var formdata = new FormData();
+    var usuario = sessionStorage.getItem("usuario");
+    formdata.append("producto",idproduct);
+    formdata.append("estado", estado);
+    formdata.append("usuario",usuario);
+    try{
+        let response = await fetch("http://localhost/Neutro/codigo/php/producto/confirmar_Compra.php",{
+            method: 'POST',
+            body: formdata,
+        });
+        if(response.ok){
+            let data = await response.json();
+            //se evalua la respuesta.
+            if(data == "ESTADO MODIFICADO"){
+                return data;
+            }
+        }else{
+            throw new Error("La consulta para modificar estado falló");
+        }
+    }catch(error_modif){
+        console.log(error_modif);
+        alert("error al realizar la consulta");
+    }
+};
+/// funcion en caso de accionar boton(comprar);
+async function ComprarProducto(idproduct){
+    //verificamos que el usuario este en una session.
+    var verf =verificarSession();
+    if(verf){
+        alert("estas en una session, puedes comprar el Producto.");
+        try{
+            //busca consulta que id del producto estan disponibles.
+            let mensaje = await comprobarestado(idproduct);
+            if( mensaje == "DISPONIBLE"){
+                //si el mensaje es disponible, modificamos el estado.
+                alert("el producto esta disponible");
+                var estado ="Comprado";
+                try{
+                    let mensaje_mod = await Modificar_estado(idproduct,estado);
+                    if(mensaje_mod == "ESTADO MODIFICADO"){
+                        
+                    }
+                }catch(error_modif){
+                    console.log(error_modif);
+                    alert("occurrio un error al modificar el estado el producto")
+                }
+                console.log("en este momento se creara un pdf con los datos de tramite.");
+                
+                // crearcomprobante_pdf(idproduct);
+            }else{
+
+                console.log(mensaje);
+            }
+            // confirmacion_compra(idproduct);
+        }catch(error){
+            console.log(error);
+            alert("occurrio un error al procesar el producto");
+        }
+        //genera su reserva cambiando su estado.
+        //genera pdf con numero de tramite.
+    }if(!verf){
+        alert("no estas en una session, no puedes reservar el producto.");
+        window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
+    }
+};
+function confirmacion_compra(idproduct){
     var verf =verificarSession();
     if(verf){
         alert("estas en una session, puedes Comprar el Producto.");
@@ -175,34 +266,55 @@ function Meter_en_carrito(idproduct, nombreproducto){
     }
     
 }
-function ReservarAhora(idproduct){
+
+// funcionalidad  en caso de agregar carrito;
+
+async function Meter_en_carrito(idproduct, nombreproducto){
+    try{
+        let consulta = await comprobarestado(idproduct);
+        if(consulta == "DISPONIBLE"){
+            alert("la reserva esta disponible");
+            var estado ="Comprado";
+            try{
+                let consulta = await crearReserva(idproduct);
+            }catch(er){
+
+            }
+        }
+        
+    }catch(err){}
+};
+async function crearReserva(idproduct){
+    var usuario = sessionStorage.getItem("usuario");
     var formdata = new FormData();
-    var estado_producto = "Comprado";
     formdata.append("producto",idproduct);
-    formdata.append("estado",estado_producto);
-    fetch("http://localhost/Neutro/codigo/php/producto/verificar_existencias_Reservas.php",{
-        method: 'POST',
-        body: formdata,
-    })
-    .then(function(Response){
-        if (Response.ok){
-            return Response.json();
-        }
-    }).then(function(data){
-        console.log(data);
-        if(data ==="no hay producto disponible"){
-            if(window.confirm("el producto se encuentra AGOTADO, por favor consulte en nuestros locales para mas info.")){
-                window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
-            };
+    formdata.append("usuario",usuario);
+    try{
+        let response = await fetch("http://localhost/Neutro/codigo/php/carrito/Carrito/Actions.php",{
+            method: 'POST',
+            body: formdata,
+        });
+        if(response.ok){
+            let data = await response.json();
+            //se evalua la respuesta.
+            if(data =="NO DISPONIBLE"){
+                if(window.confirm("el producto se encuentra AGOTADO, por favor consulte en nuestros locales para mas info.")){
+                    window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
+                };
+                
+
+            }else{
+                return data;
+            }
         }else{
-            console.log("en este momento se creara un pdf con los datos de tramite.");
-            confirmacion_compra(idproduct);
+            throw new Error("error al consultar la base");
         }
-    });
-    //busca consulta que id del producto estan disponibles.
-    //genera su reserva cambiando su estado.
-    //genera pdf con numero de tramite.
-}
+    }catch( Error){
+        throw new Error;
+
+    }
+
+}    
 function reservarProduct(idproduct, nombreproducto){
     var verf =verificarSession();
     if(verf){
@@ -217,7 +329,7 @@ function reservarProduct(idproduct, nombreproducto){
 
 }
 
-///////funciones dentro de el producto mostrado.//////////
+//--fin seccion funciones del producto.---///
 function configsession(){
     var label = document.getElementById("labelusuario");
     var botonsession = document.getElementById("Bingresar");
@@ -232,7 +344,7 @@ function configsession(){
     }
 };
 
-//--fin seccion funciones del producto.---///
+
 //---seccion cookies------//
 function crearCookie(nombre, valor, dias){
     var fecha = new Date();
@@ -258,7 +370,6 @@ function obtenerCookie(nombre) {
 //--- fin seccion cookies------//
 window.addEventListener("DOMContentLoaded",function(){
     traerproducto();
-    verificarSession();
     configsession();
 
 });
