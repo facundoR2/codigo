@@ -33,8 +33,6 @@ if (!empty($SEARCH)){
             }
             echo json_encode($rspt);
         }
-    }
-    
-    
+    }   
 }
 ?>
