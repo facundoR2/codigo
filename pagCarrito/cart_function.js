@@ -1,17 +1,15 @@
-//se agregan los listeners para los buttons del menu lateral.
+//listener para la cabecera.
+let Mp_Logo = document.getElementById("Logo-tienda");
 let nuevologin = document.getElementById('Bingresar');
+//se agregan los listeners para los buttons del menu lateral.
+let GO_inicio = document.getElementById("bton-inicio");
 let BtonAccesorios = document.getElementById("bton-accesorios");
 let BtonCategorias = document.getElementById("bton-categorias");
-let Go_tocart = document.getElementById("bton-carrito");
 let Go_mypc = document.getElementById("bton-ATP");
 let buscador = document.getElementById("buscador");
-let botonBusqueda = document.getElementById("BotonBuscar");
 let logoitem = document.getElementById("Logo-tienda");
 //////////// seccion para la funcionalidad de busqueda ////////////////////.
-/////////////////////////////////////// fin seccion busqueda.////////////////
-logoitem.addEventListener("click",function(){
-    window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
-});
+let botonBusqueda = document.getElementById("BotonBuscar");
 botonBusqueda.addEventListener("click",function(){
     //si precina tecla enter.
         let B_item = document.getElementById('Barrabusqueda').value;
@@ -20,6 +18,14 @@ botonBusqueda.addEventListener("click",function(){
         console.log(item);
         buscarProducto(B_item);
 });
+/////////////////////////////////////// fin seccion busqueda.////////////////
+GO_inicio.addEventListener("click",function(){
+    window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
+});
+logoitem.addEventListener("click",function(){
+    window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
+});
+
 function buscarProducto(B_item){
      var busqueda = B_item;
      let search_Fdata = new FormData();
@@ -44,57 +50,143 @@ function buscarProducto(B_item){
         window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/PBOindex.html";
     });
 };
-function traerproducto(){
-    //hacemos peticion para buscar el producto seleccionado.
-    let nombre =sessionStorage.getItem("producto");
+///////////-----------seccion configsession------////////
+function config_status_session(){
+    var label = document.getElementById("labelusuario");
+    var botonsession = document.getElementById("Bingresar");
+    var usuario = sessionStorage.getItem("usuario");
+    if( label =="" || !usuario){
+        label.innerHTML="cliente";
+        
+    }else{
+        label.innerHTML = usuario;
+        botonsession.innerHTML ="cerrar session";
+    }     
+};
+function verificarSession(){
+    //crea la variable que contiene el label
+    var nomUsuario = sessionStorage.getItem("usuario");
+    if(!nomUsuario){
+        alert("no has ingresado a una session");
+        window.location.href="http://localhost/neutro/codigo/paglogin/loginindex.html";
+        return false;
+    }else{
+        return true;
+    }
+};
+////////////----------fin seccion configsession------------------- ////////
+///////////-------------seccion de productos---------------------/////////
+//-------------sec de confirmacion---------------------////
+function confirmarcompra(id_producto){
+    var verf =verificarSession();
+    if(verf){
+        var usuario = sessionStorage.getItem("usuario");
+        formdata = new FormData();
+        formdata.append("producto",id_producto);
+        formdata.append("usuario",usuario);
+        var url ="http://localhost/Neutro/codigo/php/carrito/confirmar_compra_reserva.php";
+        fetch(url,{
+            method: 'POST',
+            body: formdata,
+        }).then(function(response){
+            if(response.ok){
+                return response.json();
+            }
+        })
+        .then(function(data){
+            if(window.confirm("se confirmo su compra, precente el numero de tramite en el local, idtramite:"+data)){
+                if(window.confirm("desea seguir comprando?")){
+                    window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
+                }else{
+                    sessionStorage.clear();
+                    //devuelve a pagina principal.
+                    window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
+                }
+            }
+        })
+        .catch(function(error){});
+    }if(!verf){
+        alert("no estas en una session, no puedes confirmar el producto.");
+        window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
+    }
+
+}
+//------------- FIN seccion de confirmacion------------////
+function mostrar_Detalles(nom,img,prcto_detalles){
+    let contenedor_detalles = document.getElementById("contenedor_detalles");
+    
+    //verificamos que capturo el nombre.
     console.log(nombre);
+            
+};
+function traercarrito(){
+    //hacemos peticion para buscar el producto seleccionado.
+    let usuario =sessionStorage.getItem("usuario");
+    console.log(usuario);
     var formdata  =new FormData();
-    formdata.append("Nombre",nombre);
-    fetch("http://localhost/Neutro/codigo/php/Getproducto-fe-pvc.php",{
-        method: 'POST',
-        body: formdata,
-    }).then(Response =>Response.json())
+    formdata.append("usuario",usuario);
+    var params = new URLSearchParams(formdata).toString();
+    var url = "http://localhost/Neutro/codigo/php/carrito/CarritoActions.php?"+params;
+    fetch(url)
+    .then(Response =>Response.json())
     .then(data =>{
         console.log(data);
-        let contentview = document.getElementById("img-producto-reserva");
-        let content_dataproduct = document.getElementById("info-producto-reserva");
-        //se crean li para ordenar la info y precio.
-        var m_ul =document.createElement("ul");
-        m_ul.className="Ulproducto";
-        var li1 =document.createElement("li");
-        var li2 =document.createElement("li");
-        var li3 =document.createElement("li");
-        var li4 =document.createElement("li");
-        //se crea el p para caract.
-        var infp = document.createElement("p");
-        infp.textContent = data[0].Caracteristicas;
-        infp.className="INFOproducto";
-        // se crea el p para PRecio.
-        var precio = document.createElement("p");
-        precio.textContent= "$"+data[0].Costo;
-        precio.className="PRECIO-Producto";
-        // se crea el Img para la imagen del producto.
-        var imagen = document.createElement("img");
-        imagen.src = data[0].Imagen;
-        imagen.alt ="NO se recuperó imagen del producto";
-        imagen.className="IMAGEN-Producto";
-        var boton_carrito = document.createElement("button");
-        boton_carrito.className ="Producto-comp-btons";
-        boton_carrito.textContent="añadir al carrito";
-        var botoncompra = document.createElement("button");
-        botoncompra.className ="Producto-comp-btons";
-        botoncompra.textContent="comprar";
-        boton_carrito.onclick= function(){
-            reservarProduct();
-            console.log("intentaste reservar el producto");
-        }
-        li1.appendChild(infp);
-        li2.appendChild(precio);
-        li4.appendChild(boton_carrito);
-        m_ul.appendChild(li1);
-        m_ul.appendChild(li2);
-        m_ul.appendChild(li4);
-        content_dataproduct.appendChild(m_ul);
-        contentview.appendChild(imagen);
+        information = data;
+        let contenedorproductos = document.getElementById("contenedor-productos");
+        for(var i=0;i<information.length;i++){
+            //creamos div para el producto
+            var producto = document.createElement("div");
+            //le asigno nombre
+            producto.className ="Producto";
+            var nombre = document.createElement("h3");
+            nombre.className="Newsproducts";
+            nombre.textContent = information[i].Nombre;
+
+            //creamos boton detalles:
+            var bton_detalles = document.createElement("button");
+            bton_detalles.innerText="Detalles";
+            bton_detalles.className="prcto_btons";
+            bton_detalles.onclick=function(){
+                var h3 = this.parentElement.querySelector("h3");
+                var img = this.parentElement.querySelector("img");
+                var prcto_detalles = information[i].detalle_caracteristicas;
+                var nom = h3.textContent;
+                console.log("ingresaste al producto: " + nom);
+                mostrar_Detalles(nom,img,prcto_detalles);
+            };
+            var bton_confirmar = document.createElement("button");
+            bton_confirmar.innerText="Confirmar Compra";
+            bton_detalles.className="prcto_btons";
+            var id_producto = data[i].id_producto;
+            bton_confirmar.onclick=function(){
+                confirmarcompra(id_producto);
+            }
+            //creo y le asigno una imagen
+            var img = document.createElement("img");
+            img.alt="no hay imagen disponible.";
+            img.src = information[i].imagen;
+            //creamos y asignamos un parrafo para el precio.
+            var precio  = document.createElement("p");
+            precio.className="Product-p";
+            precio.textContent = "$"+ information[i].Costo;
+            //agregamos los items al contenedor "producto".
+            producto.appendChild(img);
+            producto.appendChild(nombre);
+            producto.appendChild(precio);
+            producto.appendChild(bton_detalles);
+            producto.appendChild(bton_confirmar);
+            //agregamos el producto al contenedor de productos.
+            contenedorproductos.appendChild(producto);
+        };
+    })
+    .catch(function(error){
+
     });
 }
+///////////-------------seccion de productos---------------------/////////
+
+window.addEventListener("DOMContentLoaded",function(){
+    traercarrito();
+    config_status_session();
+    
+});
