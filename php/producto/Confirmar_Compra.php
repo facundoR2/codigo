@@ -24,7 +24,7 @@ if( !empty($idproducto) && !empty($estado) && !empty($usuario)){
         $tiempo = date("Y-m-d-H:i:s.u");
         $hora = date("H:i");
         $id= NULL;
-        $idtramite =$idproducto.$hora;
+        $idtramite =$idproducto.$hora/2;
         $sql_compra = "INSERT INTO compras (id, 
         Fecha_compra, id_usuario , id_producto , id_tramite) VALUES (?,?,?,?,?)";
         $stmt = $conn->prepare($sql_compra);
@@ -34,6 +34,7 @@ if( !empty($idproducto) && !empty($estado) && !empty($usuario)){
 
         if($num>0){
             echo json_encode("ESTADO MODIFICADO");
+            echo json_encode($idtramite);
         }
         
     }
