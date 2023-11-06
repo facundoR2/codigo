@@ -1,12 +1,11 @@
 // import { jsPDF } from "./js/jspdf.es.min.js";
-//listener para la barra de busqueda:
+//listener para la cabecera.
 let Mp_Logo = document.getElementById("Logo-tienda");
-
-//se agregan los listeners para los buttons del menu lateral.
 let nuevologin = document.getElementById('Bingresar');
+//se agregan los listeners para los buttons del menu lateral.
+let GO_inicio = document.getElementById("bton-inicio");
 let BtonAccesorios = document.getElementById("bton-accesorios");
 let BtonCategorias = document.getElementById("bton-categorias");
-let GO_inicio = document.getElementById("bton-inicio");
 let Go_tocart = document.getElementById("bton-carrito");
 let Go_mypc = document.getElementById("bton-ATP");
 let Go_products = document.getElementById("bton-productos");
@@ -37,7 +36,7 @@ Mp_Logo.addEventListener("click",function(){
 nuevologin.addEventListener("click",function(){
     if(nuevologin.innerHTML ==="Ingresar"){
         verificarSession()
-        if(verificarSession==true){
+        if(verificarSession == true){
             alert("ya estas en una session, por favor cierra tu sesion si quieres iniciar otra diferente.");
             botonsession.innerHTML ="cerrar session";
         }else{
@@ -62,9 +61,9 @@ Go_mypc.addEventListener("click",function(){
     // window.location.href="http://localhost/Neutro/codigo/pagArmarTuPc/index.html";
 });
 Go_tocart.addEventListener("click",function(){
-    verificarSession()
-    if(verificarSession==true){
-        window.location.href="http://localhost/Neutro/codigo/pagCarrito/index.html";
+    var verf =verificarSession();
+    if(verf){
+        window.location.href="http://localhost/Neutro/codigo/pagCarrito/cart_index.html";
     }else{
         alert("por favor ingresa a una sesion para acceder a un carrito");
     }
@@ -117,8 +116,7 @@ function traerproducto(){
         boton_carrito.textContent="añadir al carrito";
         boton_carrito.onclick= function(){
             var idproduct = data[0].id_producto;
-            var nombreproducto = data[0].Nombre;
-            reservarProduct(idproduct,nombreproducto);
+            reservarProduct(idproduct);
             console.log("intentaste reservar el producto");
         }
         li1.appendChild(infp);
@@ -269,19 +267,24 @@ function confirmacion_compra(idproduct){
 
 // funcionalidad  en caso de agregar carrito;
 
-async function Meter_en_carrito(idproduct, nombreproducto){
+async function Meter_en_carrito(idproduct){
     try{
         let consulta = await comprobarestado(idproduct);
         if(consulta == "DISPONIBLE"){
             alert("la reserva esta disponible");
-            var estado ="Comprado";
             try{
                 let consulta = await crearReserva(idproduct);
+                if(consulta == "se agrego el producto al carrito por 72hrs"){
+                    alert("se agrego el producto al carrito por 72hrs");
+                    window.location.replace("http://localhost/Neutro/codigo/pagCarrito/cart_index.html");
+                }if(consulta == "Se actualizo correctamente carrito"){
+                    alert("el producto se añadio al carrito");
+                    window.location.replace("http://localhost/Neutro/codigo/pagCarrito/cart_index.html");
+                }
             }catch(er){
-
+                throw new console.error(er);
             }
         }
-        
     }catch(err){}
 };
 async function crearReserva(idproduct){
@@ -290,21 +293,32 @@ async function crearReserva(idproduct){
     formdata.append("producto",idproduct);
     formdata.append("usuario",usuario);
     try{
-        let response = await fetch("http://localhost/Neutro/codigo/php/carrito/Carrito/Actions.php",{
+        let response = await fetch("http://localhost/Neutro/codigo/php/carrito/CarritoActions.php",{
             method: 'POST',
             body: formdata,
-        });
+        }).catch(error =>{console.log(error)})
         if(response.ok){
             let data = await response.json();
             //se evalua la respuesta.
-            if(data =="NO DISPONIBLE"){
-                if(window.confirm("el producto se encuentra AGOTADO, por favor consulte en nuestros locales para mas info.")){
-                    window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
-                };
+            switch(data){
                 
-
-            }else{
-                return data;
+                case "CANTIDAD ACTUALIZADA CORRECTAMENTE":
+                    return "Se actualizo correctamente carrito";
+                case "ERROR FASE 1(upd product)":
+                    if(window.confirm("no se a encontrado el producto, por favor consulte en nuestros locales para mas info. OCURRIO UN ERROR FASE 1 AL PROCESAR LA SOLICITUD")){
+                        window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
+                    };
+                    break;
+                case "ERROR FASE 2(find cart)":
+                    if(window.confirm("OCURRIO UN ERROR FASE 2 AL PROCESAR LA SOLICITUD")){
+                        window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
+                    };
+                    break;
+                case "PRODUCTO INSERTADO DENTRO DE CARRITO CORRECTO":
+                    return "se agrego el producto al carrito por 72hrs";
+                default:
+                    console.log(data);
+                    return data;
             }
         }else{
             throw new Error("error al consultar la base");
@@ -312,15 +326,15 @@ async function crearReserva(idproduct){
     }catch( Error){
         throw new Error;
 
+        return err
     }
-
-}    
-function reservarProduct(idproduct, nombreproducto){
+};  
+function reservarProduct(idproduct){
     var verf =verificarSession();
     if(verf){
         alert("estas en una session, puedes reservar el Producto.");
-        Meter_en_carrito(idproduct,nombreproducto);
-        window.location.href="http://localhost/Neutro/codigo/pagCarrito/cart_index.html";
+        Meter_en_carrito(idproduct);
+        // window.location.href="http://localhost/Neutro/codigo/pagCarrito/cart_index.html";
 
     }if(!verf){
         alert("no estas en una session");

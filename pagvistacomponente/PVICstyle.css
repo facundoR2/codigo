@@ -131,6 +131,21 @@ body{
     border-radius: 15px;
     align-content: space-around;
 }
+.LBTON{
+    width: 130px;
+    height: 30px;
+    font-family:'Oswald', sans-serif;
+    font-weight: 300;
+    background-color:rgb(253, 101, 13);
+    border-color: whitesmoke;
+    border-radius: 15px;
+    align-content: space-around;
+    position: relative;
+}
+.LBTON:hover{
+    background-color: white;
+    transform: translate(0px,-3px);
+}
 /* ------------parte del producto seleccionado--------- */
 #content-prcto-view{
     display: flex;
@@ -188,10 +203,15 @@ body{
     font-family:'Oswald';
     font-weight: 600;
 }
-
 #Vistaproducto{
     display: flex;
     width: 80%;
+}
+#contenedor-Detalles{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    background-color: rgb(252, 121, 45);
 }
 #piedepagina{
     margin-top: 50px;
