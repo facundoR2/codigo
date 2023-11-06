@@ -1,20 +1,23 @@
 
 //se agregan los listeners para los buttons del menu lateral.
 let nuevologin = document.getElementById('Bingresar');
+let GO_inicio = document.getElementById("bton-inicio");
 let Go_accesorios = document.getElementById("bton-accesorios");
 let Go_tocart = document.getElementById("bton-carrito");
 let Go_mypc = document.getElementById("bton-ATP");
 
 //listeners de botones para navegar en las paginas.
-
+GO_inicio.addEventListener("click",function(){
+    window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
+});
 Go_mypc.addEventListener("click",function(){
     alert("esta funcion todavia no esta lista");
     // window.location.href="http://localhost/Neutro/codigo/pagArmarTuPc/index.html";
 });
 Go_tocart.addEventListener("click",function(){
-    verificarSession()
-    if(verificarSession==true){
-        window.location.href="http://localhost/Neutro/codigo/pagCarrito/index.html";
+    var verf =verificarSession();
+    if(verf){
+        window.location.href="http://localhost/Neutro/codigo/pagCarrito/cart_index.html";
     }else{
         alert("por favor ingresa a una sesion para acceder a un carrito");
     }
@@ -103,13 +106,12 @@ function iraproducto(Nombre){
     console.log(Nombre);
     //agregamos el nombre dentro de sessionStorege(solo se almacena dentro de la session hasta que se cierra o reinicia la pag).
     sessionStorage.setItem("producto",Nombre);
-    window.location.href="http://localhost/Neutro/codigo/pagvistacomponente/PVICindex.html";
-            
+    window.location.href="http://localhost/Neutro/codigo/pagvistacomponente/PVICindex.html";          
 };
 
-/////////////---------seccion trerproducto----------///////////
+/////////////---------seccion traer contenido----------///////////
 
-//agregar A para poder abrir el item para permitir el seleccionaiento en una nueva ventana altarena.(incluir en los test de unidad)
+//agregar A para poder abrir el item para permitir el seleccionaiento en una nueva ventana altarena.(consultar con cliente).
 function traerproducto(){
     fetch("http://localhost/Neutro/codigo/php/Getproducto-fe-pp.php")
     //convertimos la respuesta en un  objeto json.
@@ -149,7 +151,10 @@ function traerproducto(){
         };
     });
 };
-////////////----------fin funcion------------------- ////////
+function traerOfertas(){
+
+}
+////////////----------fin seccion traer contenido------------------- ////////
 ///////////-----------seccion configsession------////////
 function config_status_session(){
     var label = document.getElementById("labelusuario");
@@ -163,7 +168,7 @@ function config_status_session(){
         botonsession.innerHTML ="cerrar session";
     }     
 };
-////////////----------fin funcion------------------- ////////
+////////////----------fin seccion configsession------------------- ////////
 //-----funcionalidad de  confirmar cookies--------////
 function crearCookie(nombre, valor, dias){
     var fecha = new Date();
@@ -214,8 +219,6 @@ window.addEventListener("DOMContentLoaded",function(){
     confirmarCookies();
     traerproducto();
     config_status_session();
-
-    
     
 });
 
