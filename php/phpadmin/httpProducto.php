@@ -29,8 +29,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET'){
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
+
+
+
 }
 if ($_SERVER['REQUEST_METHOD'] === 'PUT'){
+
+    $data = file_get_contents("php://input");
+
+    //convertimos el form en un arreglo asociativo.
+    parse_str($data, $params);
+
+    $id = $params["idproducto"];
+    $nombre = $params["nombre"];
+    $caracts = $params["caracts"];
+    
 
 }
 if ($_SERVER['REQUEST_METHOD'] === 'Delete'){

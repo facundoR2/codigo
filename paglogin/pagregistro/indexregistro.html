@@ -25,11 +25,23 @@
                     <li><label class="form-label" for="Reg-ipt-email">Email</label></li>
                     <li><input class="form-input" type="email" name="Reg-ipt-email" id="Reg-ipt-email" placeholder="ejemplo@hotmail.com"></li>
                     <li><label class="form-label" for="Reg-ipt-contraseña" id="Reg-lb-pass">Contraseña</label></li>
-                    <li><input class="form-input" type="password" name="Reg-ipt-contraseña" id="Reg-ipt-contraseña" placeholder="Contraseña" required></li>
+                    <li><input class="form-input" type="password" name="Reg-ipt-contraseña" id="Reg-ipt-contraseña" placeholder="Contraseña minimo 8 caract." required></li>        
                     <li><button class="form-sub-bton bton" type="submit" id="Reg-btn-submit"><span>Registrarse</span></button></li>
                 </ul>
             </form>
+            <div id="layout_reglas">
+                <div id="contenedor_reglas">
+                    <ul>
+                        <li><span id="length">el largo de la contraseña debe ser de 8 caracteres o mas.</span></li>
+                        <li><span id="upper">la contraseña debe tener al menos1 letra Mayuscula</span></li>
+                        <li><span id="lower">la contraseña debe tener al menos 1 letra minuscula</span></li>
+                        <li><span id="number">la contraseña debe tener al menos 1 numero</span></li>
+                        <li><span id="simbol">la contraseña no debe contener simbolos</span></li>
+                    </ul>
+                </div>
+            </div>
         </div>
+        
     </section>
     <section id="extras" class="secciones-login">
         <h1>Te puede interesar</h1>

@@ -12,6 +12,38 @@ function validaremail(email){
         
 }
 function validarcontraseña(contraseña){
+    let lengthReq = document.getElementById("length");
+    let upperReq = document.getElementById("upper");
+    let lowerReq = document.getElementById("lower");
+    let numberReq = document.getElementById("number");
+    let symbolReq = document.getElementById("symbol");
+    if (contraseña.length >=8){
+        lengthReq.style.color ="green";
+    }else{
+        lengthReq.style.color ="red";
+    }
+
+    if(/[A-Z]/.test(contraseña)){
+        upperReq.style.color ="green";
+    }else{}
+    if(/a-z/.test(contraseña)){
+        lowerReq.style.color ="green";
+
+    }else{
+        lowerReq.style.color ="red";
+    }
+    if(/\d/.test(contraseña)){
+        numberReq.style.color ="green";
+
+    }else{
+        numberReq.style.color ="red";
+    }
+    //validar ausencia de simbolos.
+    if(/^[A-Za-z0-9]+$/.test(contraseña)) {
+        symbolReq.style.color ="green";
+    }else{
+        symbolReq.style.color ="red";
+    }
     //expresion que verifica si tiene almenos 8 caracteres, una letra mayuscula,una letra minuscula,un numero.
     var regla_ex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
     return regla_ex.test(contraseña);
@@ -50,7 +82,7 @@ function insertarNuevoUsuario( mail, contraseña){
     })
     .then(function(data){
         console.log(data);
-        if(data[1]==="se inserto usuario Correctamente"){
+        if(data[0]==="se inserto usuario Correctamente"){
             alert("se a creado el USUARIO CORRECTAMENTE");
             window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
         }
@@ -70,16 +102,16 @@ formulario.addEventListener("submit", function(Event){
     // le pasamos las variables a las funciones de validacion.
     validaremail(mail);
     validarcontraseña(contraseña);
-    if(validaremail(mail)==true){
+    if(validaremail(mail) == true){
         alert("Email incorrecto");
     }else{
-        if(validarcontraseña(contraseña)==false){
+        if(validarcontraseña(contraseña) == false){
             alert("Contraseña incorrecta");
         }else{
             console.log(mail);
             console.log(contraseña);
             validarduplicado(mail,contraseña);
-            // insertarNuevoUsuario(mail, contraseña);
+            insertarNuevoUsuario(mail, contraseña);
         }
     }
 });
