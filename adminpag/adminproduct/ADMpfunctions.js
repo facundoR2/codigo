@@ -3,7 +3,13 @@ let inicio = document.getElementById("Logo-tienda");
 let nuevologin = document.getElementById('Bingresar');
 let btonProductos = document.getElementById("lm-bton-productos");
 let btonOfertas = document.getElementById("lm-bton-ofertas");
+let Nuevoproducto = document.getElementById("nuevoProducto");
 // inicio funcionalidad de botones de  navegacion del Admin.
+
+Nuevoproducto.addEventListener("click",function(){
+    window.location.href="http://localhost/Neutro/codigo/adminpag/adminproduct/nuevo/ADM_nuevo_index.html";
+});
+
 inicio.addEventListener("click", function () {
     let campousuario = document.getElementById("labelusuario");
     if (sessionStorage.getItem("autosave")) {
@@ -21,7 +27,7 @@ btonProductos.addEventListener("click", function () {
 nuevologin.addEventListener("click",function(){
     if(nuevologin.innerHTML ==="Ingresar"){
         verificarSession()
-        if(verificarSession==true){
+        if(verificarSession == true){
             alert("ya estas en una session, por favor cierra tu sesion si quieres iniciar otra diferente.");
             botonsession.innerHTML ="cerrar session";
         }else{
@@ -33,13 +39,33 @@ nuevologin.addEventListener("click",function(){
         //devuelve a pagina principal.
         window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
     }
-})
-//--------------------- funcionalidad de seccion productos---------------\\.
+});
+
+////////--------------------- funcionalidad de seccion productos---------------\\\\\\\\\.
 
 //----funcion para editar en formulario--//.
 function validar_Edicion_producto(nombre,Caracteristicas,imagen,Estado,Categoria){
     if(nombre === "" && Caracteristicas ===""){
-        //revisa si los campos estan vacios
+        //revisa si los campos no contienen ningun simbolo.
+        if(/^[A-Za-z0-9]+$/.test(nombre)){
+            if(/^[A-Za-z0-9]+$/.test(Caracteristicas)){
+                if(/^[A-Za-z0-9]+$/.test(Estado)){
+                    if(/^[A-Za-z0-9]+$/.test(Categoria)){
+                        return true;
+                    }else{
+
+                    }
+
+                }else{
+
+                }
+            }else{
+
+            }
+        }else{
+
+        }
+
     }
     
     //verificar si es solo texto en entradas(Estado);
@@ -73,9 +99,7 @@ function traerCategorias(idselect){
         console.log("error al cargar las categorias:",error);
     });
 };
-function EditarProducto(Editar_idproduct, Editar_imgurl, Editar_caract, Editar_precio, Editar_nombre, Editar_idstock, Editar_estado,Editar_Categoria) {
-    var input_id = document.getElementById("prcto-in-id");
-    input_id.value = Editar_idproduct;
+function EditarProducto( Editar_imgurl, Editar_caract, Editar_precio, Editar_nombre, Editar_idstock, Editar_estado,Editar_Categoria) {
     var input_nombre = document.getElementById("prcto-in-nombre");
     input_nombre.value = Editar_nombre;
     var input_caract = document.getElementById("prcto-in-crtcs");
@@ -201,8 +225,8 @@ function traerproductos() {
                 var bton_editar = document.createElement('button');
                 bton_editar.textContent = "EDITAR";
                 bton_editar.className = "products_bton";
-                bton_editar.onclick = function () {
-                    var Editar_productoID = this.parentNode.parentNode.querySelector("h1").innerText;
+                bton_editar.onclick = function (){
+                    
                     var Editar_imgurl = this.parentNode.parentNode.querySelector("img").src;
                     var Editar_caract = this.parentNode.parentNode.querySelector("p.producto-Caract").innerText;
                     var Editar_precio = this.parentNode.parentNode.querySelector("p.producto-precio").innerText;
@@ -210,10 +234,10 @@ function traerproductos() {
                     var Editar_idstock = this.parentNode.parentNode.querySelector("p.producto-id_stock").innerText;
                     var Editar_estado = this.parentNode.parentNode.querySelector("p.producto-estado").innerText;
                     var Editar_Categoria = this.parentNode.parentNode.querySelector("p.producto-Categoria").innerText;
-                    console.log("id del producto: " + Editar_productoID);
-                    console.log("precio del producto: " + Editar_precio);
-                    console.log("categoria del producto"+Editar_Categoria);
-                    EditarProducto(Editar_productoID,Editar_imgurl,Editar_caract,Editar_precio,Editar_nombre,Editar_idstock,Editar_estado,Editar_Categoria);
+                    // console.log("id del producto: " + Editar_productoID);
+                    // console.log("precio del producto: " + Editar_precio);
+                    // console.log("categoria del producto"+Editar_Categoria);
+                    EditarProducto(Editar_imgurl,Editar_caract,Editar_precio,Editar_nombre,Editar_idstock,Editar_estado,Editar_Categoria);
                 };
                 var bton_Baja = document.createElement('button');
                 bton_Baja.textContent = "DAR BAJA";
