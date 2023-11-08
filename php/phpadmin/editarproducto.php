@@ -2,9 +2,14 @@
 
 
 $id =$_POST["id"];
+$nombre= $_POST["id"];
+$caracteristicas =$_POST["id"];
+$Detalles=$_POST["id"];
+$estado=$_POST["id"];
+$imagen=$_POST["id"];
 
 
-$sql="SELECT * FROM productos WHERE id_producto = ? LIMIT 1";
+$sql="UPDATE  productos SET  WHERE id_producto = ? LIMIT 1";
 
 $stmt = $conn->prepare($sql);
 

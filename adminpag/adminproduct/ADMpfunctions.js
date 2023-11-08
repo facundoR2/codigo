@@ -44,25 +44,32 @@ nuevologin.addEventListener("click",function(){
 ////////--------------------- funcionalidad de seccion productos---------------\\\\\\\\\.
 
 //----funcion para editar en formulario--//.
-function validar_Edicion_producto(nombre,Caracteristicas,imagen,Estado,Categoria){
-    if(nombre === "" && Caracteristicas ===""){
+function validarEdicionProducto(nombre,Caracteristicas,Detalles,imagen,Estado,Categoria){
+    if (nombre === "" && Caracteristicas ==="" && Detalles ==="" && imagen ==="" && Estado === ""){
         //revisa si los campos no contienen ningun simbolo.
         if(/^[A-Za-z0-9]+$/.test(nombre)){
             if(/^[A-Za-z0-9]+$/.test(Caracteristicas)){
-                if(/^[A-Za-z0-9]+$/.test(Estado)){
-                    if(/^[A-Za-z0-9]+$/.test(Categoria)){
-                        return true;
+                if(/^[A-Za-z0-9]+$/.test(Detalles)){
+                    if(/^[A-Za-z0-9]+$/.test(Estado)){
+                        if(/^[A-Za-z0-9]+$/.test(Categoria)){
+                            return true;
+                        }else{
+                            return "fallo Categoria";
+                        }
+    
                     }else{
-
+                        return "fallo estado";
                     }
 
                 }else{
-
+                    return "fallo Detalles";
                 }
+                
             }else{
-
+                return "fallo caracteristicas";
             }
         }else{
+            return "fallo nombre";
 
         }
 
@@ -77,7 +84,8 @@ function validar_Edicion_producto(nombre,Caracteristicas,imagen,Estado,Categoria
 
 
 
-};//validaciones para la edicion de un producto.
+};
+//validaciones para la edicion de un producto.
 //fin validaciones//
 
 function traerCategorias(idselect){
@@ -99,15 +107,39 @@ function traerCategorias(idselect){
         console.log("error al cargar las categorias:",error);
     });
 };
-function EditarProducto( Editar_imgurl, Editar_caract, Editar_precio, Editar_nombre, Editar_idstock, Editar_estado,Editar_Categoria) {
+function EditarProducto(Editar_idproducto, Editar_imgurl, Editar_caract,Editar_caract_details, Editar_precio, Editar_nombre, Editar_idstock, Editar_estado,Editar_Categoria) {
+    var nro_producto  = {};
+    function obtener_nro_producto(cadena){
+        
+        var nro = cadena.slice( -2);
+        var codigo = cadena.slice(-cadena.length,-2);
+        return {nro:nro, codigo:codigo};
+    };
+    nro_producto = obtener_nro_producto(Editar_idproducto);
+    var input_nro_producto = document.getElementById("prcto-in-id");
+    console.log(nro_producto);
+    input_nro_producto.value = nro_producto.nro;
+
     var input_nombre = document.getElementById("prcto-in-nombre");
     input_nombre.value = Editar_nombre;
     var input_caract = document.getElementById("prcto-in-crtcs");
     input_caract.value = Editar_caract;
+    var input_details = document.getElementById("prcto-in-crtcs_details");
+    input_details.value = Editar_caract_details;
     var input_imgurl = document.getElementById("prcto-in-img");
     input_imgurl.value = Editar_imgurl;
     var input_Estado = document.getElementById("prcto-in-Estado");
     input_Estado.value = Editar_estado;
+    var input_precio = document.getElementById("prcto-in-Precio");
+    input_precio.value = Editar_precio;
+    var regex = /^\d+(\.\d{1,2})?$/;
+    input_precio.onchange = function(){
+        var valor = input_precio.value;
+        if(!regex.test(valor)){
+            alert("El valor debe tener como maximo dos decimales");
+            input_precio.value = "";
+        }
+    }
     var input_Categoria = document.getElementById("prcto-in-Categoria");
     
     input_Categoria.value = Editar_Categoria;
@@ -118,10 +150,14 @@ function EditarProducto( Editar_imgurl, Editar_caract, Editar_precio, Editar_nom
 let formulario_productos = document.getElementById("form-prcto");
 formulario_productos.addEventListener("submit",e=>{
     e.preventDefault();
+    let idproducto = document.getElementById("prcto-in-id").value;
+    document.getElementById("prcto-in-id").innerText = idproducto;
     let nombre = document.getElementById("prcto-in-id").value;
     document.getElementById("prcto-in-nombre").innerHTML = nombre;
     let Caracteristicas = document.getElementById("prcto-in-crtcs").value;
     document.getElementById("prcto-in-crtcs").innerHTML = Caracteristicas;
+    let Detalles = document.getElementById("prcto-in-crtcs_details").value;
+    document.getElementById("prcto-in-crtcs_details").innerText = Detalles;
     let imagen = document.getElementById("prcto-in-img").value;
     document.getElementById("prcto-in-img").innerHTML = imagen;
     let Estado = document.getElementById("prcto-in-Estado").value;
@@ -129,9 +165,48 @@ formulario_productos.addEventListener("submit",e=>{
     let Categoria = document.getElementById("prcto-in-Categoria").value;
     document.getElementById("prcto-in-Categoria").innerHTML = Categoria;
 
-    validar_Edicion_producto(nombre,Caracteristicas,imagen,Estado,Categoria);
+    var confirm = validarEdicionProducto(idproducto,nombre,Caracteristicas,Detalles,imagen,Estado,Categoria);
+    if(confirm){
+        alert("la edicion se esta procesando");
+        enviaredicion(idproducto,nombre,Caracteristicas,Detalles,imagen,Estado,Categoria);
+
+    }
 
 });
+ async function enviaredicion(idproducto,nombre,Caracteristicas,Detalles,imagen,Estado,Categoria){
+    var url = "http://localhost/Neutro/codigo/php/phpadmin/editarproducto.php";
+    let formdata = new FormData();
+    formdata.append("idproducto",idproducto);
+    formdata.append("nombre",nombre);
+    formdata.append("Caracteristicas",Caracteristicas);
+    formdata.append("Detalles",Detalles);
+    formdata.append("imagen",imagen);
+    formdata.append("Estado",Estado);
+    formdata.append("Categoria",Categoria);
+    var mensaje = await fetch(url,{
+        method: 'POST',
+        body: formdata,
+    }).then(function(response){
+        if(response.ok){
+            return response.json();
+        }
+    }).then(function(data){
+        switch (data) {
+            case "MODIFICACION CORRECTA":
+                return "MODIFICACION procesada";
+            
+            case "ERROR AL MODIFICAR":
+                return "ERROR FASE 1";
+            
+            default:
+                return data;
+        }
+    })
+
+};
+async function enviaredicion(idproducto,nombre,Caracteristicas,Detalles,imagen,Estado,Categoria){
+    let mensaje = await envioEdicion(idproducto,nombre,Caracteristicas,Detalles,imagen,Estado,Categoria)
+}
 
 //----fin funcion----//
 //----funcion para dar de baja producto--//
@@ -153,7 +228,7 @@ function traerproductos() {
             var contenedor_productos = document.getElementById("contenedor-productos");
             // contenedor_productos.style.overflow = 'auto';
             // contenedor_productos.style.height = '20em';
-            var columnas = [ "nro","imagen", "id Producto","Nombre","estado", "Caracteristicas", "Precio","id stock","categoria","Acciones"];
+            var columnas = [ "nro","imagen", "id Producto","Nombre","estado", "Caracteristicas","Detalle", "Precio","id stock","categoria","Acciones"];
             var tablaproductos = document.createElement("table");
             var thead = document.createElement('thead');
             var tr = document.createElement('tr');
@@ -180,6 +255,8 @@ function traerproductos() {
                 td_estado.className="td-producto";
                 var td_caract = document.createElement('td');
                 td_caract.className="td-producto";
+                var td_caract_details = document.createElement('td');
+                td_caract_details.className="td-producto";
                 var td_precio = document.createElement('td');
                 td_precio.className="td-producto";
                 var td_stockId = document.createElement('td');
@@ -195,6 +272,8 @@ function traerproductos() {
                 imgurl.className = "producto-imgurl";
                 var Caract = document.createElement('p');
                 Caract.className = "producto-Caract";
+                var Caract_details = document.createElement('p');
+                Caract_details.className = "producto-Caract-details";
                 var Precio = document.createElement('p');
                 Precio.className = "producto-precio";
                 var nombre = document.createElement('p');
@@ -210,6 +289,7 @@ function traerproductos() {
                 idproducto.innerText = data.productos[i].Id;
                 productoID.innerText = data.productos[i].id_producto;
                 Caract.innerText = data.productos[i].Caracteristicas;
+                Caract_details.innerText = data.productos[i].detalle_caracteristicas;
                 Precio.innerText = data.productos[i].Costo;
                 nombre.innerText = data.productos[i].Nombre;
                 id_stock.innerText = data.productos[i].id_stock;
@@ -226,18 +306,19 @@ function traerproductos() {
                 bton_editar.textContent = "EDITAR";
                 bton_editar.className = "products_bton";
                 bton_editar.onclick = function (){
-                    
+                    var Editar_idproducto = this.parentNode.parentNode.querySelector("h1").innerText;
                     var Editar_imgurl = this.parentNode.parentNode.querySelector("img").src;
                     var Editar_caract = this.parentNode.parentNode.querySelector("p.producto-Caract").innerText;
+                    var Editar_caract_details = this.parentNode.parentNode.querySelector("p.producto-Caract-details").innerText;
                     var Editar_precio = this.parentNode.parentNode.querySelector("p.producto-precio").innerText;
                     var Editar_nombre = this.parentNode.parentNode.querySelector("p.producto-nombres").innerText;
                     var Editar_idstock = this.parentNode.parentNode.querySelector("p.producto-id_stock").innerText;
                     var Editar_estado = this.parentNode.parentNode.querySelector("p.producto-estado").innerText;
                     var Editar_Categoria = this.parentNode.parentNode.querySelector("p.producto-Categoria").innerText;
-                    // console.log("id del producto: " + Editar_productoID);
+                    console.log("id del producto: " + Editar_idproducto);
                     // console.log("precio del producto: " + Editar_precio);
                     // console.log("categoria del producto"+Editar_Categoria);
-                    EditarProducto(Editar_imgurl,Editar_caract,Editar_precio,Editar_nombre,Editar_idstock,Editar_estado,Editar_Categoria);
+                    EditarProducto(Editar_idproducto,Editar_imgurl,Editar_caract,Editar_caract_details,Editar_precio,Editar_nombre,Editar_idstock,Editar_estado,Editar_Categoria);
                 };
                 var bton_Baja = document.createElement('button');
                 bton_Baja.textContent = "DAR BAJA";
@@ -254,6 +335,7 @@ function traerproductos() {
                 td_nombre.appendChild(nombre);
                 td_estado.appendChild(estado);
                 td_caract.appendChild(Caract);
+                td_caract_details.appendChild(Caract_details);
                 td_precio.appendChild(Precio);
                 td_stockId.appendChild(id_stock);
                 td_categoria.appendChild(Categoria);
@@ -266,6 +348,7 @@ function traerproductos() {
                 tr_body.appendChild(td_nombre);
                 tr_body.appendChild(td_estado);
                 tr_body.appendChild(td_caract);
+                tr_body.appendChild(td_caract_details);
                 tr_body.appendChild(td_precio);
                 tr_body.appendChild(td_stockId);
                 tr_body.appendChild(td_categoria);
