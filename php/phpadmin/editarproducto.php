@@ -1,25 +1,26 @@
 <?php include("../conexion.php");
+// idproducto,nombre,Caracteristicas,Detalles,imagen, precio,Estado,Categoria
 
+$idproducto = $_POST["idproducto"];
+$nombre = $_POST["nombre"];
+$caracteristicas = $_POST["Caracteristicas"];
+$Detalles = $_POST["Detalles"];
+$imagen = $_POST["imagen"];
+$precio = $_POST["precio"];
+$estado = $_POST["Estado"];
+$categoria = $_POST["Categoria"];
 
-$id =$_POST["id"];
-$nombre= $_POST["id"];
-$caracteristicas =$_POST["id"];
-$Detalles=$_POST["id"];
-$estado=$_POST["id"];
-$imagen=$_POST["id"];
-
-
-$sql="UPDATE  productos SET  WHERE id_producto = ? LIMIT 1";
+$sql="UPDATE  productos SET Nombre = ? , Caracteristicas = ? , detalle_caracteristicas = ? , Costo = ? , imagen = ? , Estado = ? , Categoria = ?   WHERE id_producto = ? LIMIT 1";
 
 $stmt = $conn->prepare($sql);
 
-$stmt->bind_param("s", $id);
+$stmt->bind_param("sssissis", $nombre ,$caracteristicas, $Detalles, $precio, $imagen, $estado, $categoria, $idproducto);
 
-$stmt->execute();
-
-$result = $stmt->get_result();
-$producto = mysqli_fetch_all($result, MYSQLI_ASSOC);
-header('Content-Type: application/json');
-echo json_encode($producto);
-$conn->close();
+if($stmt->execute()){
+    $stmt->close();
+    $conn->close();
+    echo json_encode("MODIFICACION CORRECTA");
+}else{
+    echo json_encode("ERROR AL MODIFICAR");
+}
 ?>
