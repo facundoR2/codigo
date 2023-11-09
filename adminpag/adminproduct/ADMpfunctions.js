@@ -44,47 +44,9 @@ nuevologin.addEventListener("click",function(){
 ////////--------------------- funcionalidad de seccion productos---------------\\\\\\\\\.
 
 //----funcion para editar en formulario--//.
-function validarEdicionProducto(nombre,Caracteristicas,Detalles,imagen,Estado,Categoria){
-    if (nombre === "" && Caracteristicas ==="" && Detalles ==="" && imagen ==="" && Estado === ""){
-        //revisa si los campos no contienen ningun simbolo.
-        if(/^[A-Za-z0-9]+$/.test(nombre)){
-            if(/^[A-Za-z0-9]+$/.test(Caracteristicas)){
-                if(/^[A-Za-z0-9]+$/.test(Detalles)){
-                    if(/^[A-Za-z0-9]+$/.test(Estado)){
-                        if(/^[A-Za-z0-9]+$/.test(Categoria)){
-                            return true;
-                        }else{
-                            return "fallo Categoria";
-                        }
-    
-                    }else{
-                        return "fallo estado";
-                    }
 
-                }else{
-                    return "fallo Detalles";
-                }
-                
-            }else{
-                return "fallo caracteristicas";
-            }
-        }else{
-            return "fallo nombre";
+////// pendiente validacion.
 
-        }
-
-    }
-    
-    //verificar si es solo texto en entradas(Estado);
-    //verificar si esta todo en miniscula(eceptuando url imagen);
-    // "" si la categoria esta seleccionada y no tiene valor "0".
-    if(Categoria.value="0"){
-        alert("Categoria invalida,por favor verifique");
-    }
-
-
-
-};
 //validaciones para la edicion de un producto.
 //fin validaciones//
 
@@ -108,17 +70,10 @@ function traerCategorias(idselect){
     });
 };
 function EditarProducto(Editar_idproducto, Editar_imgurl, Editar_caract,Editar_caract_details, Editar_precio, Editar_nombre, Editar_idstock, Editar_estado,Editar_Categoria) {
-    var nro_producto  = {};
-    function obtener_nro_producto(cadena){
-        
-        var nro = cadena.slice( -2);
-        var codigo = cadena.slice(-cadena.length,-2);
-        return {nro:nro, codigo:codigo};
-    };
-    nro_producto = obtener_nro_producto(Editar_idproducto);
+    
+
     var input_nro_producto = document.getElementById("prcto-in-id");
-    console.log(nro_producto);
-    input_nro_producto.value = nro_producto.nro;
+    input_nro_producto.value = Editar_idproducto;
 
     var input_nombre = document.getElementById("prcto-in-nombre");
     input_nombre.value = Editar_nombre;
@@ -150,6 +105,7 @@ function EditarProducto(Editar_idproducto, Editar_imgurl, Editar_caract,Editar_c
 let formulario_productos = document.getElementById("form-prcto");
 formulario_productos.addEventListener("submit",e=>{
     e.preventDefault();
+    // capturamos los datos de las variables.
     let idproducto = document.getElementById("prcto-in-id").value;
     document.getElementById("prcto-in-id").innerText = idproducto;
     let nombre = document.getElementById("prcto-in-id").value;
@@ -160,20 +116,20 @@ formulario_productos.addEventListener("submit",e=>{
     document.getElementById("prcto-in-crtcs_details").innerText = Detalles;
     let imagen = document.getElementById("prcto-in-img").value;
     document.getElementById("prcto-in-img").innerHTML = imagen;
+    let precio = document.getElementById("prcto-in-Precio").value;
+    document.getElementById("prcto-in-Precio").innerText = precio;
     let Estado = document.getElementById("prcto-in-Estado").value;
     document.getElementById("prcto-in-Estado").innerHTML = Estado;
     let Categoria = document.getElementById("prcto-in-Categoria").value;
     document.getElementById("prcto-in-Categoria").innerHTML = Categoria;
 
-    var confirm = validarEdicionProducto(idproducto,nombre,Caracteristicas,Detalles,imagen,Estado,Categoria);
-    if(confirm){
-        alert("la edicion se esta procesando");
-        enviaredicion(idproducto,nombre,Caracteristicas,Detalles,imagen,Estado,Categoria);
+    //enviamos los datos a la funcion de validacion.
+    enviaredicion(idproducto,nombre,Caracteristicas,Detalles,imagen, precio,Estado,Categoria);
 
-    }
+   
 
 });
- async function enviaredicion(idproducto,nombre,Caracteristicas,Detalles,imagen,Estado,Categoria){
+ async function enviaredicion(idproducto,nombre,Caracteristicas,Detalles,imagen,precio, Estado,Categoria){
     var url = "http://localhost/Neutro/codigo/php/phpadmin/editarproducto.php";
     let formdata = new FormData();
     formdata.append("idproducto",idproducto);
@@ -181,6 +137,7 @@ formulario_productos.addEventListener("submit",e=>{
     formdata.append("Caracteristicas",Caracteristicas);
     formdata.append("Detalles",Detalles);
     formdata.append("imagen",imagen);
+    formdata.append("precio",precio);
     formdata.append("Estado",Estado);
     formdata.append("Categoria",Categoria);
     var mensaje = await fetch(url,{
@@ -193,7 +150,9 @@ formulario_productos.addEventListener("submit",e=>{
     }).then(function(data){
         switch (data) {
             case "MODIFICACION CORRECTA":
-                return "MODIFICACION procesada";
+                if(alert("la actualizacion se ingreso con exito a la base.")){
+                    window.location.reload();
+                }
             
             case "ERROR AL MODIFICAR":
                 return "ERROR FASE 1";
@@ -204,9 +163,6 @@ formulario_productos.addEventListener("submit",e=>{
     })
 
 };
-async function enviaredicion(idproducto,nombre,Caracteristicas,Detalles,imagen,Estado,Categoria){
-    let mensaje = await envioEdicion(idproducto,nombre,Caracteristicas,Detalles,imagen,Estado,Categoria)
-}
 
 //----fin funcion----//
 //----funcion para dar de baja producto--//

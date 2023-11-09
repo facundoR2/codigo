@@ -23,7 +23,7 @@
                 <button class="LBTON" id="lm-bton-inicio">inicio</button>
                 <button class="LBTON" id="lm-bton-productos">productos</button>
                 <button class="LBTON" id="lm-bton-ofertas">ofertas</button>
-                <button class="LBTON" id="nuevoProducto">CREAR NUEVO PRODUCTO</button>
+                <button class="LBTON" id="nuevoProducto">CREAR NUEVO PRODUCTO/stock</button>
         </section>
     </div>
     <section id="primera_seccion">
@@ -34,23 +34,24 @@
                     <div id="contenedor_edit">
                         <form class="formulariosADM" id="form-prcto" enctype="multipart/form-data">
                             <ul class="form-uls">
-                                <li class="form-lis"><label class="form-label" for="prcto-in-id">numero de Producto</label></li>
-                                <li class="form-lis"><input class="form-input"  id="prcto-in-id"  name="prcto-in-id" type="text" placeholder="incluya siempre el cero al principio."></li>
-                                <li class="form-lis"><label class="form-label" for="prcto-in-nombre">nombre</label></li>
-                                <li class="form-lis"><input class="form-input" id="prcto-in-nombre" name="prcto-in-nombre" type="text" title="nombre del producto" placeholder="nombre del producto ej: notebook samsung"></li>
+                                <li class="form-lis"><label class="form-label" for="prcto-in-id" hidden>numero de Producto</label></li>
+                                <li class="form-lis"><input class="form-input"  id="prcto-in-id"  name="prcto-in-id" type="text" placeholder="unic id producto." readonly hidden></li>
+                                <li class="form-lis"><label class="form-label" id="lb_nombre" for="prcto-in-nombre" >nombre</label></li>
+                                <li class="form-lis"><input class="form-input" id="prcto-in-nombre" name="prcto-in-nombre" type="text" title="nombre del producto" placeholder="nombre del producto ej: notebook samsung" required></li>
                                 <li class="form-lis"><label class="form-label" for="prcto-in-crtcs">Caracteristicas simple</label></li>
-                                <li class="form-lis"><input class="form-input" id="prcto-in-crtcs" name="prcto-in-crtcs"></li>
+                                <li class="form-lis"><input class="form-input" id="prcto-in-crtcs" name="prcto-in-crtcs" required></li>
                                 <li class="form-lis"><label class="form-label" for="prcto-in-crtcs_details">Caracteristicas Detalle</label></li>
-                                <li class="form-lis"><input class="form-input" id="prcto-in-crtcs_details" placeholder="detalles producto"></li>
+                                <li class="form-lis"><input class="form-input" id="prcto-in-crtcs_details" placeholder="detalles producto" required></li>
                                 <li class="form-lis"><label class="form-label" for="prcto-in-img">imagen</label></li>
                                 <li class="form-lis"><input class="form-input" id="prcto-in-img" name="prcto-in-img" placeholder="ingrese URL de la ubicacion de la imagen"></li>
                                 <li class="form-lis"><label class="form-label" for="prcto-in-Precio">Precio</label></li>
-                                <li class="form-lis"><input class="form-input" type="number" step="any" id="prcto-in-Precio" name="prcto-in-Precio" placeholder="PRECIO del producto"></li>
+                                <li class="form-lis"><input class="form-input" type="number" step="any" id="prcto-in-Precio" name="prcto-in-Precio" placeholder="PRECIO del producto(max 6digit)" min="0" max="999999.99" required></li>
                                 <li class="form-lis"><label class="form-label" for="prcto-in-Estado">Estado</label></li>
                                 <li class="form-lis"><input class="form-input" id="prcto-in-Estado"  name="prcto-in-Estado"></li>
                                 <li class="form-lis"><label class="form-label" for="prcto-in-Categoria">Categoria</label></li>
                                 <li class="form-lis"><select class="form-input" id="prcto-in-Categoria" name="prcto-in-Categoria">
                                     <option value="0">Colocar Categoria</option>
+                                    
                                 </select></li>
                                 <button class="form-submit" id="bton-prcto-clean" type="button" name="prcto-limpiar">limpiar</button>
                                 <button class="form-submit" id="bton-prcto-submit" type="submit" name="prcto-submit">Agregar</button>
