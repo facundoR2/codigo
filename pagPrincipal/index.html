@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tienda online</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="styleprincipal.css">
 </head>
+
 <body>
     <div class="aviso-cookies" id="aviso-cookies">
-        <img class="img-cookie" src="../css/imagenes/cookies.jpg" >
+        <img class="img-cookie" src="../css/imagenes/cookies.jpg">
         <h3 class="titulo-cookie">Cookies</h3>
-        <p class="parrafo-cookies">Utilizamos cookies propias y  Si acepta o continúa navegando, consideramos que acepta su uso. Puede cambiar la configuración u obtener más información aquí <a href="aviso_de_Privacidad.html">aviso de Cookies</a></p>
+        <p class="parrafo-cookies">Utilizamos cookies propias y Si acepta o continúa navegando, consideramos que acepta
+            su uso. Puede cambiar la configuración u obtener más información aquí <a
+                href="aviso_de_Privacidad.html">aviso de Cookies</a></p>
         <button class="boton" id="bton-aceptar-cookies">De acuerdo</button>
     </div>
     <div class="fondo-aviso-cookies" id="fondo-aviso-cookies"></div>
     <section id="cabecera"><!--seccion head con flogin ,logo y barra buscadora-->
-        <img   id="Logo-tienda" src="../css/imagenes/LOGO.jpg"alt="LOGO" title="inicio">
+        <img id="Logo-tienda" src="../css/imagenes/LOGO.jpg" alt="LOGO" title="inicio">
         <div id="buscador">
-            <input id="Barrabusqueda"type="text" placeholder=" ej: procesador ryzen 3">
-            <button id="BotonBuscar" target="_blank">buscar</button>
+            <input id="Barrabusqueda" type="text" placeholder=" ej: procesador ryzen 3">
+            <button id="BotonBuscar" target="_blank">buscar
+                
+            </button>
         </div>
         <div id="Login">
-            <label id="labelusuario" for="Bingresar">cliente</label>
+            <span class="material-symbols-outlined">person</span>
+            <label id="labelusuario" for="Bingresar">usuario</label>
             <button class="boton3D" id="Bingresar" type="button">Ingresar</button>
         </div>
     </section>
@@ -33,32 +42,53 @@
         </ul> -->
 
     </section>
-<section id="Lmenu">
-    <ul class="nav-links">
-        <li><button class="LBTON" id="bton-inicio">Inicio</button></li>
-        <li><button class="LBTON" id="bton-accesorios">accesorios</button></li>
-        <li><button class="LBTON" id="bton-carrito">carrito</button></li>
-        <li><button class="LBTON" id="bton-ATP">arma tu pc(prox)</button></li>
-        <li><button class="LBTON" id="bton-muebles">Muebles</button></li>
-    </ul>
-    <div class="layout-productos">
-        <div id="contenedor-productos"></div>
-    </div>
-</section>
+    <section id="Lmenu">
+        <ul class="nav-links">
+            <li><button class="LBTON" id="bton-inicio">
+                <span class="material-symbols-outlined">home</span>Inicio
+            </button></li>
+            <li><button class="LBTON" id="bton-accesorios">
+                <span class="material-symbols-outlined">headphones</span>accesorios
+            </button></li>
+            <li>
+                <button class="LBTON" id="bton-carrito">
+                    <span class="material-symbols-outlined">shopping_cart</span>carrito
+                </button>
+            </li>
+            <li><button class="LBTON" id="bton-ATP">arma tu pc(prox)</button></li>
+        </ul>
+        <div class="layout-productos">
+            <div id="contenedor-productos"></div>
+        </div>
+    </section>
 
-<section class="muestra-productos-oferta">
-    <h2>nuestras mejores ofertas</h2>
-    <!-- aqui irian ofertas  -->
-    
-</section>
-<script src="pagPrincipal.js"></script>
+    <section class="muestra-productos-oferta">
+        <div class="contenedor_titulos">
+            <h2 id="h2_ofertas">nuestras mejores ofertas</h2>
+        </div>
+        <div id="contenedor_ofertas">
+            <!-- aqui irian ofertas  -->
+            <p class="ofertas_p">tarjetas con ofertas</p>
+        </div>
+
+
+    </section>
+    <script src="pagPrincipal.js"></script>
 </body>
 <footer><!--pie de pagina con info de la empresa y derechos de uso-->
-    
-    <div>
+
+    <section id="piedepagina">
+        <div id="layout_socials">
+            <div id="contenedor_socials">
+                <a id="facebook" href="https://www.facebook.com/?locale=es_LA">facebook<i class="fa-brands fa-facebook"
+                        style="color: #0553f0;"></i></a>
+                <a id="instagram" href="https://www.instagram.com/">instragram</a>
+            </div>
+        </div>
         <h6>derechos reservados para el creador de esta y todas las paginas asociadas a este software<br>
-        cualquier copia o reproduccion se penará con spam infinito.</h6>
-    </div>
+            cualquier copia o reproduccion se penará con spam infinito.</h6>
+    </section>
 
 </footer>
+
 </html>

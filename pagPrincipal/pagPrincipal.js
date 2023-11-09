@@ -36,7 +36,7 @@ botonBusqueda.addEventListener("click",function(){
     //si precina tecla enter.
         let B_item = document.getElementById('Barrabusqueda').value;
         document.getElementById("Barrabusqueda").innerHTML = B_item;
-        item = B_item;
+        var item = B_item;
         console.log(item);
         buscarProducto(B_item);
 });

@@ -107,6 +107,7 @@ body{
     z-index: 1;
 }
 #BotonBuscar{
+    display: inline;
     align-items: center;
     z-index:2;
     padding: 9px 10px;
@@ -203,6 +204,8 @@ body{
     border-color: whitesmoke;
     border-radius: 15px;
     align-content: space-around;
+    justify-content: center;
+    align-content: center;
     position: relative;
 }
 .LBTON:hover{
@@ -257,20 +260,25 @@ body{
     -webkit-transform: translate(0px, 5px);
     -moz-transform: translate(0px,5px);
 }
+/* //////////// Section Ofertas //////////// */
 
+#h2_ofertas{
+    padding-left: 3%;
+}
+.ofertas_p{
+    padding-left: 3%;
+}
 
 /* ///////// seccion del footer/////////////// */
-#piedepagina{
-    margin-top: 50px;
-    vertical-align: bottom;
-    background-color:rgb(253, 101, 13);
+footer{
+    margin: 0;
 }
-/* ---------seccion aviso de privacidad---------- */
-#contenedor_Politicas{
-    display: contents;
-    background-color: gray;
-    color: #fff;
-    padding: 3em;
-    margin: 2em;
-    align-content: center;
+#piedepagina{
+    display: block;
+    margin-top: 50px;
+    padding: 2em 3em;
+    width: 100%;
+    height: fit-content;
+   
+    background-color:rgb(253, 101, 13);
 }
