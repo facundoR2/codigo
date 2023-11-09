@@ -183,5 +183,36 @@ body{
     -webkit-transform: translate(0px, 5px);
     -moz-transform: translate(0px,5px);
 }
+.prcto_btons{
+    margin-left: 3%;
+    width: 5em;
+    height: 5em;
+    background: rgb(187, 187, 187);
+    background: linear-gradient(0deg, rgb(119, 119, 119)0%,
+     rgb(255, 121, 12)100%);
+     border: none;
+}
+.prcto_btons:hover{
+    background: rgb(255, 136, 0);
+    background: linear-gradient(0deg, rgb(214, 214, 214)0%,
+    rgba(2,126,251,1)100%);
+}
 /* .prcto_btons{
 } */
+/* /////////////seccion footer///////////// */
+footer{
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    bottom: 0;
+}
+#piedepagina{
+    
+    display: block;
+    margin-top: 50px;
+    padding: 2em 3em;
+    width: 100%;
+    height: fit-content;
+   
+    background-color:rgb(253, 101, 13);
+}
