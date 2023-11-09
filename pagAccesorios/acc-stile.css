@@ -196,8 +196,19 @@ body{
     transform: translate(0px,-3px);
 }
 /* ------------seccion  MARCAS---------------- */
+footer{
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    bottom: 0;
+}
 #piedepagina{
+    
+    display: block;
     margin-top: 50px;
-    vertical-align: bottom;
-    background-color: rgb(253, 101, 13);
+    padding: 2em 3em;
+    width: 100%;
+    height: fit-content;
+   
+    background-color:rgb(253, 101, 13);
 }

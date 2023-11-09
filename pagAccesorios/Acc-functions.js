@@ -51,9 +51,9 @@ Go_mypc.addEventListener("click",function(){
     // window.location.href="http://localhost/Neutro/codigo/pagArmarTuPc/index.html";
 });
 Go_tocart.addEventListener("click",function(){
-    verificarSession()
-    if(verificarSession==true){
-        window.location.href="http://localhost/Neutro/codigo/pagCarrito/index.html";
+    var verf =verificarSession();
+    if(verf){
+        window.location.href="http://localhost/Neutro/codigo/pagCarrito/cart_index.html";
     }else{
         alert("por favor ingresa a una sesion para acceder a un carrito");
     }
