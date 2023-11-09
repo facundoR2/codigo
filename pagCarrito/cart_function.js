@@ -18,6 +18,22 @@ botonBusqueda.addEventListener("click",function(){
         console.log(item);
         buscarProducto(B_item);
 });
+nuevologin.addEventListener("click",function(){
+    if(nuevologin.innerHTML ==="Ingresar"){
+        verificarSession()
+        if(verificarSession==true){
+            alert("ya estas en una session, por favor cierra tu sesion si quieres iniciar otra diferente.");
+            botonsession.innerHTML ="cerrar session";
+        }else{
+            window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
+        }
+    }if(nuevologin.innerHTML =="cerrar session"){
+        //limpia todas las variables de la session.
+        sessionStorage.clear();
+        //devuelve a pagina principal.
+        window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
+    }
+})
 /////////////////////////////////////// fin seccion busqueda.////////////////
 GO_inicio.addEventListener("click",function(){
     window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
@@ -25,6 +41,9 @@ GO_inicio.addEventListener("click",function(){
 logoitem.addEventListener("click",function(){
     window.location.href="http://localhost/Neutro/codigo/pagPrincipal/index.html";
 });
+BtonAccesorios.addEventListener("click",function(){
+    window.location.replace("http://localhost/Neutro/codigo/pagAccesorios/Acc-index.html");
+})
 
 function buscarProducto(B_item){
      var busqueda = B_item;
@@ -156,6 +175,7 @@ function traercarrito(){
             };
             var bton_confirmar = document.createElement("button");
             bton_confirmar.innerText="Confirmar Compra";
+            bton_confirmar.className="prcto_btons";
             bton_detalles.className="prcto_btons";
             var id_producto = data[i].id_producto;
             bton_confirmar.onclick=function(){
