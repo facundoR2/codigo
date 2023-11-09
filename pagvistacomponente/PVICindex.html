@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Producto</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="PVICstyle.css">
 </head>
 
@@ -28,28 +30,34 @@
 
     <section id="Lmenu"><!--seccion de menu principal lateral-->
         <ul class="nav-links">
-            <li><button class="LBTON" id="bton-inicio">Inicio</button></li>
+            <li>
+                <button class="LBTON" id="bton-inicio">
+                    <span class="material-symbols-outlined">home</span>Inicio
+                </button>
+            </li>
             <li><button class="LBTON" id="bton-accesorios">accesorios</button></li>
             <li><button class="LBTON" id="bton-categorias">categorias</button></li>
             <li><button class="LBTON" id="bton-carrito">carrito</button></li>
             <li><button class="LBTON" id="bton-ATP">arma tu pc(prox)</button></li>
-            <li><button class="LBTON">historial(prox)</button></li>
-            <li><button class="LBTON" id="bton-productos">Productos</button></li>
         </ul>
         <section id="Vistaproducto">
             <div id="content-prcto-view">
                 <div id="img-producto-reserva"></div>
                 <div id="info-producto-reserva"></div>
             </div>
-            <div id="layaout-Detalles">
-                <div id="contenedor-Detalles"></div>
-            </div>
+            
         </section>
         <section id="extras">
             <div id="layout_extras">
                 <div id="contenedor-extras"></div>
             </div>
         </section>
+    </section>
+    <section id="producto-detalles">
+        <h1>DETALLES</h1>
+        <div id="layaout_detalles">
+            <div id="contenedor_detalles"></div>
+        </div>
     </section>
     <section id="ofertaproductos">
         <div id="contenedor-productos"></div>

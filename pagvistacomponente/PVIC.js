@@ -4,6 +4,7 @@ let Mp_Logo = document.getElementById("Logo-tienda");
 let nuevologin = document.getElementById('Bingresar');
 //se agregan los listeners para los buttons del menu lateral.
 let GO_inicio = document.getElementById("bton-inicio");
+let botonBusqueda = document.getElementById("BotonBuscar");
 let BtonAccesorios = document.getElementById("bton-accesorios");
 let BtonCategorias = document.getElementById("bton-categorias");
 let Go_tocart = document.getElementById("bton-carrito");
@@ -11,6 +12,39 @@ let Go_mypc = document.getElementById("bton-ATP");
 let Go_products = document.getElementById("bton-productos");
 
 //////-.---------------------funcionalidad de la cabecera----------------------////////
+botonBusqueda.addEventListener("click",function(){
+    //si precina tecla enter.
+        let B_item = document.getElementById('Barrabusqueda').value;
+        document.getElementById("Barrabusqueda").innerHTML = B_item;
+        var item = B_item;
+        console.log(item);
+        buscarProducto(B_item);
+});
+
+function buscarProducto(B_item){
+     var busqueda = B_item;
+     let search_Fdata = new FormData();
+     search_Fdata.append("Busqueda",busqueda);
+
+    fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe-pp1.php",{
+        method: 'POST',
+        body: search_Fdata,
+    })
+    .then(function(respuesta){
+        if(respuesta.ok){
+            console.log("busqueda exitosa");
+            return respuesta.json();
+        }else{
+            console.log("busqueda incompleta");
+            window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/index.html";
+        }
+    })
+    .then(function(data){
+        console.log(data);
+        sessionStorage.setItem("busqueda",JSON.stringify(data));
+        window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/PBOindex.html";
+    });
+};
 //--validaciones para la barra de busqueda--//////.
 function verificarSession(){
     //crea la variable que contiene el label
@@ -70,6 +104,13 @@ Go_tocart.addEventListener("click",function(){
 });
 //////-.--------------------- fin funcionalidad de la cabecera----------------------////////.
 /////-------------------------seccion del producto seleccionado---------------------///////.
+function Detalles(detalles){
+    let contenedor_detalles = document.getElementById("contenedor_detalles");
+    let details = document.createElement("p");
+    details.className="producto_detalles";
+    details.innerText = detalles;
+    contenedor_detalles.appendChild(details); 
+}
 function traerproducto(){
     //hacemos peticion para buscar el producto seleccionado.
     let nombre =sessionStorage.getItem("producto");
@@ -119,6 +160,9 @@ function traerproducto(){
             reservarProduct(idproduct);
             console.log("intentaste reservar el producto");
         }
+        
+        var detalle_caracteristicas = data[0].detalle_caracteristicas;
+
         li1.appendChild(infp);
         li2.appendChild(precio);
         li3.appendChild(boton_comprar);
@@ -129,6 +173,8 @@ function traerproducto(){
         m_ul.appendChild(li4);
         content_dataproduct.appendChild(m_ul);
         contentview.appendChild(imagen);
+        
+        Detalles(detalle_caracteristicas);
     });
 };
 
