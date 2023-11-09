@@ -1,0 +1,63 @@
+@font-face{
+    font-family: 'Oswald', sans-serif;
+    src: url(../css/Fonts/Oswald-Bold.ttf)format(TrueType);
+    font-weight: 600;
+}
+/* config para que todo el cuerpo use la fuente dispuesta abajo */
+body{
+    font-family:'Oswald', sans-serif;
+    font-weight: 600;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.sections{
+    margin-left: 3em;
+    margin-right: 3em;
+    background-color: grey;
+
+}
+/* ---------seccion aviso de privacidad---------- */
+#cabecera_politicas{
+    display: flex;
+    position: sticky;
+
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 0;
+    height: 90px;
+    background-color:rgb(254, 106, 0,1);
+}
+.LBTON{
+    width: 130px;
+    height: 30px;
+    font-family:'Oswald', sans-serif;
+    font-weight: 300;
+    background-color:rgb(253, 101, 13);
+    border-color: whitesmoke;
+    border-radius: 15px;
+    align-content: space-around;
+    position: relative;
+}
+.LBTON:hover{
+    background-color: white;
+    transform: translate(0px,-3px);
+}
+
+#contenedor_Politicas{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(209, 207, 207);
+    color: #000000;
+    padding: 3em;
+    align-content: center;
+    columns: auto 8rem;
+}
+.politicas_p{
+    display: flex;
+    color: #000000;
+    text-align: center;
+}
