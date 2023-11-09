@@ -18,7 +18,7 @@ body{
     width: 200px;
     height: 80px;
     image-rendering: optimizeQuality;
-    background-image: url(../../css/imagenes/LOGO.jpg);
+    background-image: url(../../../css/imagenes/LOGO.jpg);
     background-attachment: local;
 }
 #cabecera{
@@ -111,8 +111,26 @@ body{
     transform: translate(0px,-3px);
 }
 /* -----seccion editar-producto------- */
-#editar-producto{
-    padding-left: 20px;
+.formulariosADM{
+    background-color: rgb(226, 223, 223);
+    border-radius: 10px;
+    padding: 1em;
+}
+.form-lis{
+    list-style: none;
+}
+.form-label{
+    font-family:'Oswald', sans-serif;
+    font-weight: 300;
+    padding-top: 3px;
+    font-size: large;
+}
+.form-input{
+    width: 20em;
+    height: 2em;
+    border-radius: 10px;
+    padding-bottom: 3px;
+    padding-left: 2px;
 }
 /*----------- contenedor prcto-mod------------ */
 

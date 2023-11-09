@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="ADM_nuevo_style.css">
 </head>
+
 <body>
     <section id="cabecera"><!--seccion head con flogin ,logo y barra buscadora-->
         <div id="logo">
-            <img   id="Logo-tienda" src="../../../css/imagenes/LOGO.jpg"alt="LOGO" title="inicio">
+            <img id="Logo-tienda" src="../../../css/imagenes/LOGO.jpg" alt="LOGO" title="inicio">
         </div>
         <div id="Login">
             <label id="labelusuario">cliente</label>
@@ -20,27 +22,123 @@
     <section id="primera_seccion">
         <section id="Lmenu">
             <ul class="nav-links">
-                <li><button class="LBTON" id="lm-bton-inicio">inicio</button></li>
+                <li><button class="LBTON" id="lm-bton-inicio">volver</button></li>
                 <li><button class="LBTON" id="lm-bton-productos">productos</button></li>
                 <li><button class="LBTON" id="lm-bton-ofertas">ofertas</button></li>
-
             </ul>
         </section>
+
+        <section id="seccion_formulario_producto">
+            <div id="layout_formulario">
+                <h1>INGRESAR NUEVO PRODUCTO</h1>
+                <div id="contenedor_formulario">
+                    <form id="form_nuevo_producto" title="formulario nuevo producto">
+                        <ul>
+                            <li class="form-lis"><label class="form-label" for="prcto-in-id">Nro producto</label></li>
+                            <li class="form-lis"><input class="form-input" id="prcto-in-id" required></label>
+                            <li class="form-lis"><label class="form-label" id="lb_nombre"
+                                    for="prcto-in-nombre">nombre</label></li>
+                            <li class="form-lis"><input class="form-input" id="prcto-in-nombre" name="prcto-in-nombre"
+                                    type="text" title="nombre del producto"
+                                    placeholder="nombre del producto ej: notebook samsung" required></li>
+                            <li class="form-lis"><label class="form-label" for="prcto-in-crtcs">Caracteristicas
+                                    simple</label></li>
+                            <li class="form-lis"><input class="form-input" id="prcto-in-crtcs" name="prcto-in-crtcs"
+                                    required></li>
+                            <li class="form-lis"><label class="form-label" for="prcto-in-crtcs_details">Caracteristicas
+                                    Detalle</label></li>
+                            <li class="form-lis"><input class="form-input" id="prcto-in-crtcs_details"
+                                    placeholder="detalles producto" required></li>
+                            <li class="form-lis"><label class="form-label" for="prcto-in-img">imagen</label></li>
+                            <li class="form-lis"><input class="form-input" id="prcto-in-img" name="prcto-in-img"
+                                    placeholder="ingrese URL de la ubicacion de la imagen o en su defecto la palabra imagen">
+                            </li>
+                            <li class="form-lis"><label class="form-label" for="prcto-in-stock">Stock</label></li>
+                            <li class="form-lis"><select class="form-input" id="prcto-in-stock" name="prcto-in-stock">
+                                    <option value="0">Colocar Stock</option>
+                                </select></li>
+                            <li class="form-lis"><label class="form-label" for="prcto-in-Precio">Precio</label></li>
+                            <li class="form-lis"><input class="form-input" type="number" step="any" id="prcto-in-Precio"
+                                    name="prcto-in-Precio" placeholder="PRECIO del producto(max 6digit)" min="0"
+                                    max="999999.99" required></li>
+                            <li class="form-lis"><label class="form-label" for="prcto-in-Estado">Estado</label></li>
+                            <li class="form-lis"><input class="form-input" id="prcto-in-Estado" name="prcto-in-Estado">
+                            </li>
+                            <li class="form-lis"><label class="form-label" for="prcto-in-Categoria">Categoria</label>
+                            </li>
+                            <li class="form-lis"><select class="form-input" id="prcto-in-Categoria"
+                                    name="prcto-in-Categoria">
+                                    <option value="0">Colocar Categoria</option>
+                                </select></li>
+                            <button class="form-submit" id="bton-prcto-submit" type="submit" name="prcto-submit">Crear
+                                PRODUCTO</button>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section id="seccion_formulario_stock">
+            <div id="layout_formulario_stock">
+                <h1>nuevo STOCK</h1>
+                <div id="contenedor_formulario_stock">
+                    <form id="form_nuevo_stock" title="formulario nuevo stock">
+                        <ul>
+
+                            <li class="form-lis">
+                                <label class="form-label" id="lb_nombre" for="prcto-in-nombre">nombre</label>
+                            </li>
+                            <li class="form-lis">
+                                <input class="form-input" id="prcto-in-nombre" name="prcto-in-nombre" type="text"
+                                    title="nombre del producto" placeholder="nombre del producto ej: notebook samsung"
+                                    required>
+                            </li>
+                            <li class="form-lis">
+                                <label class="form-label" for="prcto-in-tipo">tipo</label>
+                            </li>
+                            <li class="form-lis">
+                                <input class="form-input" id="prcto-in-tipo" name="prcto-in-tipo" required>
+                            </li>
+                            <li class="form-lis">
+                                <label class="form-label" for="prcto-in-crtcs_details">Caracteristicas</label>
+                            </li>
+                            <li class="form-lis">
+                                <input class="form-input" id="prcto-in-crtcs_details" placeholder="detalles producto"
+                                    required>
+                            </li>
+                            
+                            
+                            <li class="form-lis">
+                                <label class="form-label" for="prcto-in-Precio">Precio</label>
+                            </li>
+                            <li class="form-lis">
+                                <input class="form-input" type="number" step="any" id="prcto-in-Precio" title="precio del producto"
+                                    name="prcto-in-Precio" placeholder="PRECIO del producto(max 6digit,2 decimales)" min="0"
+                                    max="999999.99" required>
+                            </li>
+                            <li class="form-lis">
+                                <label class="form-label" for="prcto-in-img">imagen</label>
+                            </li>
+                            <li class="form-lis">
+                                <input class="form-input" id="prcto-in-img" name="prcto-in-img"
+                                    placeholder="ingrese URL de la ubicacion de la imagen o en su defecto la palabra imagen" title="URL de imagen">
+                            </li>
+                            <button class="form-submit" id="bton-prcto-submit" type="submit" name="prcto-submit">Crear
+                                PRODUCTO</button>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </section>
     </section>
-    <section id="segunda_seccion">
-        <div id="layout_formulario">
-            <h1>INGRESAR NUEVO PRODUCTO</h1>
-            <div id="contenedor_formulario">
-                <form id="form_nuevo_producto" title="formulario nuevo producto" >
+    <section>
+        <div id="layout_categoria">
+            <div id="contenedor_categoria">
+                <form id="form-nueva-categoria">
                     <ul>
-                        <li>id producto</li>
-                        <li> nombre</li>
-                        <li>Caractaristicas en sintesis</li>
-                        <li>Caracteristicas en Detalle</li>
-                        <li>Precio de producto</li>
-                        <li>Categoria</li>
-                        <li>Estado: por default en alta</li>
-                        <li>Cantidad en stock</li>
+                        <li class="form-lis"><label class="form-label" for="nombre_Ncategoria">NOMBRE CATEGORIA</label>
+                        </li>
+                        <li class="form-lis"><input type="text" class="form-input" id="nombre_Ncategoria"
+                                placeholder="menos de 15 caracteres" required></li>
                     </ul>
                 </form>
             </div>
@@ -53,8 +151,9 @@
 <footer><!--pie de pagina con info de la empresa y derechos de uso-->
     <div>
         <h6>derechos reservados para el creador de esta y todas las paginas asociadas a este software<br>
-        cualquier copia o reproduccion se penará con spam infinito.</h6>
+            cualquier copia o reproduccion se penará con spam infinito.</h6>
     </div>
 
 </footer>
+
 </html>
