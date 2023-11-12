@@ -11,7 +11,7 @@ $hash = password_hash($contraseña, PASSWORD_DEFAULT);
 //creamos un array para la confirmaciones.
 $confirm = array();
 //traemos el ultimo id de carrito agregado.
-$sql = "SELECT MAX(Id) FROM carritos";
+$sql = "SELECT MAX(id) FROM carritos";
 //preparamos la consulta.
 $stmt =$conn->prepare($sql);
 //ejecutamos la consulta.
@@ -19,7 +19,7 @@ $stmt->execute();
 //obtenemos el resultado.
 $result = $stmt->get_result();
 //armamos un array asociativo.
-$maximo_id = $result->fetch_array(MYSQLI_ASSOC)["MAX(Id)"];
+$maximo_id = $result->fetch_array(MYSQLI_ASSOC)["MAX(id)"];
 //creamos el nuevo IdCarrito.
 $nuevo_idCarrito = $maximo_id + 1;
 
@@ -35,13 +35,11 @@ $sql ="SELECT MAX(Id) FROM usuarios";
     $nuevo_idUsuario = $maximo_id_usuario + 1;
     $stmt->free_result();
     //creamos el carrito del usuario.
-    $PRi=NULL;
-    $cantidad =0;
-    $DR_carrito ='se creo nuevo carrito';
-    $sql = "INSERT INTO carritos (id, Usuario_id, Productos_Reservados_id, CantidadProductos, DetalleReserva) VALUES (?,?,?,?,?)";
+    $Total = 0.00;
+    $sql = "INSERT INTO  carritos (id, Usuario_id, Total) VALUES ( ?,?,?)";
     $stmt=$conn->prepare($sql);
     //vinculamos los parametros.
-    $stmt->bind_param("iiiis", $nuevo_idCarrito, $nuevo_idUsuario, $PRi, $cantidad, $DR_carrito);
+    $stmt->bind_param("iii", $nuevo_idCarrito, $nuevo_idUsuario, $Total);
     //ejecutamos la consulta.
     $stmt->execute();
     if($stmt->affected_rows > 0){
@@ -54,39 +52,42 @@ $sql ="SELECT MAX(Id) FROM usuarios";
 
 //insertamos la nueva fila en la tabla usuarios.
 
-$id=NULL;
-$sql = "INSERT INTO usuarios(Id, IdCarrito, NombreUsuario, Contraseña, Nivel) VALUES (?, ?, ?, ?, 1)";
+
+$sql = "INSERT INTO usuarios(Id, IdCarrito, NombreUsuario, Contraseña, Nivel) VALUES (NULL, ?, ?, ?, 1)";
 
 $stmt =$conn->prepare($sql);
 //vinculamos los parametros.
-$stmt->bind_param("iiss", $id, $nuevo_idCarrito, $mail, $hash);
+$stmt->bind_param("iss", $nuevo_idCarrito, $mail, $hash);
 //ejecutamos la consulta.
 $stmt->execute();
 //verificamos si se insertó correctamente.
 if($stmt->affected_rows > 0){
     $confirm[1] = "se inserto usuario Correctamente";
     // echo json_encode("se inserto usuario Correctamente");
-    echo  json_encode($confirm);
 
     //guardamos los datos en tabla info.
 
-    $id = NULL;
-    $sql_info = "INSERT INTO info ('id', 'Mail', 'Contraseña') VALUES (?, ?, ?)";
+   
+    $sql_info ="INSERT INTO info (id, Mail, Contraseña) VALUES (NULL, ?, ?)";
     
-    $stmt_info->prepare($sql_info);
+    $stmt_info = $conn->prepare($sql_info);
 
-    $stmt_info->bind_param("iss",$id,$mail, $contraseña);
+    $stmt_info->bind_param("ss",$mail, $contraseña);
     $stmt_info->execute();
 
     $num_rows= $stmt_info->affected_rows;
     if($num_rows>0){
 
-        echo "se guardo correctamente los datos";
+        $confirm[2] = "se guardo correctamente los datos";
+        header('Content-Type: application/json');
+        
+        echo json_encode ("se inserto usuario Correctamente");
     }
     
 }else{
-    echo "error al insertar usuario.";
+    echo  json_encode("error al insertar usuario.");
 }
+
 
 
 

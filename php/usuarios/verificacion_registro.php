@@ -4,7 +4,7 @@ $mail = $_POST['Mail'];
 $contraseña = $_POST['Contraseña'];
 
 if(empty($mail) || empty($contraseña)){
-    echo "El mail y la contraseña no pueden estar vacios";
+    echo json_encode("El mail y la contraseña no pueden estar vacios");
 }else{
     // se encripta la contraseña por seguridad.
     $hash = password_hash($contraseña, PASSWORD_DEFAULT);
@@ -18,9 +18,9 @@ if(empty($mail) || empty($contraseña)){
     //si el numero es mayor a cero, significa que ya existe un registro.
     if($num>0){
         //mostramos mensaje de error.
-        echo "El mail y contraseña ingresados ya existen en la base de datos";
+        echo json_encode("El mail y contraseña ingresados ya existen en la base de datos");
     }else{
-        echo "el email y la contraseña son unicos";
+        echo json_encode("el email y la contraseña son unicos");
     }
     $stmt1->close();
 }
