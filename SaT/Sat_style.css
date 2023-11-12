@@ -1,0 +1,219 @@
+@font-face{
+    font-family: 'Oswald', sans-serif;
+    src: url(../css/Fonts/Oswald-Bold.ttf)format(TrueType);
+    font-weight: 600;
+}
+/* config para que todo el cuerpo use la fuente dispuesta abajo */
+body{
+    font-family:'Oswald', sans-serif;
+    font-weight: 600;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+/* seccion del aviso de cookies. */
+.aviso-cookies{
+    display: none;
+    background: #fff;
+    padding: 20px;
+    width: calc(100% - 40px);
+    max-width: 300px;
+    line-height: 150%;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 100;
+    padding-top: 60px;
+    box-shadow: 0px 2px 20px 10px rgba(90, 89, 89, 0.25);
+    text-align: center;
+}
+.aviso-cookies.activo{
+    display: block;
+}
+.aviso-cookies .img-cookie{
+    max-width: 100px;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+.aviso-cookies .titulo-cookie,
+.aviso-cookies .parrafocookies{
+    margin-bottom: 15px;
+
+}
+.aviso-cookies .boton{
+    width: 100%;
+    background: #595959;
+    border: none;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:  .3s ease all;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+.aviso-cookies a{
+    color: rgb(18, 18, 119);
+    text-decoration: none;
+    font-size: 14px;
+}
+.aviso-cookies a:hover{
+    text-decoration: underline;
+}
+.fondo-aviso-cookies{
+    display: none;
+    background-color: rgba(0, 0, 0, 0.25);
+    position: fixed;
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    top:0;
+    left: 0;
+}
+.fondo-aviso-cookies.activo{
+    display: block;
+}
+/* fin seccion cookies */
+#Logo-tienda{
+    width: 200px;
+    height: 80px;
+    image-rendering: optimizeQuality;
+    background-image: url(../css/imagenes/LOGO.jpg);
+    background-attachment: local;
+}
+#cabecera{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 0;
+    height: 90px;
+    background-color:rgb(254, 106, 0,1);
+}
+#buscador{
+    justify-content: center;
+    width: 600px;
+}
+#Barrabusqueda{
+    width: 40em;
+    height: 3em;
+    border-radius: 15px;
+    z-index: 1;
+}
+#BotonBuscar{
+    display: inline;
+    align-items: center;
+    z-index:2;
+    padding: 9px 10px;
+    position: relative;
+    right: 69px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+#buscador{
+    display: flex;
+    align-items: center;
+}
+#Login{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 20%;
+    padding-left: 3px;
+    align-items:center;
+    align-content: center;
+}
+#labelusuario{
+    padding-right: 5px;
+}
+#Bingresar{
+    margin-left: 3px;
+    border: 0;
+    padding: 10px 20px;
+    font-size: medium;
+    color: white;
+    background: rgb(155, 63, 9);
+    position: relative;
+    box-shadow: 3px 3px rgb(97, 39, 6);
+}
+
+.boton3D{
+    transition: transform 0.3s ease;
+}
+.boton3D::after, .boton3D::before{
+    content: "";
+    position: absolute;
+    opacity: 0.3;
+    background: rgb(151, 99, 69);
+    border-radius: inherit;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: transform 0.3s ease;
+}
+.boton3D:hover{
+    transform: translate(-3px, -3px);
+}
+.boton3D:hover::after{
+    transform: translate(-2px,-2px);
+}
+.boton3D:hover::before{
+    transform: translate(3px,3px);
+}
+#vistamenu{
+    display: flex;
+    width: auto;
+    height: 40px;
+    background-color: grey;
+    align-items: center;
+    justify-content: right;
+    padding-right: 30px;
+    box-shadow: 0px 5px 3px rgb(95, 95, 95);
+}
+/* ---------------inicio primera seccion--------------------*/
+/* parte del menu lateral */
+.nav-links{
+    width: 200px;
+    height:fit-content;
+    padding-top:10px;
+    padding-left:30px;
+    padding-right:15px;
+    padding-bottom: 10px;
+    line-height: 3em;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgb(45, 44, 44);
+}
+.LBTON{
+    width: 130px;
+    height: 30px;
+    font-family:'Oswald', sans-serif;
+    font-weight: 300;
+    background-color:rgb(253, 101, 13);
+    border-color: whitesmoke;
+    border-radius: 15px;
+    align-content: space-around;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+}
+.LBTON:hover{
+    background-color: white;
+    transform: translate(0px,-3px);
+}
+#Lmenu{
+    display: flex;
+    width: 100%;
+    align-content: space-between;
+}
