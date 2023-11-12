@@ -27,7 +27,7 @@ function validarcontraseña(contraseña){
         upperReq.style.color ="green";
     }else{}
     if(/a-z/.test(contraseña)){
-        lowerReq.style.color ="green";
+        lowerReq.style.color = "green";
 
     }else{
         lowerReq.style.color ="red";
@@ -40,7 +40,7 @@ function validarcontraseña(contraseña){
     }
     //validar ausencia de simbolos.
     if(/^[A-Za-z0-9]+$/.test(contraseña)) {
-        symbolReq.style.color ="green";
+        symbolReq.style.color = "green";
     }else{
         symbolReq.style.color ="red";
     }
@@ -59,9 +59,17 @@ function validarduplicado(mail,contraseña){
     })
     .then(function(response){
         if(response.ok){
-            console.log(response);
+            return response.json();
         }
-    })
+    }).then(function(data){
+        if(data =="el email y la contraseña son unicos"){
+            alert("el usuario y contraseña estan disponibles");
+        }else{
+            alert("el usuario y contraseña no esta disponible, pruebe con otros");
+            window.location.reload();
+
+        }
+    });
 }
 //----------fin seccion validaciones----//
 function insertarNuevoUsuario( mail, contraseña){
@@ -82,9 +90,13 @@ function insertarNuevoUsuario( mail, contraseña){
     })
     .then(function(data){
         console.log(data);
-        if(data[0]==="se inserto usuario Correctamente"){
-            alert("se a creado el USUARIO CORRECTAMENTE");
+        if(data ==="se inserto usuario Correctamente"){
+            alert("se a creado el USUARIO CORRECTAMENTE, por favor ingrese su usuario en el Login");
             window.location.href="http://localhost/Neutro/codigo/paglogin/loginindex.html";
+        }else{
+            alert("hubo un Error al insertar usuario, intentelo denuevo mas tarde");
+            window.location.replace("http://localhost/Neutro/codigo/pagPrincipal/index.html");
+
         }
     });
 
@@ -100,12 +112,12 @@ formulario.addEventListener("submit", function(Event){
     let contraseña = document.getElementById("Reg-ipt-contraseña").value;
     document.getElementById("Reg-ipt-contraseña").innerHTML = contraseña;
     // le pasamos las variables a las funciones de validacion.
-    validaremail(mail);
-    validarcontraseña(contraseña);
-    if(validaremail(mail) == true){
+    var verificacion1 = validaremail(mail);
+    var verificacion2 = validarcontraseña(contraseña);
+    if(verificacion1 == true){
         alert("Email incorrecto");
     }else{
-        if(validarcontraseña(contraseña) == false){
+        if(verificacion2 == false){
             alert("Contraseña incorrecta");
         }else{
             console.log(mail);
