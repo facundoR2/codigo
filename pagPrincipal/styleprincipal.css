@@ -230,10 +230,11 @@ body{
     margin-top: 20px;
     margin-bottom: 30px;
     padding-bottom: 10px;
+    box-shadow: -1px 4px 8px;
     /* border: 10px; */
     max-width: 315px;
     border-radius: 10%;
-    background-color:rgb(231, 92, 11);
+    /* background-color:rgb(231, 92, 11); */
     transition: .5s, color .10s;
     -webkit-transition: .5s, color .10s;
     -moz-transition: 5.s, color, .10s;

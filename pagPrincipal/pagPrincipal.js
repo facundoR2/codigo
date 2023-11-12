@@ -36,27 +36,23 @@ botonBusqueda.addEventListener("click",function(){
     //si precina tecla enter.
         let B_item = document.getElementById('Barrabusqueda').value;
         document.getElementById("Barrabusqueda").innerHTML = B_item;
-        var item = B_item;
-        console.log(item);
         buscarProducto(B_item);
 });
 
-function buscarProducto(B_item){
-     var busqueda = B_item;
-     let search_Fdata = new FormData();
-     search_Fdata.append("Busqueda",busqueda);
 
-    fetch("http://localhost/Neutro/codigo/php/Buscarproducto-fe-pp1.php",{
+
+function buscarProducto(B_item){
+     let search_Fdata = new FormData();
+     search_Fdata.append("Busqueda",B_item);
+     var url = "http://localhost/Neutro/codigo/php/Buscador_front.php";
+
+    fetch(url,{
         method: 'POST',
         body: search_Fdata,
     })
     .then(function(respuesta){
         if(respuesta.ok){
-            console.log("busqueda exitosa");
             return respuesta.json();
-        }else{
-            console.log("busqueda incompleta");
-            window.location.href="http://localhost/Neutro/codigo/pagBuscarObjeto/index.html";
         }
     })
     .then(function(data){
