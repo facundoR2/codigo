@@ -90,7 +90,7 @@ formulario.addEventListener("submit", function(Event){
     document.getElementById("initContraseña").innerHTML = contraseña;
     validaremail(email);
     validarcontraseña(contraseña);
-    if(validaremail(email)==true){
+    if(validaremail(email)== true){
         alert("Email u contraseña incorrecto");
     }else{
         if(validarcontraseña(contraseña)==false){

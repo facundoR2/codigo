@@ -1,0 +1,7 @@
+1) crear parte de proveedores para la administracion de productos en la 
+parte de admins.
+2) mejorar mas el aspecto visual.
+3) dar aviso de contraseña o perfil equivocados en la pagina de login.
+4) revisar LoginUsuario.php , si se ingresa datos incorrectos se manda la informacion de la base de todos modos.
+deberia mandar solo el mensaje de error.
+5) agregar mas productos para dar sensacion de realismo
